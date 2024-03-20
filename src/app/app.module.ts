@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { FooterComponent } from './Components/footer/footer.component';
+<<<<<<< HEAD
 import { LogInComponent } from './Components/log-in/log-in.component';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
@@ -16,14 +17,21 @@ import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessageService } from 'primeng/api';
 
+=======
+import { PaymentWaysComponent } from './Components/payment-ways/payment-ways.component';
+>>>>>>> ecfb49628e028ea7fd80261a678efad6e71363ed
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
+<<<<<<< HEAD
     LogInComponent,
     RegisterComponent
+=======
+    PaymentWaysComponent
+>>>>>>> ecfb49628e028ea7fd80261a678efad6e71363ed
   ],
   imports: [
     BrowserModule,

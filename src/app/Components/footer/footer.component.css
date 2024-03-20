@@ -3,7 +3,6 @@ footer {
     color: #fff;
     text-align: center;
     padding: 20px;
-    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -12,9 +11,13 @@ footer {
   footer p {
     margin: 0;
   }
-  
   footer a {
     color: #fff;
     text-decoration: none;
+  }
+  img { 
+    rotate: 2px;
+    width: 40px;
+    height: 40px;
   }
   
