@@ -8,18 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   // data binding => Interpolation {{title}}
-  title:string = 'First Project';
-  numberOne : number = 10;
-  numbertwo : number = 20;
-
-  add()
-  {
-    return this.numberOne + this.numbertwo;
-  }
-
-  SayHello(name:string)
-  {
-    return "Hello "+name;
-  }
+ 
 
 }
