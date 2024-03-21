@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessageService } from 'primeng/api';
 
 import { PaymentWaysComponent } from './Components/payment-ways/payment-ways.component';
+import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { PaymentWaysComponent } from './Components/payment-ways/payment-ways.com
     BrowserAnimationsModule,
     ToastModule,
     HttpClientModule,
+    NavBarComponent
  
    
    
