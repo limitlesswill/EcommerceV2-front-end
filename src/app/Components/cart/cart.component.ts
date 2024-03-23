@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NavComponent } from '../nav/nav.component';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-cart',

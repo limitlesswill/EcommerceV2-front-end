@@ -1,39 +1,34 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { Router, RouterOutlet } from '@angular/router';
-import { MessageService } from 'primeng/api';
+import { AuthService } from '../_services/auth.service';
+import { StorageService } from '../_services/storage.service';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
 import { passwordMatchValidator } from '../Shared/password-match.directive';
-import { User } from '../../interfaces/auth';
-import { AuthService } from '../../Services/auth.service';
-
-
+import { CardModule } from 'primeng/card';
 @Component({
   selector: 'app-register',
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './register.component.html',
+  standalone:true,
+  imports:[ReactiveFormsModule,InputTextModule,ButtonModule,CardModule],
+  templateUrl:'./register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-
   registerForm = this.fb.group({
-    fullName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)]],
+    fName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)]],
+    lName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)]],
     email: ['', [Validators.required, Validators.email]],
+    phoneNumber: ['', [Validators.required, Validators.pattern(/^[0-9]+$/)]],
     password: ['', Validators.required],
     confirmPassword: ['', Validators.required]
   }, {
-    validators: passwordMatchValidator
+    Validators: passwordMatchValidator
   })
-
-  constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private messageService: MessageService,
-    private router: Router
-  ) { }
-
-  get fullName() {
-    return this.registerForm.controls['fullName'];
+  get lName() {
+    return this.registerForm.controls['lName'];
+  }
+  get fName() {
+    return this.registerForm.controls['fName'];
   }
 
   get email() {
@@ -47,23 +42,29 @@ export class RegisterComponent {
   get confirmPassword() {
     return this.registerForm.controls['confirmPassword'];
   }
-
-  submitDetails() {
-    const postData = { ...this.registerForm.value };
-    delete postData.confirmPassword;
-
-    this.authService.registerUser(postData as unknown as User).subscribe(
-      {
-        next: response => {
-          console.log(response);
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Register successfully' });
-          this.router.navigate(['login']);
-        },
-        error: err => {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });
-        }
-      }
-    );
+  get phoneNumber(){
+    return this.registerForm.controls['phoneNumber'];
   }
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessage = '';
 
+  constructor(private authService: AuthService,private fb: FormBuilder) { }
+
+  onSubmit(): void {
+    debugger;
+    const { fName, lName, email, phoneNumber,password,confirmPassword} = this.registerForm.value;
+
+    this.authService.register(fName, lName, email, phoneNumber,password,confirmPassword).subscribe({
+      next: data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+      },
+      error: err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    });
+  }
 }
