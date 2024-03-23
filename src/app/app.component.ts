@@ -22,13 +22,14 @@ import { RegisterComponent } from './Components/register/register.component';
 import { Subscription } from 'rxjs';
 import { StorageService } from './Components/_services/storage.service';
 import { AuthService } from './Components/_services/auth.service';
+import { HomeComponent } from './Pages/home/home.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CartComponent,AppliancesComponent,HeaderComponent,NavBarComponent,   RegisterComponent,
-    PaymentWaysComponent,FooterComponent,MainsliderComponent,MarketComponent,ThirdThingComponent,
+  imports: [RouterOutlet, CartComponent,AppliancesComponent,HeaderComponent,NavBarComponent,RegisterComponent,HomeComponent
+    ,PaymentWaysComponent,FooterComponent,MainsliderComponent,MarketComponent,ThirdThingComponent,
     Item1Component,Item2Component,Item3Component,Item4Component,Item5Component,Item6Component ,ProductDetailsComponent,LoginComponent,AppComponent],
   templateUrl:'./app.component.html',
   styleUrl: './app.component.css'

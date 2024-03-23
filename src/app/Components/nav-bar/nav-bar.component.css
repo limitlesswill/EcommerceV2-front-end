@@ -1,4 +1,6 @@
 
+
+@import '../../../../node_modules/font-awesome/css/font-awesome.min.css'; 
   body {
     margin: 0;
     padding: 0;
@@ -13,7 +15,6 @@
   
   .navbar {
     height: 75px;
-   
     color: white;
     display: flex;
     align-items: center;
@@ -53,7 +54,6 @@
     text-decoration: none;
    
   }
-
 
   
   .navbar-center {
