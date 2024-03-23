@@ -1,0 +1,16 @@
+{
+    "cart":{
+        "color":"اللون",
+        "price": "السعر",
+        "quantity": "الكميه",
+        "total": "المجموع",
+        "green": "أخضر",
+        "subtotal":"المجموع الفرعي",
+        "discount": "الخصم",
+        "ShippingCharge":"مصاريف الشحن",
+        "OrderSummary":"تفاصيل الطلب",
+        "MoreOptions":"المزيد من الخيارات",
+        "ContinueShopping":"متابعه الشحن",
+        "checkout":"تأكيد الطلب"
+    }
+}

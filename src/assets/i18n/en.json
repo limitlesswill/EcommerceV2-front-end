@@ -1,0 +1,16 @@
+{
+    "cart":{
+        "color":"Color",
+        "price": "Price",
+        "quantity": "Quantity",
+        "total": "Total",
+        "green": "Green",
+        "subtotal":"Sub Total",
+        "discount": "Discount",
+        "ShippingCharge":"Shipping Charge",
+        "OrderSummary":"Order Summary",
+        "MoreOptions":"More Options",
+        "ContinueShopping":"Continue Shopping",
+        "checkout":"Checkout"
+    }
+}

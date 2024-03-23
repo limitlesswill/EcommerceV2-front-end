@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { passwordMatchValidator } from '../Shared/password-match.directive';
 import { User } from '../../interfaces/auth';
@@ -9,6 +9,8 @@ import { AuthService } from '../../Services/auth.service';
 
 @Component({
   selector: 'app-register',
+  standalone: true,
+  imports: [RouterOutlet],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
