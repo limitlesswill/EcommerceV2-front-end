@@ -1,75 +1,120 @@
-<form [formGroup]="registerForm" (ngSubmit)="submitDetails()">
-    <p-card header="Register" [style]="{ width: '360px' }">
-        <div class="field">
-            <label for="fullName">FullName</label>
-            <input type="text" pInputText formControlName="fullName" class="w-full" name="fullName"
-                placeholder="Type your name" />
-            @if(fullName.invalid && (fullName.dirty || fullName.touched)){
-            <small class="block p-error">
-                @if(fullName.errors?.['required']){
-                <div>Name is required.</div>
-                }
-                @else if (fullName.errors?.['pattern']) {
-                <div>Enter a valid Name</div>
-                }
 
-            </small>
+<form [formGroup]="registerForm"  (ngSubmit)="onSubmit()" >  <!--(ngSubmit)="submitDetails() -->
+  <p-card header="Register" [style]="{ width: '360px' }">
+      <div class="field">
+          <label for="fName">First Name</label>
+          <input type="text" pInputText formControlName="fName" class="w-full" name="fName"
+              placeholder="Type your First name" />
+          @if(fName.invalid && (fName.dirty || fName.touched)){
+          <small class="block p-error">
+              @if(fName.errors?.['required']){
+              <div>Name is required.</div>
+              }
+              @else if (fName.errors?.['pattern']) {
+              <div>Enter a valid Name</div>
+              }
+
+          </small>
+          }
+
+      </div>
+      <div class="field">
+          <label for="lName">Last Name</label>
+          <input type="text" pInputText formControlName="lName" class="w-full" name="lName"
+              placeholder="Type your First name" />
+          @if(lName.invalid && (lName.dirty || lName.touched)){
+          <small class="block p-error">
+              @if(lName.errors?.['required']){
+              <div>lName is required.</div>
+              }
+              @else if (lName.errors?.['pattern']) {
+              <div>Enter a valid Name</div>
+              }
+
+          </small>
+          }
+
+      </div>
+      <div class="field">
+          <label for="phoneNumber">phoneNumber</label>
+          <input type="text" pInputText formControlName="phoneNumber" class="w-full" name="phoneNumber"
+              placeholder="Type your phoneNumber" />
+          @if(phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)){
+          <small class="block p-error">
+              @if(phoneNumber.errors?.['required']){
+              <div>phoneNumber is required.</div>
+              }
+              @else if (phoneNumber.errors?.['pattern']) {
+              <div>Enter an integer number</div>
+              }
+
+          </small>
+          }
+
+      </div>
+      <div class="field">
+          <label for="email">Email</label>
+          <input type="text" pInputText formControlName="email" class="w-full" name="email"
+              placeholder="Type your email" />
+          @if( email.invalid && (email.dirty || email.touched)){
+          <small class="block p-error">
+              @if(email.errors?.['required']){
+              <div>Email is required</div>
+              }
+              @else if (email.errors?.['email']) {
+              <div>Email should be valid</div>
+              }
+
+          </small>
+          }
+
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" pInputText formControlName="password" class="w-full" name="password"
+            placeholder="Type your password" />
+        @if(password.invalid && (password.dirty || password.touched)){
+
+        <small class="block p-error">
+            @if(password.errors?.['required']){
+            <div>Password is required.</div>
+            }
+        </small>
+        }
+
+    </div>
+    <div class="field">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" pInputText formControlName="confirmPassword" class="w-full" name="confirmPassword"
+            placeholder="Confirm Password" />
+        @if( confirmPassword.invalid &&(confirmPassword.dirty || confirmPassword.touched)){
+        <small class="block p-error">
+            @if(confirmPassword.errors?.['required']){
+            <div>
+                Confirm the password
+            </div>
             }
 
-        </div>
-        <div class="field">
-            <label for="email">Email</label>
-            <input type="text" pInputText formControlName="email" class="w-full" name="email"
-                placeholder="Type your email" />
-            @if( email.invalid && (email.dirty || email.touched)){
-            <small class="block p-error">
-                @if(email.errors?.['required']){
-                <div>Email is required</div>
-                }
-                @else if (email.errors?.['email']) {
-                <div>Email should be valid</div>
-                }
+        </small>
+        }
+        @if(registerForm.errors?.['passwordMismatch'] && confirmPassword.valid && password.valid){
+        <small class="block p-error">
+            Password should match
+        </small>
+        }
 
-            </small>
-            }
-
-        </div>
-        <div class="field">
-            <label for="password">Password</label>
-            <input type="password" pInputText formControlName="password" class="w-full" name="password"
-                placeholder="Type your password" />
-            @if(password.invalid && (password.dirty || password.touched)){
-
-            <small class="block p-error">
-                @if(password.errors?.['required']){
-                <div>Password is required.</div>
-                }
-            </small>
-            }
-
-        </div>
-        <div class="field">
-            <label for="confirmPassword">Confirm Password</label>
-            <input type="password" pInputText formControlName="confirmPassword" class="w-full" name="confirmPassword"
-                placeholder="Confirm Password" />
-            @if( confirmPassword.invalid &&(confirmPassword.dirty || confirmPassword.touched)){
-            <small class="block p-error">
-                @if(confirmPassword.errors?.['required']){
-                <div>
-                    Confirm the password
-                </div>
-                }
-
-            </small>
-            }
-            @if(registerForm.errors?.['passwordMismatch'] && confirmPassword.valid && password.valid){
-            <small class="block p-error">
-                Password should match
-            </small>
-            }
-
-        </div>
-        <p-button label="Register" styleClass="w-full" [disabled]="registerForm.invalid" type="submit"></p-button>
-        <div class="mt-2">Already a member? <a routerLink="/Login">Login</a></div>
-    </p-card>
+    </div>
+          <!-- <div class="form-group">
+            <button class="btn btn-primary btn-block">Sign Up</button>
+          </div> -->
+        <div>
+          @if (isSignUpFailed) {
+          <div class="alert alert-warning">
+            Signup failed!<br />{{ errorMessage }}
+          </div>
+          }
+      </div>
+      <p-button label="Register" styleClass="w-full" [disabled]="registerForm.invalid" type="submit"></p-button>
+      <div class="mt-2">Not a member? <a href="/login" routerLink="login">Login</a></div>
+  </p-card>
 </form>

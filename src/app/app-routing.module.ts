@@ -1,20 +1,23 @@
-import { NgModule } from '@angular/core';
+
 import { RouterModule, Routes } from '@angular/router';
-import { LogInComponent } from './Components/log-in/log-in.component';
-import { RegisterComponent } from './Components/register/register.component';
+
+
 import { authGuard } from './guards/auth.guard';
+import { NgModule } from '@angular/core';
+
+import { BoardUserComponent } from './Components/board-user/board-user.component';
+import { BoardAdminComponent } from './Components/board-admin/board-admin.component';
+import { RegisterComponent } from './Components/register/register.component';
+import { LoginComponent } from './Components/login/login.component';
 
 
 const routes: Routes = [
-  {
-    path: 'Login',
-    component: LogInComponent
-  },
-  {
-    path: 'register',
-    component: RegisterComponent
-    // canActivate:[authGuard]
-  }
+ 
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent,canActivate:[authGuard] } //,
+  { path: 'user', component: BoardUserComponent },
+  { path: 'admin', component: BoardAdminComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({
