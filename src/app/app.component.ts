@@ -22,14 +22,16 @@ import { RegisterComponent } from './Components/register/register.component';
 import { Subscription } from 'rxjs';
 import { StorageService } from './Components/_services/storage.service';
 import { AuthService } from './Components/_services/auth.service';
+import { ProductsComponent } from './Components/AllProduct/products/products.component';
+import { faFontAwesome } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CartComponent,AppliancesComponent,HeaderComponent,NavBarComponent,   RegisterComponent,
+  imports: [RouterOutlet,CartComponent,AppliancesComponent,HeaderComponent,NavBarComponent,RegisterComponent,ProductsComponent,
     PaymentWaysComponent,FooterComponent,MainsliderComponent,MarketComponent,ThirdThingComponent,
-    Item1Component,Item2Component,Item3Component,Item4Component,Item5Component,Item6Component ,ProductDetailsComponent,LoginComponent,AppComponent],
+    Item1Component,Item2Component,Item3Component,Item4Component,Item5Component,Item6Component,ProductDetailsComponent,LoginComponent,AppComponent],
   templateUrl:'./app.component.html',
   styleUrl: './app.component.css'
 })
