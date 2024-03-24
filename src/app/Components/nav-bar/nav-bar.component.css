@@ -1,26 +1,19 @@
 
 
-@import '../../../../node_modules/font-awesome/css/font-awesome.min.css'; 
+@import url('https://fonts.googleapis.com/css2?family=Changa:wght@200&display=swap');
   body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
   }
   .main-container{
-    height: 150px;
+    height: 175px;
     border-top: 5px solid #9ac55c; /* Green color border at the top */
   border-bottom: 5px solid #9ac55c;
   background-color: #222529;
   }
   
-  .navbar {
-    height: 75px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-  }
+  
   
   .navbar-logo {
     font-size: 24px;
@@ -36,19 +29,21 @@
 
   .language-icon{
     margin-bottom: 5px;
+    margin-left: 81px;
 
   }
 
   .language-icon img{
-    width: 20px; 
+    width: 13px; 
     height: auto; 
 
   }
   .language-icon span{
    color: white;
-   font-size: 20px;
+   font-size: 13px;
    font-weight: normal;
    margin-left: 5px;
+  
   }
   .language-icon a {
     text-decoration: none;
@@ -62,13 +57,13 @@
   }
   
   .navbar-center input[type="text"] {
-    padding: 5px;
+    padding: 23px;
     border-radius: 20px;
     border: none;
     width: 700px;
     height: 30px;
     font-size: 16px;
-    margin-left: 80px;
+    margin-left: 0px;
    
   }
 
@@ -86,26 +81,141 @@
     text-decoration-line: underline;
   }
   
+  .cartt {
+    position: relative;
+    display: block;
+    width: 28px;
+    height: 28px;
+    height: auto;
+   }
+    .icos {
+      position: relative;
+      top: 4px;
+      right: 51px;
+      z-index: 1;
+      font-size: 24px;
+    }
+    .count {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 2;
+      font-size: 11px;
+      border-radius: 50%;
+      background: #d60b28;
+      width: 16px;
+      height: 16px;
+      line-height:16px;
+      display: block;
+      text-align: center;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+    }
+  
   .navbar-icons i {
     margin-left: 15px;
     margin-right: 5px;
-    font-size: 18px;
+    font-size: 31px;
     cursor: pointer;
   }
   .navbar-icons span{
     margin-right: 40px;
+    font-family: "Changa", sans-serif;
+  }
+  .navbar {
+    height: 75px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
   }
   
   .navbar-bottom {
     height: 55px;
    
     color: white;
-    padding: 5px 20px;
+    padding: 5px 43px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 14px;
+    font-size: 12px;
 
+  }
+  .subnav {
+    float: left;
+    overflow: hidden;
+  }
+  
+  .subnav .subnavbtn {
+    font-size: 12px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .column {
+    float: left;
+    width: 32.33%;
+    padding: 10px;
+    height: 250px;
+    color: black;
+    text-transform: uppercase;
+    margin-left: 5px;
+
+  }
+  /* Style links inside the columns */
+.column a {
+  float: none;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  width: 100%;
+}
+.column h3{
+  font-weight: bold;
+    font-size: 18px;
+    font-family: "Changa";
+}
+  /* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+  
+  .subnav-content {
+    display: none;
+    position: absolute;
+    left: 81px;
+    width: 74%;
+    z-index: 1;
+    border: 10px solid white;
+    background-color: white;
+    border-radius: 0 0 4px 4px;
+  }
+  
+  .subnav-content a {
+    float: left;
+    color: black;
+    text-decoration: none;
+    background-color: white;
+  }
+  
+  .subnav-content a:hover {
+    background-color: #eee;
+    color: black;
+  }
+  
+  .subnav:hover .subnav-content {
+    display: block;
   }
  
   
@@ -126,13 +236,13 @@
   }
 
   .contacts span{
-    font-size: x-large;
     color: #1a6ac7;
    
   }
 
   .contacts a{
     text-decoration: none;
+    font-size: 20px;
   }
 
   .contacts a:hover{
