@@ -22,16 +22,26 @@ import { RegisterComponent } from './Components/register/register.component';
 import { Subscription } from 'rxjs';
 import { StorageService } from './Components/_services/storage.service';
 import { AuthService } from './Components/_services/auth.service';
+<<<<<<< HEAD
 import { ProductsComponent } from './Components/AllProduct/products/products.component';
 import { faFontAwesome } from '@fortawesome/free-solid-svg-icons';
+=======
+import { HomeComponent } from './Pages/home/home.component';
+>>>>>>> 0535eba69d9aa1b881354d51a04e00a9ed3d1b80
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
+<<<<<<< HEAD
   imports: [RouterOutlet,CartComponent,AppliancesComponent,HeaderComponent,NavBarComponent,RegisterComponent,ProductsComponent,
     PaymentWaysComponent,FooterComponent,MainsliderComponent,MarketComponent,ThirdThingComponent,
     Item1Component,Item2Component,Item3Component,Item4Component,Item5Component,Item6Component,ProductDetailsComponent,LoginComponent,AppComponent],
+=======
+  imports: [RouterOutlet, CartComponent,AppliancesComponent,HeaderComponent,NavBarComponent,RegisterComponent,HomeComponent
+    ,PaymentWaysComponent,FooterComponent,MainsliderComponent,MarketComponent,ThirdThingComponent,
+    Item1Component,Item2Component,Item3Component,Item4Component,Item5Component,Item6Component ,ProductDetailsComponent,LoginComponent,AppComponent],
+>>>>>>> 0535eba69d9aa1b881354d51a04e00a9ed3d1b80
   templateUrl:'./app.component.html',
   styleUrl: './app.component.css'
 })
