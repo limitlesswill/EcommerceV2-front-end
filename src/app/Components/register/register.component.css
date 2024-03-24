@@ -30,3 +30,12 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+
+.NavRegister{
+  background-color: #f4f4f4;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}

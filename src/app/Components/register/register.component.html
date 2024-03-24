@@ -1,9 +1,10 @@
-
+<Div class="NavRegister"><H1>CREATE NEW CUSTOMER ACCOUNT</H1></Div>
+<div class="d-flex justify-content-center mb-5 mt-5">
 <form [formGroup]="registerForm"  (ngSubmit)="onSubmit()" >  <!--(ngSubmit)="submitDetails() -->
-  <p-card header="Register" [style]="{ width: '360px' }">
+  <p-card header="Register" [style]="{ width: '1000px' }">
       <div class="field">
           <label for="fName">First Name</label>
-          <input type="text" pInputText formControlName="fName" class="w-full" name="fName"
+          <input type="text" pInputText formControlName="fName" class="w-100" name="fName"
               placeholder="Type your First name" />
           @if(fName.invalid && (fName.dirty || fName.touched)){
           <small class="block p-error">
@@ -20,7 +21,7 @@
       </div>
       <div class="field">
           <label for="lName">Last Name</label>
-          <input type="text" pInputText formControlName="lName" class="w-full" name="lName"
+          <input type="text" pInputText formControlName="lName" class="w-100" name="lName"
               placeholder="Type your First name" />
           @if(lName.invalid && (lName.dirty || lName.touched)){
           <small class="block p-error">
@@ -37,7 +38,7 @@
       </div>
       <div class="field">
           <label for="phoneNumber">phoneNumber</label>
-          <input type="text" pInputText formControlName="phoneNumber" class="w-full" name="phoneNumber"
+          <input type="text" pInputText formControlName="phoneNumber" class="w-100" name="phoneNumber"
               placeholder="Type your phoneNumber" />
           @if(phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)){
           <small class="block p-error">
@@ -54,7 +55,7 @@
       </div>
       <div class="field">
           <label for="email">Email</label>
-          <input type="text" pInputText formControlName="email" class="w-full" name="email"
+          <input type="text" pInputText formControlName="email" class="w-100" name="email"
               placeholder="Type your email" />
           @if( email.invalid && (email.dirty || email.touched)){
           <small class="block p-error">
@@ -71,7 +72,7 @@
       </div>
       <div class="field">
         <label for="password">Password</label>
-        <input type="password" pInputText formControlName="password" class="w-full" name="password"
+        <input type="password" pInputText formControlName="password" class="w-100" name="password"
             placeholder="Type your password" />
         @if(password.invalid && (password.dirty || password.touched)){
 
@@ -85,7 +86,7 @@
     </div>
     <div class="field">
         <label for="confirmPassword">Confirm Password</label>
-        <input type="password" pInputText formControlName="confirmPassword" class="w-full" name="confirmPassword"
+        <input type="password" pInputText formControlName="confirmPassword" class="w-100" name="confirmPassword"
             placeholder="Confirm Password" />
         @if( confirmPassword.invalid &&(confirmPassword.dirty || confirmPassword.touched)){
         <small class="block p-error">
@@ -114,7 +115,8 @@
           </div>
           }
       </div>
-      <p-button label="Register" styleClass="w-full" [disabled]="registerForm.invalid" type="submit"></p-button>
+      <p-button label="Register" styleClass="w-100" class="w-100 mt-5" [disabled]="registerForm.invalid" type="submit"></p-button>
       <div class="mt-2">Not a member? <a href="/login" routerLink="login">Login</a></div>
   </p-card>
 </form>
+</div>

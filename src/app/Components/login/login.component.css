@@ -5,7 +5,7 @@ label {
 
 .card-container.card {
   max-width: 400px !important;
-  padding: 40px 40px;
+  padding: 100px 40px;
 }
 
 .card {
@@ -29,4 +29,13 @@ label {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
+}
+
+.NavLogin {
+  background-color: #f4f4f4;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
 }
