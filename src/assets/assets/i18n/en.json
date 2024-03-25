@@ -11,6 +11,25 @@
         "OrderSummary":"Order Summary",
         "MoreOptions":"More Options",
         "ContinueShopping":"Continue Shopping",
-        "checkout":"Checkout"
+        "checkout":"Checkout",
+        "shoppingcart":"shopping cart"
+    },
+    "nav":{
+
+    },
+    "productDetails":{
+
+    },
+    "allProducts":{
+
+    },
+    "home":{
+
+    },
+    "userInfo":{
+
+    },
+    "footer":{
+        
     }
 }

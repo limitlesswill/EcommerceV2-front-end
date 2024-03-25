@@ -2,8 +2,14 @@
     <div class="main-container">
       <div >
         <div class="language-icon ">
-          <a href=""><img src="../../../assets/download.png" alt="language"><span>العربية</span></a>
-      </div>
+          <a (click)="onChange()">
+            @if(lang=='en'){
+              <img src="../../../assets/download.png" alt="language"><span>العربيه</span>
+            }@else if(lang=='ar'){
+              <img src="https://r2media.horizondm.com/wysiwyg/smartwave/porto/flags/en.png" alt=""><span>English</span>
+            }   
+          </a>        
+          </div>
           <div class="navbar">
             
               <div class="navbar-logo">
@@ -18,8 +24,8 @@
                  <!-- Store location icon -->
                 
                  
-                  <a href="/login"routerLink="login" > <i class="mdi mdi-account-outline"></i> <span>signin</span></a> <!-- Sign in icon -->
-                  <a href="" class="cartt"> <i class="mdi mdi-cart-outline icos"></i> <span class="count">1</span></a> <!-- Cart icon -->
+                  <a routerLink="/login" style="margin-right: 6px"> <i class="mdi mdi-account-outline"></i> <span>signin</span></a> <!-- Sign in icon -->
+                  <a routerLink="/cart"> <i class="mdi mdi-cart-outline icos"></i> <span class="count">1</span></a> <!-- Cart icon -->
                  
               </div>
             </div>
@@ -249,10 +255,9 @@
           
             </div>
             
-            
+             
       </div>
       
     </div>
  
-   
-
+    <router-outlet></router-outlet>

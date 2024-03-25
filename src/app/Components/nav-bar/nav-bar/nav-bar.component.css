@@ -21,7 +21,7 @@
   }
 
   .navbar-logo img {
-    width: 150px; 
+    width: 165px; 
     height: auto; 
     margin-left: 30px;
    
@@ -60,7 +60,7 @@
     padding: 23px;
     border-radius: 20px;
     border: none;
-    width: 700px;
+    width: 765px;
     height: 30px;
     font-size: 16px;
     margin-left: 0px;
@@ -69,7 +69,7 @@
 
  
   .navbar-icons {
-    display: flex;
+    /* display: flex; */
     align-items: center;
   }
   .navbar-icons a {
@@ -90,16 +90,15 @@
    }
     .icos {
       position: relative;
-      top: 4px;
-      right: 51px;
+      top: 3px;
+      right: 46px;
       z-index: 1;
-      font-size: 24px;
     }
     .count {
       position: absolute;
-      top: 0;
-      right: 0;
-      z-index: 2;
+      top: 15px;
+      right: 40px;
+      z-index: 1;
       font-size: 11px;
       border-radius: 50%;
       background: #d60b28;
@@ -116,11 +115,11 @@
   .navbar-icons i {
     margin-left: 15px;
     margin-right: 5px;
-    font-size: 31px;
+    font-size: 25px;
     cursor: pointer;
   }
   .navbar-icons span{
-    margin-right: 40px;
+    margin-right: 35px;
     font-family: "Changa", sans-serif;
   }
   .navbar {

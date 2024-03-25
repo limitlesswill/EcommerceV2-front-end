@@ -2,16 +2,25 @@
   margin: 0;
   padding: 0;
 }
+.clearboth{
+  clear: both;
+}
+.line{
+  width: 18%;
+  border-width: 4px;
+  border-color: #39f;
+  display: inline-block;
+}
 
 .slider-area {
-  height: 10vh;
+  height: 300px;
 }
 
 .slider-area h2 {
   text-align: center;
   font-size: 30px;
   font-weight: 500;
-  margin: 100px 0 30px 0;
+  margin: 100px 0 4px 0;
   color: #fff;
 }
 
@@ -19,22 +28,23 @@
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-  height: 8vh;
+  height: 203px;
   width: auto;
   margin: 0 auto;
   overflow: hidden;
   background: #fff;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
 }
 
 .item {
-  height: 10vh;
+  width: 117px;
+  height: 127px;;
   animation: animate 10s alternate linear infinite;
 }
 
 .item img {
-  height: 8vh;
-  width: 8vh;
+  height: 115x;
+  width: 90px;
   margin-left: 2vw;
   margin-right: 2vw;
 }

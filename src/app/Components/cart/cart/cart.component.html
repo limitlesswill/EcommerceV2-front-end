@@ -1,7 +1,8 @@
-<div style="height: 30px;">
-    <app-nav></app-nav>
-</div>
+<app-nav-bar></app-nav-bar>
+<app-header></app-header>
+
 <div class="container" [style.direction]="lang=='ar' ? 'rtl' : 'ltr'">
+    <h3 class="titlecart">{{'cart.shoppingcart'| translate}}</h3>
     <div class="row">
         <div class="col-xl-8">
             
