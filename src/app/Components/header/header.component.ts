@@ -10,17 +10,4 @@ import { RouterOutlet } from '@angular/router';
 })
 export class HeaderComponent {
 title:string = "Header";
-ShowAdd : boolean = false;
-ShowCategory:boolean = false;
-
-toggleAdd()
-{
-  this.ShowAdd = !this.ShowAdd;
-}
-
-toggleCategory()
-{
-  this.ShowCategory = !this.ShowCategory;
-}
-
 }
