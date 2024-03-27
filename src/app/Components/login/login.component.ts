@@ -1,3 +1,5 @@
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { StorageService } from '../_services/storage.service';
@@ -5,59 +7,61 @@ import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angu
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
+import { HeaderComponent } from '../header/header.component';
 
 
 @Component({
   selector: 'app-login',
   standalone:true,
-  imports:[ReactiveFormsModule,CardModule,InputTextModule,ButtonModule],
+  imports:[ReactiveFormsModule,CardModule,InputTextModule,ButtonModule,TranslateModule, NavBarComponent,HeaderComponent],
   templateUrl:'./login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginform = this.fb.group({
-    Email: ['', [Validators.required, Validators.email]],
-    Password: ['', [Validators.required]]
+  isSubmitted = false
+    invalidData = false
+
+    LoginForm = new FormGroup({
+      UserEmail:new FormControl( 'test.com@gmail.com' , [Validators.required, Validators.email] ),
+      Password: new FormControl('123456', [Validators.required])
   })
-  isLoggedIn = false;
-  isLoginFailed = false;
-  errorMessage = '';
-  roles: string[] = [];
+  errorMessage: string ="";
+  lang:any;
 
-  constructor(private authService: AuthService,private fb: FormBuilder, private storageService: StorageService) { }
 
-  ngOnInit(): void {
-    if (this.storageService.isLoggedIn()) {
-      this.isLoggedIn = true;
-      //this.roles = this.storageService.getUser().roles;
+    constructor(private _auth:AuthService, private _router:Router, private translate: TranslateService) {
+      this.lang = localStorage.getItem('lang')
+    translate.use(this.lang);
     }
-  }
-  get email() {
-    return this.loginform.controls['Email'];
-  }
-  get password() {
-    return this.loginform.controls['Password']
-  }
-  onSubmit(): void {
-    const { Email, Password } = this.loginform.value;
+    ngOnInit() {}
 
-    this.authService.login(Email as string, Password as string).subscribe({
-      next: data => {
-        this.storageService.saveUser(data);
+    get UserEmail(){ return this.LoginForm.get('UserEmail')}
+    get Password(){ return this.LoginForm.get('Password')}
 
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
-        //this.roles = this.storageService.getUser().roles;
-        this.reloadPage();
-      },
-      error: err => {
-        this.errorMessage = err.error.message;
-        this.isLoginFailed = true;
+    handleLogin(){
+        this.isSubmitted = true
+        if(this.LoginForm.valid){
+          this._auth.loginUser(this.LoginForm.value).subscribe(
+            (response: any) => {
+              if (response && response.token) {
+                localStorage.setItem('token', response.token);
+                // Redirect to dashboard or any other page
+                this._router.navigate(['/home']);
+              } else {
+                this.errorMessage = 'Invalid response from server';
+              }
+            },
+            (err)=>{
+              console.log(err)
+            },
+            ()=>{
+              this.LoginForm.reset()
+              this._auth.isAuth = true
+            }
+          )
+        }
       }
-    });
-  }
-
-  reloadPage(): void {
-    window.location.reload();
-  }
 }

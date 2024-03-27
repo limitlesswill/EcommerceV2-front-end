@@ -1,31 +1,41 @@
 
-    <div class="main-container">
+    <div class="main-container" [ngClass]="{
+      'arabic-font': lang === 'ar'}">
       <div >
-        <div class="language-icon ">
+        <div class="language-icon">
           <a (click)="onChange()">
             @if(lang=='en'){
-              <img src="../../../../assets/assets/download.png" alt="language"><span>العربيه</span>
+              <img src="../../../assets/download.png" alt="language"><span>العربيه</span>
             }@else if(lang=='ar'){
-              <img src="https://r2media.horizondm.com/wysiwyg/smartwave/porto/flags/en.png" alt=""><span>English</span>
+              <img src="https://r2media.horizondm.com/wysiwyg/smartwave/porto/flags/en.png" style="margin-right: 40px;" alt=""><span>English</span>
             }   
           </a>        
           </div>
           <div class="navbar">
             
               <div class="navbar-logo">
-                  <img src="../../../../assets/assets/Logo-White.png" alt="logo">
+                  <img src="../../../assets/Logo-White.png" alt="logo">
               </div>
               <div class="navbar-center">
-                <input type="text" placeholder="Enter Keyword Or Item...">
+                <input type="text" placeholder="{{'nav.search'| translate}}...">
                
               </div>
-              <div class="navbar-icons">
-                <a href="" style="margin-right: -43px;"><i class="mdi mdi-map-marker-outline"></i><span>store location</span></a>
+              <div [ngClass]="{
+                'navbar-icons-arabic': lang === 'ar',
+                'navbar-icons': lang === 'en',
+                 }">
+                <a href="" style="margin-right: -43px;"><i class="mdi mdi-map-marker-outline"></i><span>{{'nav.storelocation'| translate}}</span></a>
                  <!-- Store location icon -->
                 
-                 
-                  <a routerLink="/login" style="margin-right: 6px"> <i class="mdi mdi-account-outline"></i> <span>signin</span></a> <!-- Sign in icon -->
-                  <a routerLink="/cart"> <i class="mdi mdi-cart-outline icos"></i> <span class="count">1</span></a> <!-- Cart icon -->
+                  
+                  <a routerLink="/login" style="margin-right: 6px"> <i class="mdi mdi-account-outline"></i> <span>{{'nav.signin'| translate}}</span></a> <!-- Sign in icon -->
+                  <a routerLink="/cart"> <i class="mdi mdi-cart-outline"[ngClass]="{
+                    'icos-arabic': lang === 'ar',
+                    'icos': lang === 'en'
+                     }"></i> <span [ngClass]="{
+                    'count-arabic': lang === 'ar',
+                    'count': lang === 'en'
+                     }">1</span></a> <!-- Cart icon -->
                  
               </div>
             </div>
@@ -33,7 +43,7 @@
             
             <div class="navbar-bottom">
               <div class="subnav">
-                <button class="subnavbtn">MOBILES <i class="fa fa-caret-down"></i></button>
+                <button class="subnavbtn">{{'nav.mobiles'| translate}} <i class="fa fa-caret-down"></i></button>
                 <div class="subnav-content  shadow">
                   <div>
                     <img src="https://r2media.horizondm.com/wysiwyg/smartwave/porto/Test/Mobile_2.jpg" width="100%" alt="">
@@ -62,7 +72,7 @@
                 </div>
               </div> 
               <div class="subnav">
-                <button class="subnavbtn">TABLETS <i class="fa fa-caret-down"></i></button>
+                <button class="subnavbtn">{{'nav.tablets'| translate}}  <i class="fa fa-caret-down"></i></button>
                 <div class="subnav-content  shadow">
                   <div>
                     <img src="https://r2media.horizondm.com/wysiwyg/smartwave/porto/Test/Tablets_1.jpeg" width="100%" alt="">
@@ -86,7 +96,7 @@
                 </div>
               </div>
               <div class="subnav">
-                <button class="subnavbtn">LAPTOP&COMPUTER <i class="fa fa-caret-down"></i></button>
+                <button class="subnavbtn">{{'nav.laptop&computer'| translate}}<i class="fa fa-caret-down"></i></button>
                 <div class="subnav-content  shadow">
                   <div>
                     <img src="https://r2media.horizondm.com/wysiwyg/smartwave/homepage/PRODUCTS/backend-developer/Laptop-computer.jpg" width="100%" alt="">
@@ -117,7 +127,7 @@
                 </div>
               </div> 
               <div class="subnav">
-                <button class="subnavbtn">ACCESSORIES<i class="fa fa-caret-down"></i></button>
+                <button class="subnavbtn">{{'nav.accessories'| translate}} <i class="fa fa-caret-down"></i></button>
                 <div class="subnav-content  shadow">
                   <div>
                     <img src="https://r2media.horizondm.com/wysiwyg/smartwave/porto/Test/accessories_1.jpg" width="100%" alt="">
@@ -147,7 +157,7 @@
                 </div>
               </div> 
               <div class="subnav">
-                <button class="subnavbtn">ELECTRONICS<i class="fa fa-caret-down"></i></button>
+                <button class="subnavbtn">{{'nav.electornics'| translate}} <i class="fa fa-caret-down"></i></button>
                 <div class="subnav-content  shadow">
                   <div>
                     <img src="https://r2media.horizondm.com/wysiwyg/smartwave/porto/Test/electronics.jpg" width="100%" alt="">
@@ -171,7 +181,7 @@
                 </div>
               </div>
               <div class="subnav">
-                <button class="subnavbtn">APPLIANCES<i class="fa fa-caret-down"></i></button>
+                <button class="subnavbtn">{{'nav.appliances'| translate}} <i class="fa fa-caret-down"></i></button>
                 <div class="subnav-content  shadow">
                   <div>
                     <img src="https://r2media.horizondm.com/Backend-developer/Home-Appliances-EN.jpg" width="100%" alt="">
@@ -201,7 +211,7 @@
                 </div>
               </div>
               <div class="subnav">
-                <button class="subnavbtn">TVS<i class="fa fa-caret-down"></i></button>
+                <button class="subnavbtn">{{'nav.tvs'| translate}} <i class="fa fa-caret-down"></i></button>
                 <div class="subnav-content  shadow">
                   <div>
                     <img src="https://r2media.horizondm.com/Backend-developer/2048x249-Tvs.png" width="100%" alt="">
@@ -220,7 +230,7 @@
                 </div>
               </div>
               <div class="subnav">
-                <button class="subnavbtn">GAMING<i class="fa fa-caret-down"></i></button>
+                <button class="subnavbtn">{{'nav.gaming'| translate}} <i class="fa fa-caret-down"></i></button>
                 <div class="subnav-content  shadow">
                   <div>
                     <img src="https://r2media.horizondm.com/wysiwyg/smartwave/porto/Test/Gaming.jpg" width="100%" alt="">
@@ -246,7 +256,7 @@
                 </div>
               </div> 
               <div class="subnav">
-                <button class="subnavbtn">HOTDEALS</button>
+                <button class="subnavbtn">{{'nav.hotdeals'| translate}} </button>
                 </div>           
               <div class="contacts">
                 <a href=""><i style="color: aliceblue;" class="mdi mdi-phone-outline"></i> <span> 16942</span></a> <!-- Phone icon -->

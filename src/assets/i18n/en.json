@@ -1,0 +1,57 @@
+{
+    "cart":{
+        "color":"Color",
+        "price": "Price",
+        "quantity": "Quantity",
+        "total": "Total",
+        "green": "Green",
+        "subtotal":"Sub Total",
+        "discount": "Discount",
+        "ShippingCharge":"Shipping Charge",
+        "OrderSummary":"Order Summary",
+        "MoreOptions":"More Options",
+        "ContinueShopping":"Continue Shopping",
+        "checkout":"Checkout",
+        "shoppingcart":"shopping cart"
+    },
+    "nav":{
+        "search":"Enter Keyword Or Item",
+        "storelocation": "store location",
+        "signin": "signin",
+        "mobiles": "mobiles",
+        "tablets":"tablets",
+        "laptop&computer":"laptop&computer",
+        "accessories":"accessories",
+        "electornics":"electornics",
+        "appliances":"appliances",
+        "tvs":"tvs",
+        "gaming":"gaming",
+        "hotdeals":"hotdeals"
+
+    },
+    "productDetails":{
+
+    },
+    "allProducts":{
+
+    },
+    "home":{
+
+    },
+    "userInfo":{
+        "CreateNewCustomerAccount": "create new customer account",
+        "CreateAccount": "Create Account",
+        "FirstName": "First Name",
+        "LastName": "Last Name",
+        "PhoneNumber": "Phone Number",
+        "email":"Email",
+        "password": "Password",
+        "ConfirmPassword": "Confirm Password",
+        "required": "is required",
+        "TypeYour": "Type Your"
+
+    },
+    "footer":{
+        
+    }
+}

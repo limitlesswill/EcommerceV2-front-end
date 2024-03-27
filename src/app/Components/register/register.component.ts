@@ -1,70 +1,78 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { StorageService } from '../_services/storage.service';
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { passwordMatchValidator } from '../Shared/password-match.directive';
 import { CardModule } from 'primeng/card';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
+import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
+import { registerUserData } from '../models/auth';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-register',
   standalone:true,
-  imports:[ReactiveFormsModule,InputTextModule,ButtonModule,CardModule],
+  imports:[ReactiveFormsModule,TranslateModule,InputTextModule,ButtonModule,CardModule, NavBarComponent, HeaderComponent, FooterComponent],
   templateUrl:'./register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  registerForm = this.fb.group({
-    fName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)]],
-    lName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)]],
-    email: ['', [Validators.required, Validators.email]],
-    phoneNumber: ['', [Validators.required, Validators.pattern(/^[0-9]+$/)]],
-    password: ['', Validators.required],
-    confirmPassword: ['', Validators.required]
-  }, {
-    Validators: passwordMatchValidator
-  })
-  get lName() {
-    return this.registerForm.controls['lName'];
-  }
-  get fName() {
-    return this.registerForm.controls['fName'];
-  }
+  isSumitted : Boolean = false
+    emailUsedBefore : Boolean= false
+    lang:any; 
+ 
 
-  get email() {
-    return this.registerForm.controls['email'];
-  }
-
-  get password() {
-    return this.registerForm.controls['password'];
-  }
-
-  get confirmPassword() {
-    return this.registerForm.controls['confirmPassword'];
-  }
-  get phoneNumber(){
-    return this.registerForm.controls['phoneNumber'];
-  }
-  isSuccessful = false;
-  isSignUpFailed = false;
+  registerForm = new FormGroup({
+    fName:new FormControl('', [Validators.required]),
+    lName:new FormControl('', [Validators.required]),
+    phoneNumber:new FormControl('', [Validators.required]),
+    comfirmPassword:new FormControl('', [Validators.required]),
+    email: new FormControl('',[Validators.required, Validators.email]),
+    password: new FormControl('',[Validators.required])
+  });
+ 
+  get fName(){return this.registerForm.get('fName')}
+  get lName(){return this.registerForm.get('lName')}
+  get email(){return this.registerForm.get('email')}
+  get password(){return this.registerForm.get('password')}
+  get comfirmPassword(){return this.registerForm.get('comfirmPassword')}
+  get phoneNumber(){return this.registerForm.get('phoneNumber')}
   errorMessage = '';
 
-  constructor(private authService: AuthService,private fb: FormBuilder) { }
-
-  onSubmit(): void {
-    debugger;
-    const { fName, lName, email, phoneNumber,password,confirmPassword} = this.registerForm.value;
-
-    this.authService.register(fName, lName, email, phoneNumber,password,confirmPassword).subscribe({
-      next: data => {
-        console.log(data);
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
-      },
-      error: err => {
-        this.errorMessage = err.error.message;
-        this.isSignUpFailed = true;
+  constructor(private _auth: AuthService, private translate: TranslateService) {
+    this.lang = localStorage.getItem('lang')
+    translate.use(this.lang);
+   }
+    
+  handleRegister() {
+    this.isSumitted = true;
+    if (this.registerForm.valid) {
+      const formData = this.registerForm.value as registerUserData;
+      // Check if any form data is null or undefined
+      if (formData.fName && formData.lName && formData.phoneNumber && formData.comfirmPassword && formData.email && formData.password) {
+        this._auth.register(formData).subscribe(
+          (res) => {
+            console.log(res);
+          },
+          (err) => {
+            this.emailUsedBefore = true;
+            console.log(this.emailUsedBefore);
+            console.log(err);
+          },
+          () => {
+            this.registerForm.reset();
+            this.isSumitted = false;
+          }
+        );
+      } else {
+        // Handle case where form data is incomplete
+        console.error("Form data is incomplete");
       }
-    });
+    }
   }
+  
+
+
 }

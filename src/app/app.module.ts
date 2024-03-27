@@ -10,7 +10,7 @@ import { PaymentWaysComponent } from './Components/payment-ways/payment-ways.com
 import { httpInterceptorProviders } from './Components/_helpers/http.interceptor';
 import { CardModule } from 'primeng/card';
 import { NgModule } from '@angular/core';
-import { NavBarComponent } from './Components/nav-bar/nav-bar/nav-bar.component';
+import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 
 
 

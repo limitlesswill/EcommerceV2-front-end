@@ -1,0 +1,45 @@
+{
+    "cart":{
+        "color":"اللون",
+        "price": "السعر",
+        "quantity": "الكميه",
+        "total": "المجموع",
+        "green": "أخضر",
+        "subtotal":"المجموع الفرعي",
+        "discount": "الخصم",
+        "ShippingCharge":"مصاريف الشحن",
+        "OrderSummary":"تفاصيل الطلب",
+        "MoreOptions":"المزيد من الخيارات",
+        "ContinueShopping":"متابعه الشحن",
+        "checkout":"تأكيد الطلب",
+        "shoppingcart":"سله التسوق"
+    },
+    "nav":{
+        "search":"أبحث عن منتجك هنا",
+        "storelocation": "فروعنا",
+        "signin": "تسجيل الدخول",
+        "mobiles": "موبيلات",
+        "tablets":"تابلت",
+        "laptop&computer":"لابتوب & كمبيوتر",
+        "accessories":"إكسسوارات",
+        "electornics":"إلكترونيات",
+        "appliances":"أجهزه منزليه",
+        "tvs":"تلفزيونات",
+        "gaming":"ألعاب",
+        "hotdeals":"عروض حصريه"
+
+    },
+    "userInfo":{
+        "CreateNewCustomerAccount": "إنشاء حساب عميل جديد",
+        "CreateAccount": "إنشاء حساب",
+        "FirstName": "الإسم الأول",
+        "LastName": "اسم العائلة",
+        "PhoneNumber": "رقم الموبايل",
+        "email":"البريد الالكتروني",
+        "password": "كلمه السر",
+        "ConfirmPassword": "تاكيد كلمه السر",
+        "required": "مطلوبه",
+        "TypeYour": "ادخل "
+
+    }
+}
