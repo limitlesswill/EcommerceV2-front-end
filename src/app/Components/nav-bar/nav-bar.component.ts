@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,7 +13,9 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   encapsulation: ViewEncapsulation.None
 })
 export class NavBarComponent implements OnInit {
-  lang:any="en"
+  lang:any="en";
+  isSubmitted = false;
+
   
   imageUrlEnglish: string = '../../../assets/download.png';
   imageUrlOtherLanguage: string = 'https://r2media.horizondm.com/wysiwyg/smartwave/porto/flags/en.png';
@@ -24,7 +27,7 @@ export class NavBarComponent implements OnInit {
     else
     return this.imageUrlOtherLanguage;
   }
-  constructor(private translate: TranslateService) {
+  constructor(private _auth:AuthService, private _router:Router, private translate: TranslateService, private cdr: ChangeDetectorRef) {
     translate.use(this.lang);
   }
   ngOnInit(): void {
@@ -32,12 +35,24 @@ export class NavBarComponent implements OnInit {
     document.documentElement.lang = this.lang;
 
   }
-  onChange(){
-    if(this.lang=="en"){
-      localStorage.setItem('lang','ar')
-    }else
-    localStorage.setItem('lang','en')
-    window.location.reload()
+  onChange() {
+    if (this.lang === 'en') {
+      this.translate.use('ar').subscribe(() => {
+        this.lang = 'ar';
+        document.documentElement.lang = this.lang;
+        this.cdr.detectChanges(); // Trigger change detection
+      });
+    } else {
+      this.translate.use('en').subscribe(() => {
+        this.lang = 'en';
+        document.documentElement.lang = this.lang;
+        this.cdr.detectChanges(); // Trigger change detection
+      });
+    }
+  }
+  logout() {
+    this._auth.logout();
+    this._router.navigate(['/home']);
   }
  
  

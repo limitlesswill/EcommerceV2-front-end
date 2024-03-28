@@ -18,6 +18,7 @@
         "search":"Enter Keyword Or Item",
         "storelocation": "store location",
         "signin": "signin",
+        "logout":"logout",
         "mobiles": "mobiles",
         "tablets":"tablets",
         "laptop&computer":"laptop&computer",
@@ -30,6 +31,13 @@
 
     },
     "productDetails":{
+        "firstReview":"Be the first to review this product",
+        "addCart": "Add To Cart",
+        "productDetail" :"؛roduct Details",
+        "Reviews": "Reviews",
+        "Details": "Details",
+        "more information": "More Information",
+        "egp": "EGP"
 
     },
     "allProducts":{

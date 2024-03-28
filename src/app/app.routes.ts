@@ -8,14 +8,16 @@ import { BoardAdminComponent } from './Components/board-admin/board-admin.compon
 import { HomeComponent } from './Pages/home/home.component';
 import { MainsliderComponent } from './Components/main-slider/mainslider.component';
 import { CartComponent } from './Components/cart/cart/cart.component';
+import { ConfirmOrderComponent } from './Components/confirm-order/confirm-order.component';
 
 export const routes: Routes = [
     { path: 'home', component : HomeComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent, canActivate:[authGuard]},
+    { path: 'register', component: RegisterComponent}, //canActivate:[authGuard]},
     { path: 'user', component: BoardUserComponent },
     { path: 'admin', component: BoardAdminComponent },
     { path: 'cart', component: CartComponent },
+    { path: 'Pay', component: ConfirmOrderComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' , }
 
 

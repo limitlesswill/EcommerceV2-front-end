@@ -11,6 +11,7 @@ import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import { HeaderComponent } from '../header/header.component';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -23,19 +24,25 @@ import { HeaderComponent } from '../header/header.component';
 export class LoginComponent implements OnInit {
   isSubmitted = false
     invalidData = false
+    errorMessage: string ="";
+    lang:any; 
+    langChangeSubscription: Subscription;
+
+    constructor(private translate: TranslateService, private _auth:AuthService, private _router:Router) {
+      this.lang = localStorage.getItem('lang')
+      translate.use(this.lang);
+      this.langChangeSubscription = translate.onLangChange.subscribe(event => {
+        this.lang = event.lang;
+        // Update any component-specific properties or UI elements here
+      });
+    }
 
     LoginForm = new FormGroup({
       UserEmail:new FormControl( 'test.com@gmail.com' , [Validators.required, Validators.email] ),
       Password: new FormControl('123456', [Validators.required])
   })
-  errorMessage: string ="";
-  lang:any;
+ 
 
-
-    constructor(private _auth:AuthService, private _router:Router, private translate: TranslateService) {
-      this.lang = localStorage.getItem('lang')
-    translate.use(this.lang);
-    }
     ngOnInit() {}
 
     get UserEmail(){ return this.LoginForm.get('UserEmail')}

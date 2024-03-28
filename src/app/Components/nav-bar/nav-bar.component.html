@@ -1,5 +1,5 @@
 
-    <div class="main-container" [ngClass]="{
+    <div id="navbarHeader" class="main-container" [ngClass]="{
       'arabic-font': lang === 'ar'}">
       <div >
         <div class="language-icon">
@@ -13,9 +13,9 @@
           </div>
           <div class="navbar">
             
-              <div class="navbar-logo">
+              <a routerLink = "/home" class="navbar-logo">
                   <img src="../../../assets/Logo-White.png" alt="logo">
-              </div>
+              </a>
               <div class="navbar-center">
                 <input type="text" placeholder="{{'nav.search'| translate}}...">
                
@@ -27,8 +27,11 @@
                 <a href="" style="margin-right: -43px;"><i class="mdi mdi-map-marker-outline"></i><span>{{'nav.storelocation'| translate}}</span></a>
                  <!-- Store location icon -->
                 
-                  
-                  <a routerLink="/login" style="margin-right: 6px"> <i class="mdi mdi-account-outline"></i> <span>{{'nav.signin'| translate}}</span></a> <!-- Sign in icon -->
+                 @if(isSubmitted == false){
+                  <a routerLink="/login" style="margin-right: 6px"> <i class="mdi mdi-account-outline"></i> <span>{{'nav.signin'| translate}}</span></a> 
+                }@else if(isSubmitted == true){
+                  <a (click)="logout()" style="margin-right: 6px"> <i class="mdi mdi-account-outline"></i> <span>{{'nav.logout'| translate}}</span></a> 
+                } 
                   <a routerLink="/cart"> <i class="mdi mdi-cart-outline"[ngClass]="{
                     'icos-arabic': lang === 'ar',
                     'icos': lang === 'en'

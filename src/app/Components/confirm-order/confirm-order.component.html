@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="text-center">Payment Form</h1>
+            <form>
+                <div class="mb-3">
+                    <label for="cardNumber" class="form-label">Card Number</label>
+                    <input type="text" class="form-control" id="cardNumber" placeholder="Enter Card Number">
+                </div>
+                <div class="mb-3">
+                    <label for="cardName" class="form-label">Card Name</label>
+                    <input type="text" class="form-control" id="cardName" placeholder="Enter Card Name">
+                </div>
+                <div class="d-grid">
+                    <div #Payment ></div>
+                    <button type="submit" class="btn btn-primary">Pay Now</button>
+                </div>
+                
+                <div class="paypal-container" style="align-items: center;">
+                  <div class="amount">Total amount to pay: ${{amount}}</div>
+                  <div class="info">Please do not refresh the browser while the transaction is processing</div>
+                  <div #paymentRef></div>
+                  <div class="back" (click)="cancel()">Cancel</div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</div> 

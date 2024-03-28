@@ -1,5 +1,9 @@
 
-
+.arabic-font{
+    font-family: "Cairo", sans-serif;
+    direction: rtl;
+  }
+  
 .text-bold {
     font-weight: 800;
 }
@@ -267,6 +271,7 @@ td {
 .content {
     font-size: 18px
 }
+
 
 .profile-pic {
     width: 90px;

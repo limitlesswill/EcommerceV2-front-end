@@ -18,6 +18,7 @@
         "search":"أبحث عن منتجك هنا",
         "storelocation": "فروعنا",
         "signin": "تسجيل الدخول",
+        "logout":"تسجيل الخروج",
         "mobiles": "موبيلات",
         "tablets":"تابلت",
         "laptop&computer":"لابتوب & كمبيوتر",
@@ -40,6 +41,16 @@
         "ConfirmPassword": "تاكيد كلمه السر",
         "required": "مطلوبه",
         "TypeYour": "ادخل "
+
+    },
+    "productDetails":{
+        "firstReview":"كن أول من يقييم هذا المنتج",
+        "addCart": "اضاف للعربه",
+        "productDetail" :"تفاصيل المنتج",
+        "Reviews": "مراجعه",
+        "Details": "تفاصيل",
+        "more information": "المزيد من العلومات",
+        "egp": "جنيه"
 
     }
 }
