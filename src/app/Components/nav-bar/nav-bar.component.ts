@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router, RouterModule, RouterOutlet } from '@angular/router';
+import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../_services/auth.service';
+import { ICategory, ISubCategory } from '../../Category/Model/icategory';
+import { CategoryService } from '../../Category/Services/category.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -13,6 +15,16 @@ import { AuthService } from '../_services/auth.service';
   encapsulation: ViewEncapsulation.None
 })
 export class NavBarComponent implements OnInit {
+  CategoryList: ICategory[] = [];
+  SubCategoryList:ISubCategory[]=[];
+  categoryId: number =0;
+  @Output() categoryClicked = new EventEmitter<number>();
+
+  onCategoryClick(categoryId: number): void {
+    this.categoryClicked.emit(categoryId);
+  }
+
+
   lang:any="en";
   isSubmitted = false;
 
@@ -27,13 +39,13 @@ export class NavBarComponent implements OnInit {
     else
     return this.imageUrlOtherLanguage;
   }
-  constructor(private _auth:AuthService, private _router:Router, private translate: TranslateService, private cdr: ChangeDetectorRef) {
+  constructor(private _auth:AuthService, private _router:Router, private translate: TranslateService, private cdr: ChangeDetectorRef,private categoryServices: CategoryService, private route: ActivatedRoute) {
     translate.use(this.lang);
   }
   ngOnInit(): void {
     this.lang = this.translate.currentLang;
     document.documentElement.lang = this.lang;
-
+    this.categoryServices.GetAllCategory().subscribe({  next :(data) => {  this.CategoryList = data;}})
   }
   onChange() {
     if (this.lang === 'en') {

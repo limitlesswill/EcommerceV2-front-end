@@ -1,4 +1,7 @@
-<app-nav-bar></app-nav-bar>
+<app-nav-bar (categoryClicked)="loadProducts($event)"></app-nav-bar>
+
+<app-products [categoryId]="selectedCategoryId"></app-products>
+
 <app-header></app-header>
 <!-- <mainslider></mainslider>
 <item1></item1>

@@ -13,16 +13,23 @@ import { Item4Component } from '../../Components/static-items/static-items/item4
 import { Item5Component } from '../../Components/static-items/static-items/item5/item5.component';
 import { Item6Component } from '../../Components/static-items/static-items/item6/item6.component';
 import { ProductListComponent } from '../../Components/product-list/product-list.component';
+import { ProductsComponent } from "../../Category/Componenets/CategoryList/products.component";
+
+
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [MainsliderComponent,HeaderComponent,FooterComponent,NavBarComponent,PaymentWaysComponent,
-    CartComponent, MarketComponent, Item1Component,Item2Component,Item3Component,Item4Component,Item5Component,
-  Item6Component,ProductListComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+    selector: 'app-home',
+    standalone: true,
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.css',
+    imports: [MainsliderComponent, HeaderComponent, FooterComponent, NavBarComponent, PaymentWaysComponent,
+        CartComponent, MarketComponent, Item1Component, Item2Component, Item3Component, Item4Component, Item5Component,
+        Item6Component, ProductListComponent, ProductsComponent]
 })
 export class HomeComponent {
+  selectedCategoryId!: number;
 
+  loadProducts(categoryId: number): void {
+    this.selectedCategoryId = categoryId;
+  }
 }

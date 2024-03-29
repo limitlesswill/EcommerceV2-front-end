@@ -45,8 +45,12 @@
             
             
             <div class="navbar-bottom">
+              @for(c of CategoryList; track c.id){
+               
               <div class="subnav">
-                <button class="subnavbtn">{{'nav.mobiles'| translate}} <i class="fa fa-caret-down"></i></button>
+                <button class="subnavbtn"  (click)="onCategoryClick(c.id)" routerLinkActive="router-link-active" >{{c.enName}} <i class="fa fa-caret-down"></i></button>
+
+                <!-- <button class="subnavbtn">{{'nav.mobiles'| translate}} <i class="fa fa-caret-down"></i></button> -->
                 <div class="subnav-content  shadow">
                   <div>
                     <img src="https://r2media.horizondm.com/wysiwyg/smartwave/porto/Test/Mobile_2.jpg" width="100%" alt="">
@@ -74,7 +78,8 @@
                   </div>
                 </div>
               </div> 
-              <div class="subnav">
+            }
+              <!-- <div class="subnav">
                 <button class="subnavbtn">{{'nav.tablets'| translate}}  <i class="fa fa-caret-down"></i></button>
                 <div class="subnav-content  shadow">
                   <div>
@@ -257,7 +262,7 @@
                     </div>
                   </div>
                 </div>
-              </div> 
+              </div>  -->
               <div class="subnav">
                 <button class="subnavbtn">{{'nav.hotdeals'| translate}} </button>
                 </div>           

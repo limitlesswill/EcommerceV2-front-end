@@ -1,4 +1,4 @@
 export const environment = {
-  CategoryApiUrl : 'https://api.escuelajs.co/api/v1/categories',
+  CategoryApiUrl : 'http://localhost:5000/api/Category',
   ProductApiUrl : 'https://api.escuelajs.co/api/v1/products',
 }
