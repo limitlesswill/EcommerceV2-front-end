@@ -57,15 +57,15 @@
                     <img src="https://r2media.horizondm.com/Backend-developer/Ramadan-Ong.png" style="width: 100%; margin-top: 5px;" alt="">
                   </div>
                   
-                 
+                  <ng-container class="w-25">
                   @for(s of c.subCategories;track $index){
                   
-                  <div class="column">
+                  <div class="column w-25 h-25">
                     <div class="row" ><a (click)="onSubCategoryClick(s.id)" routerLinkActive="router-link-active" >{{s.enName}} </a> </div>
                   </div>
                  
                   }
-               
+                </ng-container>
                 
                 
                     
