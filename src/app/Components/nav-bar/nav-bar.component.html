@@ -61,7 +61,7 @@
                   @for(s of c.subCategories;track $index){
                   
                   <div class="column w-25 h-25">
-                    <div class="row" ><a (click)="onSubCategoryClick(s.id)" routerLinkActive="router-link-active" >{{s.enName}} </a> </div>
+                    <div class="row" ><a (click)="onSubCategoryClick(s.id)" routerLinkActive="router-link-active" ><span>{{s.enName}} </span></a> </div>
                   </div>
                  
                   }
