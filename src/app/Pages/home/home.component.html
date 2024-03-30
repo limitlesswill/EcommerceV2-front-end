@@ -1,5 +1,5 @@
-<app-nav-bar (categoryClicked)="loadProducts($event)"></app-nav-bar>
-
+<app-nav-bar (categoryClicked)="GetIdOFCategory($event)" (SubcategoryClicked)="GetIdOFSubCategory($event)"></app-nav-bar>
+<app-product-by-category [SubcategoryId]="selectedSubCategoryId"></app-product-by-category>
 <app-products [categoryId]="selectedCategoryId"></app-products>
 
 <app-header></app-header>

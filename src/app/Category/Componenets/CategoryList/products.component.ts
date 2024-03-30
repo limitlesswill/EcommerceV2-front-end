@@ -6,17 +6,18 @@ import { CategoryService } from '../../Services/category.service';
 
 import { IProduct } from './Model/iproduct';
 import { Component, Input } from '@angular/core';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CardModule,ButtonModule],
+  imports: [CardModule,ButtonModule,RouterModule,RouterOutlet],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
 export class ProductsComponent{
 
-  @Input() categoryId!: number;
+ @Input() categoryId!: number;
   products!: IProduct[];
 
   constructor(private categoryService: CategoryService) { }
@@ -33,5 +34,7 @@ export class ProductsComponent{
       this.products = products;
     });
   }
+
+  
 }
 

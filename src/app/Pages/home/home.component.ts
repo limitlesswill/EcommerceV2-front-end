@@ -14,6 +14,7 @@ import { Item5Component } from '../../Components/static-items/static-items/item5
 import { Item6Component } from '../../Components/static-items/static-items/item6/item6.component';
 import { ProductListComponent } from '../../Components/product-list/product-list.component';
 import { ProductsComponent } from "../../Category/Componenets/CategoryList/products.component";
+import { ProductByCategoryComponent } from "../../Category/Componenets/ProductByCategory/product-by-category/product-by-category.component";
 
 
 
@@ -24,12 +25,16 @@ import { ProductsComponent } from "../../Category/Componenets/CategoryList/produ
     styleUrl: './home.component.css',
     imports: [MainsliderComponent, HeaderComponent, FooterComponent, NavBarComponent, PaymentWaysComponent,
         CartComponent, MarketComponent, Item1Component, Item2Component, Item3Component, Item4Component, Item5Component,
-        Item6Component, ProductListComponent, ProductsComponent]
+        Item6Component, ProductListComponent, ProductsComponent, ProductByCategoryComponent]
 })
 export class HomeComponent {
   selectedCategoryId!: number;
+  selectedSubCategoryId!: number;
 
-  loadProducts(categoryId: number): void {
+  GetIdOFCategory(categoryId: number): void {
     this.selectedCategoryId = categoryId;
+  }
+  GetIdOFSubCategory(SubcategoryId: number): void {
+    this.selectedSubCategoryId= SubcategoryId;
   }
 }

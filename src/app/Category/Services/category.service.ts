@@ -23,6 +23,9 @@ export class CategoryService {
   GetAllCategory(): Observable<ICategory[]> {
     return this.httpclient.get<ICategory[]>(this.CategoryApiUrl);
   }
+  getallCategoryAndSubCategoryOFit(): Observable<ICategory[]> {
+    return this.httpclient.get<ICategory[]>(`${this.CategoryApiUrl}/getallCategoryAndSubCategoryOFit`);
+  }
   CreateCategory(category: ICategory): Observable<ICategory> {
     return this.httpclient.post<ICategory>(this.CategoryApiUrl, category, this.httpOptions);
   }

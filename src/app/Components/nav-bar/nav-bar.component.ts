@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation, input, output } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../_services/auth.service';
@@ -9,17 +9,20 @@ import { CategoryService } from '../../Category/Services/category.service';
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [RouterOutlet, RouterModule,TranslateModule, CommonModule],
+  imports: [RouterOutlet, RouterModule,TranslateModule, CommonModule,RouterModule],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css',
   encapsulation: ViewEncapsulation.None
 })
 export class NavBarComponent implements OnInit {
   CategoryList: ICategory[] = [];
+ 
   SubCategoryList:ISubCategory[]=[];
-  categoryId: number =0;
   @Output() categoryClicked = new EventEmitter<number>();
-
+  @Output() SubcategoryClicked =new EventEmitter<number>();
+  onSubCategoryClick(SubCategoryId:number):void{
+     this.SubcategoryClicked.emit(SubCategoryId);
+  }
   onCategoryClick(categoryId: number): void {
     this.categoryClicked.emit(categoryId);
   }
@@ -45,7 +48,8 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
     this.lang = this.translate.currentLang;
     document.documentElement.lang = this.lang;
-    this.categoryServices.GetAllCategory().subscribe({  next :(data) => {  this.CategoryList = data;}})
+    this.categoryServices.getallCategoryAndSubCategoryOFit().subscribe({  next :(data) => {  this.CategoryList = data;}})
+    this.categoryServices.getSubCategoryByCategory(5).subscribe({next:(data)=>this.SubCategoryList=data})
   }
   onChange() {
     if (this.lang === 'en') {

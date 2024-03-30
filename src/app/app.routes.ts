@@ -9,6 +9,7 @@ import { HomeComponent } from './Pages/home/home.component';
 import { MainsliderComponent } from './Components/main-slider/mainslider.component';
 import { CartComponent } from './Components/cart/cart/cart.component';
 import { ConfirmOrderComponent } from './Components/confirm-order/confirm-order.component';
+import { ProductsComponent } from './Category/Componenets/CategoryList/products.component';
 
 export const routes: Routes = [
     { path: 'home', component : HomeComponent },
@@ -18,7 +19,7 @@ export const routes: Routes = [
     { path: 'admin', component: BoardAdminComponent },
     { path: 'cart', component: CartComponent },
     { path: 'Pay', component: ConfirmOrderComponent },
-    { path: '', redirectTo: 'home', pathMatch: 'full' , }
-
+    { path: '', redirectTo: 'home', pathMatch: 'full'  },
+  
 
 ];
