@@ -1,0 +1,68 @@
+<div class="container mt-3">
+    <div class="row container " style="text-align: center; padding-left: 20px ;" >
+      @if(Orders.length > 0)
+      {
+        <h2>Orders List</h2>
+        <table class="table">
+      <thead>
+        <tr>
+          <th>Order number</th>
+          <th>Cost</th>
+          <th>Date</th>
+          <th>State</th>
+        </tr>
+      </thead>
+           <tbody>
+              @for(Order of Orders; track Order.id ;)
+                {
+              <tr>
+                  <td>{{ Order.id }}</td>
+                  <td>{{Order.finalPrice}} $</td>
+                  <td>{{Order.date}}</td>
+                  @if(Order.state==1){<td>Pending</td>}@else if(Order.state==2){<td>Confirmed</td>}@else{<td>Canceled</td>}
+                  <td>
+                     <i (click)="editOrder(Order.id)" class="mdi mdi-pencil" style="padding-right: 5px;">    </i>
+                     <i (click)="deleteOrder(Order.id)" class="mdi mdi-trash-can-outline"></i> 
+                  </td>
+              </tr>
+              }
+            </tbody>
+        </table>
+      }
+      @if(OrdersDetails.length>0)
+      {
+        <h2>Orders Items List</h2>
+        <table class="table">
+      <thead>
+        <tr>
+          <th>Order number</th>
+          <th>totalPrice</th>
+          <th>product</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+           <tbody>
+              @for(Order of OrdersDetails; track Order.id;)
+                {
+              <tr>
+                  <td>{{ Order.id }}</td>
+                  <td>{{Order.totalPrice}} $</td>
+                  <td>{{Order.productId}}</td>
+                  <td>{{Order.quantity}} </td>
+                  <td>
+                     <i (click)="IncreamentQuantity(Order)" class="fa fa-plus" style="padding-right: 5px;"></i>
+                     <i (click)="DecreamentQuantity(Order)" class="fa fa-minus" style="padding-right: 5px;"></i> 
+                     <i (click)="deleteOrderDetails(Order.id,Order.orderId)" class="mdi mdi-trash-can-outline"></i> 
+                  </td>
+              </tr>
+              }
+            </tbody>
+        </table>
+
+      }
+    </div>
+</div>
+    
+    
+  
+ 

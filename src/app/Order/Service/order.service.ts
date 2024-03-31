@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class OrderService {
 
-  OrderApiUrl:string = environment.CategoryApiUrl;
+  OrderApiUrl:string = environment.OrderApiUrl;
   httpOptions = {
     headers : new HttpHeaders({
       'Content-Type': 'application/json'
@@ -36,6 +36,10 @@ export class OrderService {
   DeleteOrder(id:number) : Observable<void>
   {
     return this.http.delete<void>(`${this.OrderApiUrl}/${id}`);
+  }
+
+  GetUserOrders(UId:string):Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.OrderApiUrl}/${UId}/GetUseOrders`);
   }
 
 }
