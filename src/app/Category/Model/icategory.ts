@@ -3,6 +3,7 @@ export interface ICategory {
     arName: string,
     enName: string,
     imgURL: string,
+    imgURLAr:string,
     subCategories: ISubCategory [];
 }
 

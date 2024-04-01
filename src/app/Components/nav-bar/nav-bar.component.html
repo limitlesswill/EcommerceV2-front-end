@@ -1,275 +1,85 @@
-
-    <div id="navbarHeader" class="main-container" [ngClass]="{
-      'arabic-font': lang === 'ar'}">
-      <div >
-        <div class="language-icon">
-          <a (click)="onChange()">
-            @if(lang=='en'){
-              <img src="../../../assets/download.png" alt="language"><span>العربيه</span>
-            }@else if(lang=='ar'){
-              <img src="https://r2media.horizondm.com/wysiwyg/smartwave/porto/flags/en.png" style="margin-right: 40px;" alt=""><span>English</span>
-            }   
-          </a>        
-          </div>
-          <div class="navbar">
-            
-              <a routerLink = "/home" class="navbar-logo">
-                  <img src="../../../assets/Logo-White.png" alt="logo">
-              </a>
-              <div class="navbar-center">
-                <input type="text" placeholder="{{'nav.search'| translate}}...">
-               
-              </div>
-              <div [ngClass]="{
-                'navbar-icons-arabic': lang === 'ar',
-                'navbar-icons': lang === 'en',
-                 }">
-                <a href="" style="margin-right: -43px;"><i class="mdi mdi-map-marker-outline"></i><span>{{'nav.storelocation'| translate}}</span></a>
-                 <!-- Store location icon -->
-                
-                 @if(isSubmitted == false){
-                  <a routerLink="/login" style="margin-right: 6px"> <i class="mdi mdi-account-outline"></i> <span>{{'nav.signin'| translate}}</span></a> 
-                }@else if(isSubmitted == true){
-                  <a (click)="logout()" style="margin-right: 6px"> <i class="mdi mdi-account-outline"></i> <span>{{'nav.logout'| translate}}</span></a> 
-                } 
-                  <a routerLink="/cart"> <i class="mdi mdi-cart-outline"[ngClass]="{
-                    'icos-arabic': lang === 'ar',
-                    'icos': lang === 'en'
-                     }"></i> <span [ngClass]="{
-                    'count-arabic': lang === 'ar',
-                    'count': lang === 'en'
-                     }">1</span></a> <!-- Cart icon -->
-                 
-              </div>
-            </div>
-            
-            
-            <div class="navbar-bottom">
-              @for(c of CategoryList; track c.id){
-               
-              <div class="subnav" >
-                <button class="subnavbtn" (click)="onCategoryClick(c.id)" routerLinkActive="router-link-active"  > {{c.enName}} <i class="fa fa-caret-down"></i></button>
-
-                <!-- <button class="subnavbtn">{{'nav.mobiles'| translate}} <i class="fa fa-caret-down"></i></button> -->
-                <div class="subnav-content  shadow">
-                  <div>
-                    <img src="../../../assets/{{c.imgURL}}" width="100%" alt="">
-                    <img src="https://r2media.horizondm.com/Backend-developer/Ramadan-Ong.png" style="width: 100%; margin-top: 5px;" alt="">
-                  </div>
-                  
-                  <ng-container class="w-25">
-                  @for(s of c.subCategories;track $index){
-                  
-                  <div class="column w-25 h-25">
-                    <div class="row" ><a (click)="onSubCategoryClick(s.id)" routerLinkActive="router-link-active" ><span>{{s.enName}} </span></a> </div>
-                  </div>
-                 
-                  }
-                </ng-container>
-                
-                
-                    
-                </div>
-              </div>
-            
-            }
-              <!-- <div class="subnav">
-                <button class="subnavbtn">{{'nav.tablets'| translate}}  <i class="fa fa-caret-down"></i></button>
-                <div class="subnav-content  shadow">
-                  <div>
-                    <img src="https://r2media.horizondm.com/wysiwyg/smartwave/porto/Test/Tablets_1.jpeg" width="100%" alt="">
-                    <img src="https://r2media.horizondm.com/Backend-developer/Ramadan-Ong.png" style="width: 100%; margin-top: 5px;" alt="">
-                  </div>
-                  <div class="row">
-                    <div class="column">
-                      <a href="#">Ipad</a>
-                      <a href="#">huawei</a>
-                      <a href="#">xiaomi</a>
-                      <a href="#">iku</a>
-                    </div>
-                    <div class="column">
-                      <a href="#">Samsung</a>
-                      <a href="#">lenovo</a>
-                      <a href="#">nokia</a>
-                      <a href="#">realme</a>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-              <div class="subnav">
-                <button class="subnavbtn">{{'nav.laptop&computer'| translate}}<i class="fa fa-caret-down"></i></button>
-                <div class="subnav-content  shadow">
-                  <div>
-                    <img src="https://r2media.horizondm.com/wysiwyg/smartwave/homepage/PRODUCTS/backend-developer/Laptop-computer.jpg" width="100%" alt="">
-                    <img src="https://r2media.horizondm.com/Backend-developer/Ramadan-Ong.png" style="width: 100%; margin-top: 5px;" alt="">
-                  </div>
-                  <div class="row">
-                    <div class="column">
-                      <h3>Laptop</h3>
-                      <a href="#">apple</a>
-                      <a href="#">lenovo</a>
-                      <a href="#">dell</a>
-                      <a href="#">hp</a>
-                    </div>
-                    <div class="column">
-                      <h3>monitors</h3>
-                      <a href="#">benq</a>
-                      <a href="#">lenovo</a>
-                      <a href="#">Samsung</a>
-                      <a href="#">view sonic</a>
-                    </div>
-                    <div class="column">
-                      <h3>printer</h3>
-                      <a href="#">hp</a>
-                      <a href="#">canon</a>
-                      <a href="#">epson</a>
-                    </div>
-                  </div>
-                </div>
-              </div> 
-              <div class="subnav">
-                <button class="subnavbtn">{{'nav.accessories'| translate}} <i class="fa fa-caret-down"></i></button>
-                <div class="subnav-content  shadow">
-                  <div>
-                    <img src="https://r2media.horizondm.com/wysiwyg/smartwave/porto/Test/accessories_1.jpg" width="100%" alt="">
-                    <img src="https://r2media.horizondm.com/Backend-developer/Ramadan-Ong.png" style="width: 100%; margin-top: 5px;" alt="">
-                  </div>
-                  <div class="row">
-                    <div class="column">
-                      <h3>mobile ACCESSORIES</h3>
-                      <a href="#">power bank</a>
-                      <a href="#">cables</a>
-                      <a href="#">chargers</a>
-                      <a href="#">cover</a>
-                    </div>
-                    <div class="column">
-                      <h3>audio</h3>
-                      <a href="#">airpods</a>
-                      <a href="#">earphones</a>
-                      <a href="#">headphones</a>
-                      <a href="#">speakers</a>
-                    </div>
-                    <div class="column">
-                      <h3>wearables</h3>
-                      <a href="#">smart watch</a>
-                      <a href="#">smart band</a>
-                    </div>
-                  </div>
-                </div>
-              </div> 
-              <div class="subnav">
-                <button class="subnavbtn">{{'nav.electornics'| translate}} <i class="fa fa-caret-down"></i></button>
-                <div class="subnav-content  shadow">
-                  <div>
-                    <img src="https://r2media.horizondm.com/wysiwyg/smartwave/porto/Test/electronics.jpg" width="100%" alt="">
-                    <img src="https://r2media.horizondm.com/Backend-developer/Ramadan-Ong.png" style="width: 100%; margin-top: 5px;" alt="">
-                  </div>
-                  <div class="row">
-                    <div class="column">
-                      <h3>security cameras</h3>
-                      <a href="#">xiaomi</a>
-                      <a href="#">tp-link</a>
-                      <a href="#">ezviz</a>
-                      <a href="#">imou</a>
-                    </div>
-                    <div class="column">
-                      <h3>Network</h3>
-                      <a href="#">huawei</a>
-                      <a href="#">tp-link</a>
-                    </div>
-                  
-                  </div>
-                </div>
-              </div>
-              <div class="subnav">
-                <button class="subnavbtn">{{'nav.appliances'| translate}} <i class="fa fa-caret-down"></i></button>
-                <div class="subnav-content  shadow">
-                  <div>
-                    <img src="https://r2media.horizondm.com/Backend-developer/Home-Appliances-EN.jpg" width="100%" alt="">
-                    <img src="https://r2media.horizondm.com/Backend-developer/Ramadan-Ong.png" style="width: 100%; margin-top: 5px;" alt="">
-                  </div>
-                  <div class="row">
-                    <div class="column">
-                      <a href="#">kettles&coffee makers</a>
-                      <a href="#">hand blender</a>
-                      <a href="#">kitchen machines</a>
-                      <a href="#">air cooler</a>
-                      <a href="#">imou</a>
-                    </div>
-                    <div class="column">
-                      <a href="#">blender & mixers</a>
-                      <a href="#">microwave</a>
-                      <a href="#">sandwich maker</a>
-                      <a href="#">yogurt maker</a>
-                    </div>
-                    <div class="column">
-                      <a href="#">vacuum cleaner</a>
-                      <a href="#">irons</a>
-                      <a href="#">fans</a>
-                    </div>
-                  
-                  </div>
-                </div>
-              </div>
-              <div class="subnav">
-                <button class="subnavbtn">{{'nav.tvs'| translate}} <i class="fa fa-caret-down"></i></button>
-                <div class="subnav-content  shadow">
-                  <div>
-                    <img src="https://r2media.horizondm.com/Backend-developer/2048x249-Tvs.png" width="100%" alt="">
-                    <img src="https://r2media.horizondm.com/Backend-developer/Ramadan-Ong.png" style="width: 100%; margin-top: 5px;" alt="">
-                  </div>
-                  <div class="row">
-                    <div class="column">
-                      <a href="#">Samsung</a>
-                      <a href="#">haier</a>
-                    </div>
-                    <div class="column">
-                      <a href="#">jac</a>
-                      <a href="#">lg</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="subnav">
-                <button class="subnavbtn">{{'nav.gaming'| translate}} <i class="fa fa-caret-down"></i></button>
-                <div class="subnav-content  shadow">
-                  <div>
-                    <img src="https://r2media.horizondm.com/wysiwyg/smartwave/porto/Test/Gaming.jpg" width="100%" alt="">
-                    <img src="https://r2media.horizondm.com/Backend-developer/Ramadan-Ong.png" style="width: 100%; margin-top: 5px;" alt="">
-                  </div>
-                  <div class="row">
-                    <div class="column">
-                      <h3>pllaystation</h3>
-                      <a href="#">sony</a>
-                      <a href="#">nintendo</a>
-                    </div>
-                    <div class="column">
-                      <h3>gamepad</h3>
-                      <a href="#">sony</a>
-                      <a href="#">logitech</a>
-                    </div>
-                    <div class="column">
-                      <h3>games cd</h3>
-                      <a href="#">playstation 4</a>
-                      <a href="#">playstation 5</a>
-                    </div>
-                  </div>
-                </div>
-              </div>  -->
-              <div class="subnav">
-                <button class="subnavbtn">{{'nav.hotdeals'| translate}} </button>
-                </div>           
-              <div class="contacts">
-                <a href=""><i style="color: aliceblue;" class="mdi mdi-phone-outline"></i> <span> 16942</span></a> <!-- Phone icon -->
-              
-              </div>
-          
-            </div>
-            
-             
-      </div>
-      
+<div id="navbarHeader" class="main-container" [ngClass]="{
+  'arabic-font': lang === 'ar'
+}">
+  <div>
+    <div class="language-icon">
+      <a (click)="onChange()">
+        <img src="../../../assets/download.png" alt="language">
+        <span>{{ lang === 'en' ? 'العربية' : 'English' }}</span>
+      </a>
     </div>
- 
-    <router-outlet></router-outlet>
+    <div class="navbar">
+      <a routerLink="/home" class="navbar-logo">
+        <img src="../../../assets/Logo-White.png" alt="logo">
+      </a>
+      <div class="navbar-center">
+        <input type="text" placeholder="{{ 'nav.search' | translate }}...">
+      </div>
+      <div [ngClass]="{
+        'navbar-icons-arabic': lang === 'ar',
+        'navbar-icons': lang === 'en',
+      }">
+        <a href="" style="margin-right: -43px;"><i class="mdi mdi-map-marker-outline"></i><span>{{ 'nav.storelocation' | translate }}</span></a>
+        <a *ngIf="!isSubmitted; else loggedOut" routerLink="/login" style="margin-right: 6px">
+          <i class="mdi mdi-account-outline"></i>
+          <span>{{ 'nav.signin' | translate }}</span>
+        </a>
+        <ng-template #loggedOut>
+          <a (click)="logout()" style="margin-right: 6px">
+            <i class="mdi mdi-account-outline"></i>
+            <span>{{ 'nav.logout' | translate }}</span>
+          </a>
+        </ng-template>
+        <a routerLink="/cart">
+          <i class="mdi mdi-cart-outline" [ngClass]="{
+            'icos-arabic': lang === 'ar',
+            'icos': lang === 'en'
+          }"></i>
+          <span [ngClass]="{
+            'count-arabic': lang === 'ar',
+            'count': lang === 'en'
+          }">1</span>
+        </a>
+      </div>
+    </div>
+    <div class="navbar-bottom">
+      @for(c of CategoryList; track $index ){
+
+      
+      <div class="subnav" >
+        <button class="subnavbtn" (click)="onCategoryClick(c.id)" routerLinkActive="router-link-active">
+          {{ lang === 'en' ? c.enName : c.arName }}
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="subnav-content shadow" style="margin-left: 100px;">
+          <div>
+           
+            <img [src]="'../../../assets/CategoryAndProductImg/' + (lang === 'en' ? c.imgURL : c.imgURLAr)" width="100%" alt="">
+            <img src="https://r2media.horizondm.com/Backend-developer/Ramadan-Ong.png" style="width: 100%; margin-top: 5px;" alt="">
+          </div>
+          <ng-container  class="w-25 ">
+            @for(s of c.subCategories; track $index){
+              <div class="column w-25 h-25" >
+                <div class="row">
+                  <a (click)="onSubCategoryClick(s.id)" routerLinkActive="router-link-active">
+                    <span>{{ lang === 'en' ? s.enName : s.arName }}</span>
+                  </a>
+                </div>
+              </div>
+            }
+            
+          </ng-container>
+        </div>
+      </div>
+    }
+      <div class="subnav">
+        <button class="subnavbtn">{{ 'nav.hotdeals' | translate }}</button>
+      </div>
+      <div class="contacts">
+        <a href=""><i style="color: aliceblue;" class="mdi mdi-phone-outline"></i> <span> 16942</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

@@ -49,7 +49,7 @@ export class NavBarComponent implements OnInit {
     this.lang = this.translate.currentLang;
     document.documentElement.lang = this.lang;
     this.categoryServices.getallCategoryAndSubCategoryOFit().subscribe({  next :(data) => {  this.CategoryList = data;}})
-    this.categoryServices.getSubCategoryByCategory(5).subscribe({next:(data)=>this.SubCategoryList=data})
+    //this.categoryServices.getSubCategoryByCategory(5).subscribe({next:(data)=>this.SubCategoryList=data})
   }
   onChange() {
     if (this.lang === 'en') {

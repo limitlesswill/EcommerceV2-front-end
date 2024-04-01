@@ -1,0 +1,236 @@
+.toolbar-products {
+    background-color: transparent;
+}
+.toolbar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-right: -10px;
+    font-size: 13px;
+    text-align: center;
+}
+.toolbar:before{
+     content: '';
+     display: table;
+    
+}
+
+.toolbar a.porto-product-filters-toggle {
+    /* -webkit-align-items: center;
+    align-items: center; */
+    height: 36px;
+    background: #fff;
+    padding: 0 10px 0 3px;
+    text-transform: uppercase;
+    color: inherit;
+    border: 1px solid #e7e7e7;
+}
+
+@media (min-width: 992px)
+{
+    .d-lg-none {
+        display: none !important;
+    }
+}
+
+.toolbar>* {
+    margin: 0 10px 10px 0;
+}
+
+a, .alink {
+    /* color: #08c; */
+    text-decoration: none;
+}
+
+.toolbar a.porto-product-filters-toggle svg {
+    fill: #fff;
+    stroke: #222529;
+    width: 28px;
+}
+svg:not(:root) {
+    overflow: hidden;
+}
+
+.page-products .sorter {
+    float: left;
+}
+.toolbar .sorter {
+    margin-right: 15px;
+   
+}
+.page-products .sorter {
+    position: static;
+}
+
+.sorter {
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+}
+.sorter-label {
+    line-height: 26px;
+    font-weight: 400;
+    margin: 0 7px 0 0;
+    vertical-align: middle;
+}
+.sorter-label::after {
+    content: ':';
+}
+
+.toolbar select {
+    border: 1px solid #e4e4e4;
+    height: 37px;
+    color: #7a7d82;
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: capitalize;
+    padding: 0 10px;
+    padding-right: 30px;
+    line-height: 31px;
+    border-radius: 0;
+}
+.sorter-options {
+    margin: 0 7px 0 0;
+    width: auto;
+}
+
+select {
+    
+    background-size: 26px 60px;
+  
+    text-indent: .01em;
+    text-overflow: '';
+    font-family: inherit;
+}
+
+.toolbar-sorter .sorter-action {
+    margin-top: 6px;
+    color: #21293c;
+}
+
+.sorter-action {
+    vertical-align: top;
+    display: inline-block;
+    text-decoration: none;
+}
+.toolbar-sorter .sorter-action:before {
+    color: #21293c;
+}
+.sorter-action:before {
+   
+    color: #000;
+}
+.sorter-action:before {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: inherit;
+    line-height: inherit;
+   
+    content: '\f840';
+    font-family: 'porto-icons';
+   
+    display: inline-block;
+    font-weight: normal;
+    overflow: hidden;
+    speak: none;
+    text-align: center;
+}
+
+.sorter-action>span {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+page-with-filter .toolbar-amount {
+    position: static;
+}
+.toolbar-amount {
+    display: none;
+}
+.toolbar-amount {
+    position: static;
+    display: block;
+    float: left;
+    line-height: 14px;
+    padding: 6px 0;
+    margin: 0;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.toolbar-amount {
+    
+    line-height: 14px;
+    
+    text-align: left;
+}
+.toolbar {
+   
+    font-size: 13px;
+  
+}
+body {
+    color: #777;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    
+}
+
+:lang(en) .toolbar .limiter {
+    margin-right: 0 !important;
+    margin-left: auto !important;
+}
+.toolbar .limiter {
+   
+    text-align: left;
+}
+
+.limiter {
+    display: flex;
+    align-items: center;
+}
+
+.toolbar .limiter .label {
+    display: inline-block;
+}
+.limiter .label {
+    margin: 0 7px 0 0;
+    vertical-align: middle;
+}
+.limiter .label span {
+    display: block;
+}
+
+.limiter .control {
+    display: inline-block;
+}
+.toolbar .limiter-options {
+    margin-right: 0;
+}
+.toolbar select {
+    border: 1px solid #e4e4e4;
+    height: 37px;
+    color: #7a7d82;
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: capitalize;
+    padding: 0 10px;
+    padding-right: 30px;
+    line-height: 31px;
+    border-radius: 0;
+}
+
+.limiter-options {
+    width: auto;
+    margin: 0;
+}
+.page-products .toolbar .limiter .limiter-text {
+    display: none;
+}
