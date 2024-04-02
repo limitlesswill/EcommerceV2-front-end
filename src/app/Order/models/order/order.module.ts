@@ -11,5 +11,6 @@ export interface  OrderDetails {
   totalPrice:number;
   productId:number;
   orderId: number; 
+  productName:string;
 }
 

@@ -18,10 +18,10 @@ export class AuthService {
   constructor(private _http: HttpClient) {}
 
   loginUser(userData: any):Observable<any>{
-    return this._http.post(`http://luxor.edu.eg:8067/general/login`, userData)
+    return this._http.post(`http://localhost:5000/api/Account/login`, userData)
   }
   register(userData: registerUserData):Observable<any>{
-    return this._http.post(`http://luxor.edu.eg:9090/api/account/register`, userData)
+    return this._http.post(`http://localhost:5000/api/Account/register`, userData)
   }
 
   logout() {
