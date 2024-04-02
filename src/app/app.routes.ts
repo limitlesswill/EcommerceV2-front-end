@@ -9,6 +9,7 @@ import { BoardAdminComponent } from './Components/board-admin/board-admin.compon
 import { HomeComponent } from './Pages/home/home.component';
 import { MainsliderComponent } from './Components/main-slider/mainslider.component';
 import { CartComponent } from './Components/cart/cart/cart.component';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { ConfirmOrderComponent } from './Components/confirm-order/confirm-order.component';
 import { ProductsComponent } from './Category/Componenets/CategoryList/products.component';
 import { OrderLayoutComponent } from './Order/components/order-layout/order-layout.component';
@@ -20,6 +21,7 @@ export const routes: Routes = [
     { path: 'user', component: BoardUserComponent },
     { path: 'admin', component: BoardAdminComponent },
     { path: 'cart', component: CartComponent },
+    { path: 'product/:id', component: ProductDetailsComponent },
     { path: 'Pay', component: ConfirmOrderComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full'  },
     {
