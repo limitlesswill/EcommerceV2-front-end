@@ -15,6 +15,7 @@ import { Item6Component } from '../../Components/static-items/static-items/item6
 import { ProductListComponent } from '../../Components/product-list/product-list.component';
 import { ProductsComponent } from "../../Category/Componenets/CategoryList/products.component";
 import { ProductByCategoryComponent } from "../../Category/Componenets/ProductByCategory/product-by-category/product-by-category.component";
+import { MainCategoryComponent } from '../../Category/Componenets/MainComponentForCAt/main-category/main-category.component';
 
 
 
@@ -25,7 +26,7 @@ import { ProductByCategoryComponent } from "../../Category/Componenets/ProductBy
     styleUrl: './home.component.css',
     imports: [MainsliderComponent, HeaderComponent, FooterComponent, NavBarComponent, PaymentWaysComponent,
         CartComponent, MarketComponent, Item1Component, Item2Component, Item3Component, Item4Component, Item5Component,
-        Item6Component, ProductListComponent, ProductsComponent, ProductByCategoryComponent]
+        Item6Component, ProductListComponent, ProductsComponent, ProductByCategoryComponent,MainCategoryComponent]
 })
 export class HomeComponent {
   selectedCategoryId!: number;

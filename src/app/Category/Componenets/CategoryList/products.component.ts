@@ -8,11 +8,14 @@ import { IProduct } from './Model/iproduct';
 import { Component, Input } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { ToolbarComponent } from '../Toolbar/toolbar/toolbar.component';
+import { FiltrationComponent } from '../AsideFilter/filtration/filtration.component';
+import { NavBarComponent } from '../../../Components/nav-bar/nav-bar.component';
+import { HeaderComponent } from '../../../Components/header/header.component';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CardModule,ButtonModule,RouterModule,RouterOutlet,ToolbarComponent],
+  imports: [CardModule,ButtonModule,RouterModule,RouterOutlet,ToolbarComponent,FiltrationComponent,NavBarComponent,HeaderComponent],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })

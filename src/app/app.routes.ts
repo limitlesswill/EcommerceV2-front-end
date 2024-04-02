@@ -10,6 +10,10 @@ import { MainsliderComponent } from './Components/main-slider/mainslider.compone
 import { CartComponent } from './Components/cart/cart/cart.component';
 import { ConfirmOrderComponent } from './Components/confirm-order/confirm-order.component';
 import { ProductsComponent } from './Category/Componenets/CategoryList/products.component';
+import { MainCategoryComponent } from './Category/Componenets/MainComponentForCAt/main-category/main-category.component';
+import { ProductByCategoryComponent } from './Category/Componenets/ProductByCategory/product-by-category/product-by-category.component';
+
+
 
 export const routes: Routes = [
     { path: 'home', component : HomeComponent },
@@ -20,6 +24,8 @@ export const routes: Routes = [
     { path: 'cart', component: CartComponent },
     { path: 'Pay', component: ConfirmOrderComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full'  },
+    { path: 'products', component: MainCategoryComponent },
+    {path: 'getProductBySubCategory/:id', component: ProductByCategoryComponent, title: 'get product by category'},
   
 
 ];
