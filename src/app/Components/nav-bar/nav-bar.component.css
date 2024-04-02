@@ -11,13 +11,13 @@
     font-family: "Cairo", sans-serif;
     direction: rtl;
   }
-  .navbar-icons-arabic i {
+  #navbarHeader .navbar-icons-arabic i {
     margin-left: 9px;
     margin-right: -1px;
     font-size: 25px;
     cursor: pointer;
   }
-  .count-arabic {
+  #navbarHeader .count-arabic {
     position: absolute;
     top: 15px;
     left: 26px;
@@ -43,48 +43,48 @@
   
   
   
-  .navbar-logo {
+  #navbarHeader .navbar-logo {
     font-size: 24px;
     font-weight: bold;
   }
 
-  .navbar-logo img {
+  #navbarHeader .navbar-logo img {
     width: 165px; 
     height: auto; 
     margin-left: 30px;
    
   }
 
-  .language-icon{
+  #navbarHeader .language-icon{
     margin-bottom: 5px;
     margin-left: 81px;
 
   }
 
-  .language-icon img{
+  #navbarHeader .language-icon img{
     width: 13px; 
     height: auto; 
 
   }
-  .language-icon span{
+  #navbarHeader .language-icon span{
    color: white;
    font-size: 13px;
    font-weight: normal;
    margin-left: 5px;
   
   }
-  .language-icon a {
+  #navbarHeader .language-icon a {
     text-decoration: none;
    
   }
 
   
-  .navbar-center {
+  #navbarHeader .navbar-center {
     flex: 1;
     text-align: center;
   }
   
-  .navbar-center input[type="text"] {
+  #navbarHeader .navbar-center input[type="text"] {
     padding: 23px;
     border-radius: 20px;
     border: none;
@@ -96,47 +96,40 @@
   }
 
  
-  .navbar-icons {
+  #navbarHeader .navbar-icons {
     /* display: flex; */
     align-items: center;
   }
-  .navbar-icons a {
+  #navbarHeader .navbar-icons a {
     color: white;
     text-decoration-line: none;
   }
-  .navbar-icons a :hover {
+  #navbarHeader .navbar-icons a :hover {
     
     text-decoration-line: underline;
   }
-  .navbar-icons-arabic a {
+  #navbarHeader .navbar-icons-arabic a {
     color: white;
     text-decoration-line: none;
   }
-  .navbar-icons-arabic a :hover {
+  #navbarHeader .navbar-icons-arabic a :hover {
     
     text-decoration-line: underline;
   }
-  .icos-arabic {
+  #navbarHeader .icos-arabic {
     position: relative;
     top: 3px;
     left: -8px;
     z-index: 1;
   }
-  
-  .cartt {
-    position: relative;
-    display: block;
-    width: 28px;
-    height: 28px;
-    height: auto;
-   }
-    .icos {
+
+  #navbarHeader .icos {
       position: relative;
       top: 3px;
       right: 46px;
       z-index: 1;
     }
-    .count {
+    #navbarHeader .count {
       position: absolute;
       top: 15px;
       right: 40px;
@@ -154,17 +147,17 @@
       font-weight: bold;
     }
   
-  .navbar-icons i {
+    #navbarHeader .navbar-icons i {
     margin-left: 15px;
     margin-right: 5px;
     font-size: 25px;
     cursor: pointer;
   }
-  .navbar-icons span{
+  #navbarHeader .navbar-icons span{
     margin-right: 35px;
     font-family: "Changa", sans-serif;
   }
-  .navbar {
+  #navbarHeader .navbar {
     height: 75px;
     color: white;
     display: flex;
@@ -173,7 +166,7 @@
     padding: 10px 20px;
   }
   
-  .navbar-bottom {
+  #navbarHeader .navbar-bottom {
     height: 55px;
    
     color: white;
@@ -184,12 +177,12 @@
     font-size: 12px;
 
   }
-  .subnav {
+  #navbarHeader .subnav {
     float: left;
     overflow: hidden;
   }
   
-  .subnav .subnavbtn {
+  #navbarHeader .subnav .subnavbtn {
     font-size: 12px;
     border: none;
     outline: none;
@@ -201,7 +194,7 @@
     text-transform: uppercase;
   }
   
-  .column {
+  #navbarHeader .column {
     float: left;
     width: 32.33%;
     padding: 10px;
@@ -209,10 +202,11 @@
     color: black;
     text-transform: uppercase;
     margin-left: 5px;
+    
 
   }
   /* Style links inside the columns */
-.column a {
+  #navbarHeader .column a {
   float: none;
   color: black;
   padding: 16px;
@@ -221,19 +215,19 @@
   text-align: left;
   width: 100%;
 }
-.column h3{
+#navbarHeader .column h3{
   font-weight: bold;
     font-size: 18px;
     font-family: "Changa";
 }
   /* Clear floats after the columns */
-.row:after {
+  #navbarHeader .row:after {
   content: "";
   display: table;
   clear: both;
 }
   
-  .subnav-content {
+#navbarHeader .subnav-content {
     display: none;
     position: absolute;
     left: 81px;
@@ -244,28 +238,28 @@
     border-radius: 0 0 4px 4px;
   }
   
-  .subnav-content a {
+  #navbarHeader .subnav-content a {
     float: left;
     color: black;
     text-decoration: none;
     background-color: white;
   }
   
-  .subnav-content a:hover {
+  #navbarHeader .subnav-content a:hover {
     background-color: #eee;
     color: black;
   }
   
-  .subnav:hover .subnav-content {
+  #navbarHeader .subnav:hover .subnav-content {
     display: block;
   }
  
   
-  .navbar-bottom .categories {
+  #navbarHeader .navbar-bottom .categories {
     display: flex;
   }
   
-  .navbar-bottom .categories a {
+  #navbarHeader .navbar-bottom .categories a {
     color: white;
     text-decoration: none;
     margin-right: 20PX;
@@ -273,21 +267,21 @@
     font-weight: bold;
     transition: background-color 0.3s;
   }
-  .navbar-bottom .categories a:hover {
+  #navbarHeader .navbar-bottom .categories a:hover {
     background-color: #1a6ac7;
   }
 
-  .contacts span{
+  #navbarHeader .contacts span{
     color: #1a6ac7;
    
   }
 
-  .contacts a{
+  #navbarHeader .contacts a{
     text-decoration: none;
     font-size: 20px;
   }
 
-  .contacts a:hover{
+  #navbarHeader .contacts a:hover{
     text-decoration: underline;
   }
 

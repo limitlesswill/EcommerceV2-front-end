@@ -7,7 +7,8 @@ import { NavBarComponent } from '../../nav-bar/nav-bar.component';
 import { ProductListComponent } from '../../product-list/product-list.component';
 import { CartService } from '../../../Services/cart.service';
 import { Router } from '@angular/router';
-
+import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -18,13 +19,30 @@ import { Router } from '@angular/router';
 })
 
 export class CartComponent {
- totalprice: number = 0;
-  CartServic = inject(CartService);
-  lang:any; 
-  constructor(private translate: TranslateService,private router: Router  ) {
-    this.lang = localStorage.getItem('lang')
+
+  lang:any="en"; 
+  langChangeSubscription: Subscription;
+  constructor(private translate: TranslateService , private Router:Router) {
+    this.lang = localStorage.getItem('lang');
     translate.use(this.lang);
+
+    // Subscribe to langChange event
+    this.langChangeSubscription = translate.onLangChange.subscribe(event => {
+      this.lang = event.lang;
+      // Update any component-specific properties or UI elements here
+    });
   }
+
+  ngOnDestroy(): void {
+    // Unsubscribe from langChange event to avoid memory leaks
+    this.langChangeSubscription.unsubscribe();
+  }
+
+
+
+
+  totalprice: number = 0;
+  CartServic = inject(CartService);
   getTotal(){
     return this.CartServic.getTotal();}
    
@@ -44,7 +62,7 @@ export class CartComponent {
   }
 
   checkout(){
-    this.router.navigateByUrl ('/Pay');
+    this.Router.navigate(['Pay']);
   }
 
 }

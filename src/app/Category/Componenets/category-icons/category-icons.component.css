@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    max-width: 100%;
+}
+table>thead>tr>th, table>tbody>tr>th, table>tfoot>tr>th, table>thead>tr>td, table>tbody>tr>td{
+    padding: 11px .5em;
+}
+table>tbody>tr>td{
+    vertical-align: top;
+}
+a, .alink {
+    color: #08c;
+    text-decoration: none;
+}
+.category-description img {
+    max-width: 100%;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    border: 0;
+}
+[data-content-type='html'] {
+    word-wrap: break-word;
+}

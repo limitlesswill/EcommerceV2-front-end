@@ -1,5 +1,9 @@
 
-
+.arabic-font{
+    font-family: "Cairo", sans-serif;
+    direction: rtl;
+  }
+  
 .text-bold {
     font-weight: 800;
 }

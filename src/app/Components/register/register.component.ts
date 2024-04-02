@@ -11,6 +11,7 @@ import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { registerUserData } from '../models/auth';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-register',
   standalone:true,
@@ -40,11 +41,15 @@ export class RegisterComponent {
   get comfirmPassword(){return this.registerForm.get('comfirmPassword')}
   get phoneNumber(){return this.registerForm.get('phoneNumber')}
   errorMessage = '';
+  langChangeSubscription: Subscription;
 
   constructor(private _auth: AuthService, private translate: TranslateService) {
     this.lang = localStorage.getItem('lang')
     translate.use(this.lang);
-   }
+    this.langChangeSubscription = translate.onLangChange.subscribe(event => {
+      this.lang = event.lang;
+   })
+  }
     
   handleRegister() {
     this.isSumitted = true;
