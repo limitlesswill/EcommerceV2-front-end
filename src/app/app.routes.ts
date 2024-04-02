@@ -1,3 +1,4 @@
+import { OrderListComponent } from './Order/components/order-list/order-list.component';
 import { LoginComponent } from './Components/login/login.component';
 import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
@@ -9,7 +10,11 @@ import { HomeComponent } from './Pages/home/home.component';
 import { MainsliderComponent } from './Components/main-slider/mainslider.component';
 import { CartComponent } from './Components/cart/cart/cart.component';
 import { ConfirmOrderComponent } from './Components/confirm-order/confirm-order.component';
+<<<<<<< Updated upstream
 import { ProductsComponent } from './Category/Componenets/CategoryList/products.component';
+=======
+import { OrderLayoutComponent } from './Order/components/order-layout/order-layout.component';
+>>>>>>> Stashed changes
 import { MainCategoryComponent } from './Category/Componenets/MainComponentForCAt/main-category/main-category.component';
 import { ProductByCategoryComponent } from './Category/Componenets/ProductByCategory/product-by-category/product-by-category.component';
 
@@ -23,9 +28,21 @@ export const routes: Routes = [
     { path: 'admin', component: BoardAdminComponent },
     { path: 'cart', component: CartComponent },
     { path: 'Pay', component: ConfirmOrderComponent },
+<<<<<<< Updated upstream
     { path: '', redirectTo: 'home', pathMatch: 'full'  },
     { path: 'products', component: MainCategoryComponent },
     {path: 'getProductBySubCategory/:id', component: ProductByCategoryComponent, title: 'get product by category'},
   
 
+=======
+    { path: '', redirectTo: 'home', pathMatch: 'full' , },
+    {
+      path: 'Order',
+      component: OrderLayoutComponent,
+      title: 'Order',
+      children: [
+    {path: 'list', component: OrderListComponent, title: 'Order List'}]}
+    ,{path: 'list', component: OrderListComponent, title: 'Order List'}
+    
+>>>>>>> Stashed changes
 ];
