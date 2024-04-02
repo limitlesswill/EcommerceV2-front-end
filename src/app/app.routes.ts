@@ -8,6 +8,7 @@ import { BoardAdminComponent } from './Components/board-admin/board-admin.compon
 import { HomeComponent } from './Pages/home/home.component';
 import { MainsliderComponent } from './Components/main-slider/mainslider.component';
 import { CartComponent } from './Components/cart/cart/cart.component';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 
 export const routes: Routes = [
     { path: 'home', component : HomeComponent },
@@ -16,6 +17,7 @@ export const routes: Routes = [
     { path: 'user', component: BoardUserComponent },
     { path: 'admin', component: BoardAdminComponent },
     { path: 'cart', component: CartComponent },
+    { path: 'product/:id', component: ProductDetailsComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' , }
 
 

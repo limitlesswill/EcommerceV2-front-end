@@ -29,14 +29,13 @@
 
                 <div class="rating">
                     <div class="starrating risingstar d-flex custom-justify-content-left flex-row-reverse">
-                        <span> | <a href=""> Be the first to review this product </a></span>
-                        <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 star"></label>
-                        <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 star"></label>
-                        <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 star"></label>
-                        <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 star"></label>
-                        <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star"></label>
-                        
-                    </div>
+                       <span> | <a href=""> Be the first to review this product </a></span>
+                       <input type="radio" id="star5" name="rating" value="5" [(ngModel)]="selectedRating" (click)="onRatingChanged(5)" /><label for="star5" title="5 star"></label>
+                       <input type="radio" id="star4" name="rating" value="4" [(ngModel)]="selectedRating" (click)="onRatingChanged(4)" /><label for="star4" title="4 star"></label>
+                       <input type="radio" id="star3" name="rating" value="3" [(ngModel)]="selectedRating" (click)="onRatingChanged(3)" /><label for="star3" title="3 star"></label>
+                       <input type="radio" id="star2" name="rating" value="2" [(ngModel)]="selectedRating" (click)="onRatingChanged(2)" /><label for="star2" title="2 star"></label>
+                       <input type="radio" id="star1" name="rating" value="1" [(ngModel)]="selectedRating" (click)="onRatingChanged(1)" /><label for="star1" title="1 star"></label>
+                     </div>
                     
               </div>	
             
@@ -71,230 +70,32 @@
 
 
 
-
-
-
-<nav>
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#details" (click)="toggleCategory('details')">Details</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#more-information" (click)="toggleCategory('more-information')">More Information</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#reviews" (click)="toggleCategory('reviews')">Reviews</a>
-        </li>
-    </ul>
-</nav>
-
-<!-- Category Content -->
-<div id="details" class="collapse" [class.show]="activeCategory === 'details'">
-    <div data-content-type="html" data-appearance="default" data-element="main" data-decoded="true"><img src="https://r2media.horizondm.com/sales/sales/s23-11.jpg" alt="">
-        <img src="https://r2media.horizondm.com/sales/sales/23-22.jpg" alt="">
-        <img src="https://r2media.horizondm.com/sales/sales/s23-33.jpg" alt="">
-        <img src="https://r2media.horizondm.com/sales/sales/s23-44.jpg" alt="">
-        <img src="https://r2media.horizondm.com/sales/sales/s23-55.jpg" alt="">
-        <img src="https://r2media.horizondm.com/sales/sales/s23-66.jpg" alt="">
-        <img src="https://r2media.horizondm.com/sales/sales/s23-77.jpg" alt="">
-        <img src="https://r2media.horizondm.com/sales/sales/s23-88.jpg" alt="">
-    </div>
-</div>
-<div id="more-information" class="collapse" [class.show]="activeCategory === 'more-information'">
-   
-    <div class="tab-content" role="tablist">
-        <div class="data item title active" aria-labeledby="tab-label-additional-title" data-role="collapsible" id="tab-label-additional" role="tab" data-collapsible="true" aria-controls="additional" aria-selected="true" aria-expanded="true" tabindex="0">
-            <a class="data switch" tabindex="-1" data-toggle="switch" href="#additional" id="tab-label-additional-title">
-                <span>More Information</span>
-            </a>
+<div class="comment-section">
+    <h2 class="section-title">Product Reviews</h2>
+    
+    <!-- List of existing comments -->
+    <div class="comment-list">
+      <!-- Sample comment -->
+      <div class="comment">
+        <div class="comment-header">
+          <span class="username">Ahmed Ali</span>
+          <span class="date">January 1, 2024</span>
         </div>
-        <div class="data item content" id="additional" data-role="content" aria-labelledby="tab-label-additional" role="tabpanel" aria-hidden="false" style="display: block;">
-                <div class="additional-attributes-wrapper table-wrapper">
-<table class="data table additional-attributes" id="product-attribute-specs-table">
-<caption class="table-caption">More Information</caption>
-<tbody>
-        <tr>
-<th class="col label" scope="row">Display Type</th>
-<td class="col data" data-th="Display Type">Dynamic AMOLED 2X</td>
-</tr>
-        <tr>
-<th class="col label" scope="row">Display Size</th>
-<td class="col data" data-th="Display Size">6.4 inches</td>
-</tr>
-        <tr>
-<th class="col label" scope="row">Display Resolution</th>
-<td class="col data" data-th="Display Resolution">1080 x 2340 pixels</td>
-</tr>
-        <tr>
-<th class="col label" scope="row">Touch Screen</th>
-<td class="col data" data-th="Touch Screen">YES</td>
-</tr>
-        <tr>
-<th class="col label" scope="row">Processor Chipset</th>
-<td class="col data" data-th="Processor Chipset">Exynos 2200</td>
-</tr>
-        <tr>
-<th class="col label" scope="row">Processor CPU</th>
-<td class="col data" data-th="Processor CPU">Octa-core</td>
-</tr>
-        <tr>
-<th class="col label" scope="row">INTERNAL STORAGE</th>
-<td class="col data" data-th="INTERNAL STORAGE">256 GB</td>
-</tr>
-        <tr>
-<th class="col label" scope="row">Memory RAM</th>
-<td class="col data" data-th="Memory RAM">8 GB</td>
-</tr>
-        <tr>
-<th class="col label" scope="row">Operating System Version</th>
-<td class="col data" data-th="Operating System Version">Android 13</td>
-</tr>
-        <tr>
-<th class="col label" scope="row">OPERATING SYSTEM</th>
-<td class="col data" data-th="OPERATING SYSTEM">Android</td>
-</tr>
-        <tr>
-<th class="col label" scope="row">Main Camera</th>
-<td class="col data" data-th="Main Camera">50 MP, f/1.8, 24mm (wide), 8 MP, f/2.4, 75mm (telephoto), 12 MP, f/2.2, 123˚ (ultrawide)</td>
-</tr>
-        <tr>
-<th class="col label" scope="row">Selfie Camera</th>
-<td class="col data" data-th="Selfie Camera">10 MP, f/2.4, 26mm (wide)</td>
-</tr>
-        <tr>
-<th class="col label" scope="row">Video Recording Type</th>
-<td class="col data" data-th="Video Recording Type">4K30/60fps</td>
-</tr>
-        <tr>
-<th class="col label" scope="row">Product Color</th>
-<td class="col data" data-th="Product Color">Purple</td>
-</tr>
-        <tr>
-<th class="col label" scope="row">WiFi</th>
-<td class="col data" data-th="WiFi">YES</td>
-</tr>
-        <tr>
-<th class="col label" scope="row">Bluetooth</th>
-<td class="col data" data-th="Bluetooth">YES</td>
-</tr>
-        <tr>
-<th class="col label" scope="row">Infrared</th>
-<td class="col data" data-th="Infrared">NO</td>
-</tr>
-        <tr>
-<th class="col label" scope="row">Radio</th>
-<td class="col data" data-th="Radio">NO</td>
-</tr>
-        <tr>
-<th class="col label" scope="row">NFC</th>
-<td class="col data" data-th="NFC">NO</td>
-</tr>
-        <tr>
-<th class="col label" scope="row">Battery capacity</th>
-<td class="col data" data-th="Battery capacity">4500 mAh</td>
-</tr>
-        <tr>
-<th class="col label" scope="row">Weight</th>
-<td class="col data" data-th="Weight">209 g</td>
-</tr>
-    </tbody>
-</table>
-</div>
-        </div></div>
-</div>
-<div id="reviews" class="collapse" [class.show]="activeCategory === 'reviews'">
-    <div class="container-fluid px-1 py-5 mx-auto" >
-        <div class="row justify-content-center">
-            <div class="col-xl-7 col-lg-8 col-md-10 col-12 text-center mb-5">
-                <div class="card">
-                    <div class="row justify-content-left d-flex">
-                        <div class="col-md-4 d-flex flex-column">
-                            <div class="rating-box">
-                                <h1 class="pt-4">4.0</h1>
-                                <p class="">out of 5</p>
-                            </div>
-                            <div> <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-inactive mx-1"></span> </div>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="rating-bar0 justify-content-center">
-                                <table class="text-left mx-auto">
-                                    <tr>
-                                        <td class="rating-label">Excellent</td>
-                                        <td class="rating-bar">
-                                            <div class="bar-container">
-                                                <div class="bar-5"></div>
-                                            </div>
-                                        </td>
-                                        <td class="text-right">123</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="rating-label">Good</td>
-                                        <td class="rating-bar">
-                                            <div class="bar-container">
-                                                <div class="bar-4"></div>
-                                            </div>
-                                        </td>
-                                        <td class="text-right">23</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="rating-label">Average</td>
-                                        <td class="rating-bar">
-                                            <div class="bar-container">
-                                                <div class="bar-3"></div>
-                                            </div>
-                                        </td>
-                                        <td class="text-right">10</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="rating-label">Poor</td>
-                                        <td class="rating-bar">
-                                            <div class="bar-container">
-                                                <div class="bar-2"></div>
-                                            </div>
-                                        </td>
-                                        <td class="text-right">3</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="rating-label">Terrible</td>
-                                        <td class="rating-bar">
-                                            <div class="bar-container">
-                                                <div class="bar-1"></div>
-                                            </div>
-                                        </td>
-                                        <td class="text-right">0</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="row d-flex">
-                        <div class=""> <img class="profile-pic" src="https://i.imgur.com/V3ICjlm.jpg"> </div>
-                        <div class="d-flex flex-column">
-                            <h3 class="mt-2 mb-0">Mukesh Kumar</h3>
-                            <div>
-                                <p class="text-left"><span class="text-muted">4.0</span> <span class="fa fa-star star-active ml-3"></span> <span class="fa fa-star star-active"></span> <span class="fa fa-star star-active"></span> <span class="fa fa-star star-active"></span> <span class="fa fa-star star-inactive"></span></p>
-                            </div>
-                        </div>
-                        <div class="ml-auto">
-                            <p class="text-muted pt-5 pt-sm-3">10 Sept</p>
-                        </div>
-                    </div>
-                    <div class="row text-left">
-                        <h4 class="blue-text mt-3">"An awesome activity to experience"</h4>
-                        <p class="content">If you really enjoy spending your vacation 'on water' or would like to try something new and exciting for the first time.</p>
-                    </div>
-                   
-                    <div class="row text-left mt-4">
-                        <div class="like mr-3 vote"> <img src="https://i.imgur.com/mHSQOaX.png"><span class="blue-text pl-2">20</span> </div>
-                        <div class="unlike vote"> <img src="https://i.imgur.com/bFBO3J7.png"><span class="text-muted pl-2">4</span> </div>
-                    </div>
-                </div>
-            </div>
+        <div class="comment-content">
+          <div class="rating">⭐⭐⭐⭐</div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod...</p>
         </div>
+      </div>
+      <!-- More comments can go here -->
     </div>
-</div>
-
-
-
+    
+    <!-- Add comment form -->
+    <div class="add-comment">
+        <h3>Add Your Comment</h3>
+        <form (ngSubmit)="submitComment()">
+          <input type="text" placeholder="Your Username" required [(ngModel)]="userName">
+          <textarea placeholder="Your Comment" required [(ngModel)]="commentStatement"></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+  </div>
