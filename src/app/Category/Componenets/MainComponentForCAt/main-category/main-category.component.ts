@@ -4,11 +4,12 @@ import { NavBarComponent } from '../../../../Components/nav-bar/nav-bar.componen
 import { HeaderComponent } from '../../../../Components/header/header.component';
 import { ProductByCategoryComponent } from '../../ProductByCategory/product-by-category/product-by-category.component';
 import { RouterModule } from '@angular/router';
+import { FiltrationComponent } from '../../AsideFilter/filtration/filtration.component';
 
 @Component({
   selector: 'app-main-category',
   standalone: true,
-  imports: [ProductsComponent,NavBarComponent,HeaderComponent,ProductByCategoryComponent,RouterModule],
+  imports: [ProductsComponent,NavBarComponent,HeaderComponent,ProductByCategoryComponent,RouterModule,FiltrationComponent],
   templateUrl: './main-category.component.html',
   styleUrl: './main-category.component.css'
 })

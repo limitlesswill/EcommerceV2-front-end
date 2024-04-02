@@ -15,17 +15,17 @@ import { HeaderComponent } from '../../../Components/header/header.component';
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CardModule,ButtonModule,RouterModule,RouterOutlet,ToolbarComponent,FiltrationComponent,NavBarComponent,HeaderComponent],
+  imports: [CardModule, ButtonModule, RouterModule, RouterOutlet, ToolbarComponent, FiltrationComponent, NavBarComponent, HeaderComponent],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
-export class ProductsComponent{
-
- @Input() categoryId!: number;
+export class ProductsComponent {
+  flag:boolean=false;
+  @Input() categoryId!: number;
   products!: IProduct[];
 
   constructor(private categoryService: CategoryService) { }
-  
+
 
   ngOnChanges(): void {
     if (this.categoryId) {
@@ -39,6 +39,13 @@ export class ProductsComponent{
     });
   }
 
-  
+  selectedCategoryId!: number;
+
+
+  GetIdOFCategory(categoryId: number): void {
+    this.selectedCategoryId = categoryId;
+  }
+
+
 }
 

@@ -2,11 +2,13 @@ import { Component, Input } from '@angular/core';
 import { CategoryService } from '../../../Services/category.service';
 import { IProduct } from '../../CategoryList/Model/iproduct';
 import { SubCategoryService } from '../Services/sub-category.service';
+import { PaginatorModule } from 'primeng/paginator';
+
 
 @Component({
   selector: 'app-product-by-category',
   standalone: true,
-  imports: [],
+  imports: [PaginatorModule],
   templateUrl: './product-by-category.component.html',
   styleUrl: './product-by-category.component.css'
 })

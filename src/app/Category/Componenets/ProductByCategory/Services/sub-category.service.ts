@@ -10,6 +10,7 @@ import { ISubCategory } from '../Model/isub-category';
 })
 export class SubCategoryService {
   SubCategoryApiUrl: string = environment.SubCategoryApiUrl;
+  
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -21,4 +22,6 @@ export class SubCategoryService {
   {
     return this.httpclient.get<IProduct[]>(`${this.SubCategoryApiUrl}/${id}/getProductonlyfromSubCategory`);
   }
+
+  
 }

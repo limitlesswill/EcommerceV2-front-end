@@ -26,20 +26,9 @@ export class CategoryService {
   getallCategoryAndSubCategoryOFit(): Observable<ICategory[]> {
     return this.httpclient.get<ICategory[]>(`${this.CategoryApiUrl}/getallCategoryAndSubCategoryOFit`);
   }
-  CreateCategory(category: ICategory): Observable<ICategory> {
-    return this.httpclient.post<ICategory>(this.CategoryApiUrl, category, this.httpOptions);
-  }
   GetCategoryById(id: number): Observable<ICategory> {
     return this.httpclient.get<ICategory>(`${this.CategoryApiUrl}/${id}`)
   }
-  UpdateCategory(id: number, category: ICategory): Observable<ICategory> {
-    return this.httpclient.put<ICategory>(`${this.CategoryApiUrl}/${id}`, category, this.httpOptions);
-  }
-
-  DeleteCategory(id: number): Observable<void> {
-    return this.httpclient.delete<void>(`${this.CategoryApiUrl}/${id}`);
-  }
-
   getProductByCategory(id:number):Observable<IProduct[]>
   {
     return this.httpclient.get<IProduct[]>(`${this.CategoryApiUrl}/${id}/getAllProductByCategory`);
@@ -48,4 +37,5 @@ export class CategoryService {
   {
     return this.httpclient.get<ISubCategory[]>(`${this.CategoryApiUrl}/${id}/GetAllCategoryAndSubAsync`);
   }
+ 
 }

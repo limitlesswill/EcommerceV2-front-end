@@ -6,6 +6,7 @@ import { AuthService } from '../_services/auth.service';
 import { ICategory, ISubCategory } from '../../Category/Model/icategory';
 import { CategoryService } from '../../Category/Services/category.service';
 
+
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
@@ -20,6 +21,7 @@ export class NavBarComponent implements OnInit {
   SubCategoryList:ISubCategory[]=[];
   @Output() categoryClicked = new EventEmitter<number>();
   @Output() SubcategoryClicked =new EventEmitter<number>();
+  
   onSubCategoryClick(SubCategoryId:number):void{
      this.SubcategoryClicked.emit(SubCategoryId);
   }
@@ -27,7 +29,7 @@ export class NavBarComponent implements OnInit {
     this.categoryClicked.emit(categoryId);
   }
 
-
+  
   lang:any="en";
   isSubmitted = false;
 
