@@ -5,8 +5,9 @@ import { CardModule } from 'primeng/card';
 import { CategoryService } from '../../Services/category.service';
 
 import { IProduct } from './Model/iproduct';
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
+import { CartService } from '../../../Services/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -16,6 +17,10 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   styleUrl: './products.component.css'
 })
 export class ProductsComponent{
+  CartService=inject(CartService);
+  addToCart(product:IProduct){
+    this.CartService.AddtoCart(product); 
+  }
 
  @Input() categoryId!: number;
   products!: IProduct[];

@@ -13,7 +13,7 @@ import { CartService } from '../../../../Services/cart.service';
 })
 export class ProductByCategoryComponent {
   CartService=inject(CartService);
-  addToCart(product:any){
+  addToCart(product:IProduct){
     this.CartService.AddtoCart(product); 
   }
 
