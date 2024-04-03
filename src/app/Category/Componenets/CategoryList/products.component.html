@@ -37,83 +37,80 @@
         <div class="col-2">
             <app-filtration [categoryId]="selectedCategoryId"></app-filtration>
         </div>  -->
-            <!-- <div class="col-10"> -->
-                <!-- <div> -->
-                    <mat-paginator [length]="200" [pageSizeOptions]="[10, 50, 100]" showFirstLastButtons="" aria-label="Select page">
-                    </mat-paginator>
-                    <div class="products wrapper grid columns4 products-grid mb-4  ">
-                        <ol class="filterproducts products list items product-items">
-                            @for(product of products; track product.id){
-                            <li class="item product product-item">
-                                <div class="product-item-info type1">
-                                    <div class="product photo product-item-photo">
-                                        <a href="#">
-                                            <img class="product-image-photo default_image rounded porto-lazyload porto-lazyload-loaded"
-                                                width="300" height="300" alt=""
-                                                src="../../../assets/CategoryAndProductImg/{{product.imgURL}}"
-                                                style="display: block;">
-                                        </a>
-                                        <div class="product-labels">
-                                            <div class="product-label sale-label">-13%</div>
-                                        </div>
-                                    </div>
-                                    <div class="product details product-item-details">
-                                        <strong class="product name product-item-name">
-                                            <a class="product-item-link" href="#">
-                                                {{product.description}} </a>
-                                        </strong>
-        
-                                        <div class="price-box price-final_price" data-product-id="11884">
-        
-                                            <span class="old-price">
-        
-        
-                                                <span class="price-container price-final_price tax weee">
-                                                    <span class="price-label">was</span>
-                                                    <span id="old-price-11884" data-price-amount="27900"
-                                                        data-price-type="oldPrice" class="price-wrapper "><span
-                                                            class="price">27900.00 &nbsp;EGP</span></span>
-                                                </span>
-                                            </span>
-                                            <span class="special-price">
-                                                <span class="price-container price-final_price tax weee">
-                                                    <span class="price-label">Special Price</span>
-                                                    <span id="product-price-11884" data-price-amount="24400"
-                                                        data-price-type="finalPrice" class="price-wrapper "><span
-                                                            class="price">{{product.price}} &nbsp;EGP</span></span>
-                                                </span>
-                                            </span>
-        
-                                        </div>
-                                        <div class="product-item-inner">
-                                            <div class="product actions product-item-actions">
-                                                <a href="#" class="action towishlist actions-secondary" title="Add to Wish List"
-                                                    aria-label="Add to Wish List" data-action="add-to-wishlist" role="button">
-                                                    <span>Add to Wish List</span>
-                                                </a>
-                                                <div class="actions-primary">
-                                                    <form data-role="tocart-form" action="#" method="post">
-                                                        <input type="hidden" name="product" value="11884">
-                                                        <input type="hidden" name="uenc" value="">
-                                                        <input name="form_key" type="hidden" value=""> <button type="submit"
-                                                            title="Add to Cart" class="action tocart primary">
-                                                            <span>Add to Cart</span>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                                <a href="#" class="action tocompare actions-secondary" title="Add to Compare"
-                                                    aria-label="Add to Compare" role="button">
-                                                    <span>Add to Compare</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            }
-                        </ol>
+<!-- <div class="col-10"> -->
+<!-- <div> -->
+<mat-paginator [length]="200" [pageSizeOptions]="[10, 50, 100]" showFirstLastButtons="" aria-label="Select page">
+</mat-paginator>
+<div class="products wrapper grid columns4 products-grid mb-4  ">
+    <ol class="filterproducts products list items product-items">
+        @for(product of products; track product.id){
+        <li class="item product product-item">
+            <div class="product-item-info type1">
+                <div class="product photo product-item-photo">
+                    <a href="#">
+                        <img class="product-image-photo default_image rounded porto-lazyload porto-lazyload-loaded"
+                            width="300" height="300" alt=""
+                            src="../../../assets/CategoryAndProductImg/{{product.imgURL}}" style="display: block;">
+                    </a>
+                    <div class="product-labels">
+                        <div class="product-label sale-label">-13%</div>
                     </div>
-                <!-- </div> -->
-            <!-- </div> -->
-    <!-- </div> -->
-    <router-outlet></router-outlet>
+                </div>
+                <div class="product details product-item-details">
+                    <strong class="product name product-item-name">
+                        <a class="product-item-link" href="#">
+                            {{product.description}} </a>
+                    </strong>
+
+                    <div class="price-box price-final_price" data-product-id="11884">
+
+                        <span class="old-price">
+
+
+                            <span class="price-container price-final_price tax weee">
+                                <span class="price-label">was</span>
+                                <span id="old-price-11884" data-price-amount="27900" data-price-type="oldPrice"
+                                    class="price-wrapper "><span class="price">27900.00 &nbsp;EGP</span></span>
+                            </span>
+                        </span>
+                        <span class="special-price">
+                            <span class="price-container price-final_price tax weee">
+                                <span class="price-label">Special Price</span>
+                                <span id="product-price-11884" data-price-amount="24400" data-price-type="finalPrice"
+                                    class="price-wrapper "><span class="price">{{product.price}} &nbsp;EGP</span></span>
+                            </span>
+                        </span>
+
+                    </div>
+                    <div class="product-item-inner">
+                        <div class="product actions product-item-actions">
+                            <a href="#" class="action towishlist actions-secondary" title="Add to Wish List"
+                                aria-label="Add to Wish List" data-action="add-to-wishlist" role="button">
+                                <span>Add to Wish List</span>
+                            </a>
+                            <div class="actions-primary">
+                                <form data-role="tocart-form">
+                                    <input type="hidden" name="product" value="11884">
+                                    <input type="hidden" name="uenc" value="">
+                                    <input name="form_key" type="hidden" value=""> <button type="submit"
+                                        title="Add to Cart" class="action tocart primary"(click)="addToCart(product)">
+                                        <span>Add to Cart</span>
+                                    </button>
+                                </form>
+                            </div>
+                            <a href="#" class="action tocompare actions-secondary" title="Add to Compare"
+                                aria-label="Add to Compare" role="button">
+                                <span>Add to Compare</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        }
+    </ol>
+</div>
+<!-- </div> -->
+<!-- </div> -->
+<!-- </div> -->
+<router-outlet></router-outlet>

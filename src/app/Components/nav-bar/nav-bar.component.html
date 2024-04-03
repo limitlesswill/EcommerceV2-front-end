@@ -64,7 +64,7 @@
             @for(s of c.subCategories; track $index){
             <div class="column w-25 h-25">
               <div class="row">
-               <a (click)="onSubCategoryClick(s.id)"  routerLinkActive="router-link-active">  <!-- [routerLink]="['/category/productbycategory',c.id]" -->
+               <a (click)="onSubCategoryClick(s.id)" [routerLink]="['/productOfCAt']" routerLinkActive="router-link-active">  <!-- [routerLink]="['/category/productbycategory',c.id]" -->
                   <span>{{ lang === 'en' ? s.enName : s.arName }}</span>
                 </a>
               </div>

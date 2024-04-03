@@ -2,13 +2,14 @@
 import { CategoryService } from '../../Services/category.service';
 
 import { IProduct } from './Model/iproduct';
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { ToolbarComponent } from '../Toolbar/toolbar/toolbar.component';
 import { FiltrationComponent } from '../AsideFilter/filtration/filtration.component';
 import { NavBarComponent } from '../../../Components/nav-bar/nav-bar.component';
 import { HeaderComponent } from '../../../Components/header/header.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { CartService } from '../../../Services/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -18,6 +19,11 @@ import {MatPaginatorModule} from '@angular/material/paginator';
   styleUrl: './products.component.css'
 })
 export class ProductsComponent {
+  CartService=inject(CartService);
+  addToCart(product:any){
+    this.CartService.AddtoCart(product); 
+  }
+
   flag:boolean=false;
   @Input() categoryId!: number;
   products!: IProduct[];

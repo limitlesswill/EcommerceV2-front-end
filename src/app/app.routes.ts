@@ -15,6 +15,7 @@ import { ProductsComponent } from './Category/Componenets/CategoryList/products.
 import { OrderLayoutComponent } from './Order/components/order-layout/order-layout.component';
 import { MainCategoryComponent } from './Category/Componenets/MainComponentForCAt/main-category/main-category.component';
 import { ProductByCategoryComponent } from './Category/Componenets/ProductByCategory/product-by-category/product-by-category.component';
+import { AllProductOfCAtComponent } from './Category/Componenets/GetPeoductOfCat/all-product-of-cat/all-product-of-cat.component';
 
 
 
@@ -29,6 +30,7 @@ export const routes: Routes = [
     { path: 'Pay', component: ConfirmOrderComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full'  },
     { path: 'products', component: MainCategoryComponent },
+    { path: 'productOfCAt', component: AllProductOfCAtComponent,title:'productOFcategory' },
     {path: 'getProductBySubCategory/:id', component: ProductByCategoryComponent, title: 'get product by category'},
   
 

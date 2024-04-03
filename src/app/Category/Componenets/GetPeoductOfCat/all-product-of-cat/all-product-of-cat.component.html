@@ -1,0 +1,13 @@
+<app-nav-bar (categoryClicked)="GetIdOFCategory($event)"
+    (SubcategoryClicked)="GetIdOFSubCategory($event)"></app-nav-bar>
+<app-header></app-header>
+
+<div class="container mb-4 d-flex justify-content-between">
+    <div class="row">
+        <div class="col-12">
+            <div>
+                <app-product-by-category [SubcategoryId]="selectedSubCategoryId"></app-product-by-category>
+            </div>
+        </div>
+    </div>
+</div>
