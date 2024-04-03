@@ -16,7 +16,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 })
 export class ProductByCategoryComponent {
   CartService=inject(CartService);
-  addToCart(product:any){
+  addToCart(product:IProduct){
     this.CartService.AddtoCart(product); 
   }
 
