@@ -48,7 +48,7 @@
 
 
       <div class="subnav">
-        <button class="subnavbtn"  (click)="onCategoryClick(c.id)" routerLinkActive="router-link-active">
+        <button class="subnavbtn" [routerLink]="['/Product']" (click)="onCategoryClick(c.id)" routerLinkActive="router-link-active">
           {{ lang === 'en' ? c.enName : c.arName }}
           <i class="fa fa-caret-down"></i>
         </button>

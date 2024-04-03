@@ -39,15 +39,7 @@ export const routes: Routes = [
     {path: 'list', component: OrderListComponent, title: 'Order List'}]}
     ,{path: 'list', component: OrderListComponent, title: 'Order List'},
 
-   { path: 'category',
-    component: MainCategoryComponent,
-    title: 'category',
-    children: [
-      
-      {path: 'productbycategory/:id', component: ProductByCategoryComponent, title: 'get product by category'},
-
-    ]
-  },
+     {path:'Product',component:MainCategoryComponent,title:'Products'}
   
     
 ];

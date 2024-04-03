@@ -34,10 +34,28 @@ export class HomeComponent {
   selectedCategoryId!: number;
   selectedSubCategoryId!: number;
  
+  constructor() {
+   
+    const storedCategoryId = localStorage.getItem('selectedCategoryId');
+    const storedSubCategoryId = localStorage.getItem('selectedSubCategoryId');
+
+    if (storedCategoryId !== null) {
+      this.selectedCategoryId = +storedCategoryId; 
+    }
+
+    if (storedSubCategoryId !== null) {
+      this.selectedSubCategoryId = +storedSubCategoryId; 
+    }
+  }
+
   GetIdOFCategory(categoryId: number): void {
     this.selectedCategoryId = categoryId;
+   
+    localStorage.setItem('selectedCategoryId', categoryId.toString());
   }
-  GetIdOFSubCategory(SubcategoryId: number): void {
-    this.selectedSubCategoryId= SubcategoryId;
+
+  GetIdOFSubCategory(subcategoryId: number): void {
+    this.selectedSubCategoryId = subcategoryId;
+    localStorage.setItem('selectedSubCategoryId', subcategoryId.toString());
   }
 }

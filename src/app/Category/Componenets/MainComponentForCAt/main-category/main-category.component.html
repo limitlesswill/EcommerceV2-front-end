@@ -1,6 +1,18 @@
-<app-nav-bar (categoryClicked)="GetIdOFCategory($event)" (SubcategoryClicked)="GetIdOFSubCategory($event)"></app-nav-bar>
+<app-nav-bar (categoryClicked)="GetIdOFCategory($event)"
+    (SubcategoryClicked)="GetIdOFSubCategory($event)"></app-nav-bar>
 <app-header></app-header>
-<app-filtration [categoryId]="selectedCategoryId"></app-filtration>
-<app-product-by-category [SubcategoryId]="selectedSubCategoryId"></app-product-by-category>
-<app-products [categoryId]="selectedCategoryId"></app-products>
+<app-toolbar></app-toolbar>
+<div class="container-fluid mb-4">
+    <div class="row">
+        <div class="col-2 mb-4">
+            <app-filtration [categoryId]="selectedCategoryId"></app-filtration>
+        </div>
+        <div class="col-10">
+            <div>
+                <app-products [categoryId]="selectedCategoryId"></app-products>
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- <app-product-by-category [SubcategoryId]="selectedSubCategoryId"></app-product-by-category> -->

@@ -1,7 +1,4 @@
 
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
-
 import { CategoryService } from '../../Services/category.service';
 
 import { IProduct } from './Model/iproduct';
@@ -11,11 +8,12 @@ import { ToolbarComponent } from '../Toolbar/toolbar/toolbar.component';
 import { FiltrationComponent } from '../AsideFilter/filtration/filtration.component';
 import { NavBarComponent } from '../../../Components/nav-bar/nav-bar.component';
 import { HeaderComponent } from '../../../Components/header/header.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CardModule, ButtonModule, RouterModule, RouterOutlet, ToolbarComponent, FiltrationComponent, NavBarComponent, HeaderComponent],
+  imports: [MatPaginatorModule, RouterModule, RouterOutlet, ToolbarComponent, FiltrationComponent, NavBarComponent, HeaderComponent],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
