@@ -1,6 +1,6 @@
 <div class="container mt-3">
     <div class="row container " style="text-align: center; padding-left: 20px ;" >
-      @if(Orders.length > 0)
+      @if(Orders.length > 0&&OrdersDetails.length<1)
       {
         <h2>Orders List</h2>
         <table class="table">
@@ -31,13 +31,14 @@
       }
       @if(OrdersDetails.length>0)
       {
+        <button (click)="back()">back</button>
         <h2>Orders Items List</h2>
         <table class="table">
       <thead>
         <tr>
-          <th>Order number</th>
-          <th>totalPrice</th>
-          <th>product</th>
+          <th>Number</th>
+          <th>TotalPrice</th>
+          <th>Product Name</th>
           <th>Quantity</th>
         </tr>
       </thead>
@@ -47,7 +48,7 @@
               <tr>
                   <td>{{ Order.id }}</td>
                   <td>{{Order.totalPrice}} $</td>
-                  <td>{{Order.productId}}</td>
+                  <td>{{Order.productName}}</td>
                   <td>{{Order.quantity}} </td>
                   <td>
                      <i (click)="IncreamentQuantity(Order)" class="fa fa-plus" style="padding-right: 5px;"></i>

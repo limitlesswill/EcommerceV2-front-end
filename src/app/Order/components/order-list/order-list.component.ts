@@ -53,17 +53,19 @@ export class OrderListComponent {
       });
     }
   }
-  IncreamentQuantity(OrdersDetails:any): void {
-    OrdersDetails.Quantity++;
+  IncreamentQuantity(OrdersDetails:OrderDetails): void {
+    OrdersDetails.quantity++;
     this.OrderDetailsService.UpdateOrderDetails(OrdersDetails.id,OrdersDetails).subscribe((d) => {
       this.fetchOrdersDetails(OrdersDetails.orderId); // Refresh the list
       this.fetchOrders();
 
     }); 
   }
-  
-  DecreamentQuantity(OrdersDetails:any): void {
-    OrdersDetails.Quantity--;
+  back(): void {
+    this.OrdersDetails=[];
+  }
+  DecreamentQuantity(OrdersDetails:OrderDetails): void {
+    OrdersDetails.quantity--;
     this.OrderDetailsService.UpdateOrderDetails(OrdersDetails.id,OrdersDetails).subscribe((d) => {
       this.fetchOrdersDetails(OrdersDetails.orderId); // Refresh the list
       this.fetchOrders();

@@ -33,14 +33,13 @@
 
                 <div class="rating">
                     <div class="starrating risingstar d-flex custom-justify-content-left flex-row-reverse">
-                        <span> | <a href=""> {{'productDetails.firstReview'| translate}} </a></span>
-                        <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 star"></label>
-                        <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 star"></label>
-                        <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 star"></label>
-                        <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 star"></label>
-                        <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star"></label>
-                        
-                    </div>
+                       <span> | <a href=""> Be the first to review this product </a></span>
+                       <input type="radio" id="star5" name="rating" value="5" [(ngModel)]="selectedRating" (click)="onRatingChanged(5)" /><label for="star5" title="5 star"></label>
+                       <input type="radio" id="star4" name="rating" value="4" [(ngModel)]="selectedRating" (click)="onRatingChanged(4)" /><label for="star4" title="4 star"></label>
+                       <input type="radio" id="star3" name="rating" value="3" [(ngModel)]="selectedRating" (click)="onRatingChanged(3)" /><label for="star3" title="3 star"></label>
+                       <input type="radio" id="star2" name="rating" value="2" [(ngModel)]="selectedRating" (click)="onRatingChanged(2)" /><label for="star2" title="2 star"></label>
+                       <input type="radio" id="star1" name="rating" value="1" [(ngModel)]="selectedRating" (click)="onRatingChanged(1)" /><label for="star1" title="1 star"></label>
+                     </div>
                     
               </div>	
             
@@ -75,10 +74,32 @@
 
 
 
-
-
-
-
-
-
-
+<div class="comment-section">
+    <h2 class="section-title">Product Reviews</h2>
+    
+    <!-- List of existing comments -->
+    <div class="comment-list">
+      <!-- Sample comment -->
+      <div class="comment">
+        <div class="comment-header">
+          <span class="username">Ahmed Ali</span>
+          <span class="date">January 1, 2024</span>
+        </div>
+        <div class="comment-content">
+          <div class="rating">⭐⭐⭐⭐</div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod...</p>
+        </div>
+      </div>
+      <!-- More comments can go here -->
+    </div>
+    
+    <!-- Add comment form -->
+    <div class="add-comment">
+        <h3>Add Your Comment</h3>
+        <form (ngSubmit)="submitComment()">
+          <input type="text" placeholder="Your Username" required [(ngModel)]="userName">
+          <textarea placeholder="Your Comment" required [(ngModel)]="commentStatement"></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+  </div>
