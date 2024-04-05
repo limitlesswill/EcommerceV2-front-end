@@ -21,7 +21,7 @@ import { ContactusComponent } from './Components/contactus/contactus.component';
 
 
 export const routes: Routes = [
-    { path: 'contact', component : ContactusComponent },
+    { path: 'contactus', component : ContactusComponent },
     { path: 'home', component : HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent}, //canActivate:[authGuard]},
