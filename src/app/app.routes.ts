@@ -16,10 +16,12 @@ import { OrderLayoutComponent } from './Order/components/order-layout/order-layo
 import { MainCategoryComponent } from './Category/Componenets/MainComponentForCAt/main-category/main-category.component';
 import { ProductByCategoryComponent } from './Category/Componenets/ProductByCategory/product-by-category/product-by-category.component';
 import { AllProductOfCAtComponent } from './Category/Componenets/GetPeoductOfCat/all-product-of-cat/all-product-of-cat.component';
+import { ContactusComponent } from './Components/contactus/contactus.component';
 
 
 
 export const routes: Routes = [
+    { path: 'contactus', component : ContactusComponent },
     { path: 'home', component : HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent}, //canActivate:[authGuard]},

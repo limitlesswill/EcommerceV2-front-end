@@ -1,0 +1,26 @@
+*{
+    user-select: none;
+}
+.nav,
+.tab-content {
+    direction: rtl;
+    font-weight: 500;
+    color: black;
+}
+
+.nav-link {
+    border: 1px solid black;
+    border-top-left-radius: 19px;
+    border-top-right-radius: 19px;
+    color: black;
+    margin-top: 4px;
+}
+
+.nav-link:not(active) {
+    background-color: rgb(245, 245, 245);
+}
+
+.location-table img {
+    height: 20px;
+    width: 20px;
+}
