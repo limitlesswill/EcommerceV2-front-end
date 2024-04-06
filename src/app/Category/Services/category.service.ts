@@ -29,9 +29,12 @@ export class CategoryService {
   GetCategoryById(id: number): Observable<ICategory> {
     return this.httpclient.get<ICategory>(`${this.CategoryApiUrl}/${id}`)
   }
-  getProductByCategory(id:number):Observable<IProduct[]>
-  {
-    return this.httpclient.get<IProduct[]>(`${this.CategoryApiUrl}/${id}/getAllProductByCategory`);
+  // getProductByCategory(id:number):Observable<IProduct[]>
+  // {
+  //   return this.httpclient.get<IProduct[]>(`${this.CategoryApiUrl}/${id}/getAllProductByCategory`);
+  // }
+  getProductsByCategory(categoryId: number, num: number, pageNum: number): Observable<IProduct[]> {
+    return this.httpclient.get<IProduct[]>(`${this.CategoryApiUrl}/${categoryId}/getAllProductByCategory?num=${num}&pageNum=${pageNum}`);
   }
   getSubCategoryByCategory(id:number):Observable<ISubCategory[]>
   {
