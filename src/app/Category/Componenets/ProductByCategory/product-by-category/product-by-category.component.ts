@@ -10,7 +10,7 @@ import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/p
 @Component({
   selector: 'app-product-by-category',
   standalone: true,
-  imports: [],
+  imports: [MatPaginatorModule],
   templateUrl: './product-by-category.component.html',
   styleUrl: './product-by-category.component.css'
 })
