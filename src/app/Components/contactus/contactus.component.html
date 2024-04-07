@@ -1,0 +1,177 @@
+<div class="container">
+    <img src="https://r2media.horizondm.com/Backend-developer/Branches.jpg" alt="" class="w-100">
+
+    <p style="text-align: center;padding-top: 10px;"><span style="color: #000000;"><strong><span
+                    style="font-size: 20px;"><span style="color: #8fc23e;">مواعيد الفروع</span> من الساعة 11 ص حتى
+                    الساعة 3.30 م وبعد الإفطار من الساعة 7.30م حتى الساعة 2 منتصف الليل</span></strong></span></p>
+    <p style="text-align: center;"><span style="color: #000000;"><strong><span style="font-size: 20px;">لمزيد من
+                    المعلومات يمكنك التواصل على الرقم <span
+                        style="color: #ef0000;">0201111509351</span></span></strong></span>
+    </p>
+    <table width="100%" align="center">
+        <tbody>
+            <tr>
+                <td align="center" valign="middle" (click)="scrollTo('sa3id')"><img
+                        src="https://r2media.horizondm.com/Backend-developer/Ubber.jpg" width="100%" style="
+                                    width: 200px;"></td>
+                <td align="center" valign="middle" (click)="scrollTo('delta')"><img
+                        src="https://r2media.horizondm.com/Backend-developer/Delta.jpg" width="100%" style="
+                                    width: 200px;"></td>
+                <td align="center" valign="middle" (click)="scrollTo('alex')"><img
+                        src="https://r2media.horizondm.com/Backend-developer/alex.jpg" width="100%" style="
+                                    width: 200px;"></td>
+                <td align="center" valign="middle" (click)="scrollTo('giza')"><img
+                        src="https://r2media.horizondm.com/Backend-developer/Giza.jpg" width="100%" style="
+                                width: 200px;"></td>
+                <td align="center" valign="middle" (click)="scrollTo('cairo')"><img
+                        src="https://r2media.horizondm.com/Backend-developer/cairo.jpg" width="100%" style="
+                                width: 200px;"></td>
+            </tr>
+            <tr>
+                <td class="product details product-item-details" align="center" valign="middle"><a
+                        href="https://dream2000.com/accessories/power-banks.html"></a></td>
+                <td class="product details product-item-details" align="center" valign="middle"><a
+                        href="https://dream2000.com/accessories/speakers.html"></a></td>
+                <td class="product details product-item-details" align="center" valign="middle"><a
+                        href="https://dream2000.com/corporate/storage.html"></a></td>
+                <td class="product details product-item-details" align="center" valign="middle"><a
+                        href="https://dream2000.com/accessories/scales.html"></a></td>
+                <td class="product details product-item-details" align="center" valign="middle"><a
+                        href="https://dream2000.com/catalogsearch/result/?q=cover"></a></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <!-- CAIRO -->
+    <div class="row">
+        <div class="col-3">
+            <iframe width="100%" height="70%"
+                src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;coord=52.70967533219885, -8.020019531250002&amp;q=1%20Grafton%20Street%2C%20Dublin%2C%20Ireland&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
+                frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><br />
+        </div>
+        <div class="col-9">
+            <p
+                style="margin-top:70px;text-align:center;background-color: #1e90ff;border-radius: 20px;padding-bottom: 2px;box-shadow: 1px 4px 4px 1px;">
+                <span style="font-size:20px"><strong><span style="color:#ffffff">عناوين فروع</span> <span
+                            style="color:#ffffff">القاهرة</span></strong></span>
+            </p>
+
+            <nav id="cairo">
+                <div class="nav nav-tabs">
+                    @for(tab of cairo; track $index){
+                    <button type="button" class="nav-link {{$index === 0 ? 'active' : ' '}}" data-bs-toggle="tab"
+                        [attr.data-bs-target]="'#'+tab.title"
+                        (click)="activateTab('cairo',$index)">{{tab.title}}</button>
+                    }
+                </div>
+            </nav>
+
+            <div class="tab-content">
+                @for(tab of cairo; track $index){
+                <div class="tab-pane fade {{$index === indices['cairo'] ? 'show active' : ' '}}" [attr.id]="tab.title"
+                    [innerHTML]="sanitize(tab.content)"></div>
+                }
+            </div>
+
+            <!-- GIZA -->
+            <p
+                style="margin-top:50px;text-align:center;background-color: #1e90ff;border-radius: 20px;padding-bottom: 2px;box-shadow: 1px 4px 4px 1px;">
+                <span style="font-size:20px"><strong><span style="color:#ffffff">عناوين فروع</span> <span
+                            style="color:#ffffff">الجيزة</span></strong></span>
+            </p>
+
+            <nav id="giza">
+                <div class="nav nav-tabs">
+                    @for(tab of giza; track $index){
+                    <button type="button" class="nav-link {{$index === 0 ? 'active' : ' '}}" data-bs-toggle="tab"
+                        [attr.data-bs-target]="'#'+tab.title"
+                        (click)="activateTab('giza',$index)">{{tab.title}}</button>
+                    }
+                </div>
+            </nav>
+
+            <div class="tab-content">
+                @for(tab of giza; track $index){
+                <div class="tab-pane fade {{$index === indices['giza'] ? 'show active' : ' '}}" [attr.id]="tab.title"
+                    [innerHTML]="sanitize(tab.content)"></div>
+                }
+            </div>
+
+            <!-- ALEX -->
+            <p
+                style="margin-top:50px;text-align:center;background-color: #1e90ff;border-radius: 20px;padding-bottom: 2px;box-shadow: 1px 4px 4px 1px;">
+                <span style="font-size:20px"><strong><span style="color:#ffffff">عناوين فروع</span> <span
+                            style="color:#ffffff">الاسكندرية</span></strong></span>
+            </p>
+
+            <nav id="alex">
+                <div class="nav nav-tabs">
+                    @for(tab of alex; track $index){
+                    <button type="button" class="nav-link {{$index === 0 ? 'active' : ' '}}" data-bs-toggle="tab"
+                        [attr.data-bs-target]="'#'+tab.title"
+                        (click)="activateTab('alex',$index)">{{tab.title}}</button>
+                    }
+                </div>
+            </nav>
+
+            <div class="tab-content">
+                @for(tab of alex; track $index){
+                <div class="tab-pane fade {{$index === indices['alex'] ? 'show active' : ' '}}" [attr.id]="tab.title"
+                    [innerHTML]="sanitize(tab.content)"></div>
+                }
+            </div>
+
+
+            <!-- DELTA -->
+            <p
+                style="margin-top:50px;text-align:center;background-color: #1e90ff;border-radius: 20px;padding-bottom: 2px;box-shadow: 1px 4px 4px 1px;">
+                <span style="font-size:20px"><strong><span style="color:#ffffff">عناوين فروع</span> <span
+                            style="color:#ffffff">الدلتا</span></strong></span>
+            </p>
+
+
+            <nav id="delta">
+                <div class="nav nav-tabs">
+                    @for(tab of delta; track $index){
+                    <button type="button" class="nav-link {{$index === 0 ? 'active' : ' '}}" data-bs-toggle="tab"
+                        [attr.data-bs-target]="'#'+tab.title"
+                        (click)="activateTab('delta',$index)">{{tab.title}}</button>
+                    }
+                </div>
+            </nav>
+
+            <div class="tab-content">
+                @for(tab of delta; track $index){
+                <div class="tab-pane fade {{$index === indices['delta'] ? 'show active' : ' '}}" [attr.id]="tab.title"
+                    [innerHTML]="sanitize(tab.content)"></div>
+                }
+            </div>
+
+            <!-- SA3ID -->
+            <p
+                style="margin-top:50px;text-align:center;background-color: #1e90ff;border-radius: 20px;padding-bottom: 2px;box-shadow: 1px 4px 4px 1px;">
+                <span style="font-size:20px"><strong><span style="color:#ffffff">عناوين فروع</span><span
+                            style="color:#ffffff">صعيد مصر</span></strong></span>
+            </p>
+
+
+            <nav id="sa3id">
+                <div class="nav nav-tabs">
+                    @for(tab of sa3id; track $index){
+                    <button type="button" class="nav-link {{$index === 0 ? 'active' : ' '}}" data-bs-toggle="tab"
+                        [attr.data-bs-target]="'#'+tab.title"
+                        (click)="activateTab('sa3id',$index)">{{tab.title}}</button>
+                    }
+                </div>
+            </nav>
+
+            <div class="tab-content">
+                @for(tab of sa3id; track $index){
+                <div class="tab-pane fade {{$index === indices['sa3id'] ? 'show active' : ' '}}" [attr.id]="tab.title"
+                    [innerHTML]="sanitize(tab.content)"></div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

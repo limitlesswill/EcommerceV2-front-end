@@ -19,7 +19,7 @@
         'navbar-icons-arabic': lang === 'ar',
         'navbar-icons': lang === 'en',
       }">
-        <a href="" style="margin-right: -43px;"><i class="mdi mdi-map-marker-outline"></i><span>{{ 'nav.storelocation' |
+        <a href="/contactus" style="margin-right: -43px;"><i class="mdi mdi-map-marker-outline"></i><span>{{ 'nav.storelocation' |
             translate }}</span></a>
         <a *ngIf="!isSubmitted; else loggedOut" routerLink="/login" style="margin-right: 6px">
           <i class="mdi mdi-account-outline"></i>
@@ -52,7 +52,7 @@
           {{ lang === 'en' ? c.enName : c.arName }}
           <i class="fa fa-caret-down"></i>
         </button>
-        <div class="subnav-content shadow" style="margin-left: 100px;">
+        <div class="subnav-content shadow" [style.margin-left.px]="[lang ==='en' ? 0 : 250]">
           <div>
 
             <img [src]="'../../../assets/CategoryAndProductImg/' + (lang === 'en' ? c.imgURL : c.imgURLAr)" width="100%"

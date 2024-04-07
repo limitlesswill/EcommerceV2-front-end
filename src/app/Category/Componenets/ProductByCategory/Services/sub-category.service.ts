@@ -18,10 +18,11 @@ export class SubCategoryService {
   }
   constructor(private httpclient: HttpClient) { }
 
-  getProductBySubCategory(id:number):Observable<IProduct[]>
+  getProductBySubCategory(id:number , num: number, pageNum: number):Observable<IProduct[]>
   {
-    return this.httpclient.get<IProduct[]>(`${this.SubCategoryApiUrl}/${id}/getProductonlyfromSubCategory`);
+    return this.httpclient.get<IProduct[]>(`${this.SubCategoryApiUrl}/${id}/getProductonlyfromSubCategory?num=${num}&pageNum=${pageNum}`);
   }
 
+ 
   
 }

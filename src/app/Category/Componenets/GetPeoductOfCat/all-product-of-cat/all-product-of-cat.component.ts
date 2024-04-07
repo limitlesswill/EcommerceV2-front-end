@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { NavBarComponent } from '../../../../Components/nav-bar/nav-bar.component';
 import { HeaderComponent } from '../../../../Components/header/header.component';
 import { ProductByCategoryComponent } from '../../ProductByCategory/product-by-category/product-by-category.component';
+import { FooterComponent } from '../../../../Components/footer/footer.component';
 
 @Component({
   selector: 'app-all-product-of-cat',
   standalone: true,
-  imports: [NavBarComponent,HeaderComponent,ProductByCategoryComponent],
+  imports: [NavBarComponent,HeaderComponent,ProductByCategoryComponent,FooterComponent],
   templateUrl: './all-product-of-cat.component.html',
   styleUrl: './all-product-of-cat.component.css'
 })
