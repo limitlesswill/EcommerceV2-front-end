@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 
 export class PaymentService {
 
-  totalAmount = JSON.parse(localStorage.getItem('CartsTotal') as any) || [];
+  totalAmount = JSON.parse(localStorage.getItem('PaymentAmount') as any) || [];
   transactionID = "";
 
   constructor() { }
