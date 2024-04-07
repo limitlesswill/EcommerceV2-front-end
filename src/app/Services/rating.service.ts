@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IComment } from '../Models/i-comment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,12 @@ export class RatingService {
 
   constructor(private http: HttpClient) { }
 
-  getProductComments(productId: Number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}Comment/product/ ${productId}`);
+  getProductComments(productId: Number): Observable<IComment[]> {
+    return this.http.get<IComment[]>(`${this.baseUrl}Comment/product/ ${productId}`);
   }
 
-  makeProductComment( comment: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}Comment`, comment);
+  makeProductComment( comment: IComment): Observable<any> {
+    return this.http.post<IComment>(`${this.baseUrl}Comment`, comment);
   }
 
 }
