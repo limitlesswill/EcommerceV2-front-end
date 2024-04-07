@@ -30,7 +30,7 @@ import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
     HttpClientModule,
     NavBarComponent,
     ButtonModule
-    
+  
    
    
   ],

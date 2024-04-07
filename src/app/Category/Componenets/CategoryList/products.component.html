@@ -39,9 +39,9 @@
         </div>  -->
 <!-- <div class="col-10"> -->
 <!-- <div> -->
-<mat-paginator [length]="200" [pageSizeOptions]="[10, 50, 100]" showFirstLastButtons="" aria-label="Select page">
-</mat-paginator>
-<div class="products wrapper grid columns4 products-grid mb-4  ">
+<mat-paginator [length]="20"  [pageSize]="5" [pageSizeOptions]="[2, 5, 25, 100]" showFirstLastButtons (page)="onPageChange($event)" aria-label="Select page"></mat-paginator>
+<!-- <mat-paginator [length]="products?.length"   [pageSize]="1" [pageSizeOptions]="[3, 10, 25, 100]" (page)="onPageChange($event)" aria-label="Select page"></mat-paginator> -->
+<div class="products wrapper grid columns4 products-grid mb-4 ">
     <ol class="filterproducts products list items product-items">
         @for(product of products; track product.Id){
         <li class="item product product-item">
@@ -93,7 +93,7 @@
                                     <input type="hidden" name="product" value="11884">
                                     <input type="hidden" name="uenc" value="">
                                     <input name="form_key" type="hidden" value=""> <button type="submit"
-                                        title="Add to Cart" class="action tocart primary"(click)="addToCart(product)">
+                                        title="Add to Cart" class="action tocart primary" (click)="addToCart(product)">
                                         <span>Add to Cart</span>
                                     </button>
                                 </form>

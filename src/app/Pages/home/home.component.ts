@@ -12,7 +12,6 @@ import { Item3Component } from '../../Components/static-items/static-items/item3
 import { Item4Component } from '../../Components/static-items/static-items/item4/item4.component';
 import { Item5Component } from '../../Components/static-items/static-items/item5/item5.component';
 import { Item6Component } from '../../Components/static-items/static-items/item6/item6.component';
-import { ProductListComponent } from '../../Components/product-list/product-list.component';
 import { ProductDetailsComponent } from "../../Components/product-details/product-details.component";
 import { ProductsComponent } from "../../Category/Componenets/CategoryList/products.component";
 import { ProductByCategoryComponent } from "../../Category/Componenets/ProductByCategory/product-by-category/product-by-category.component";
@@ -29,7 +28,7 @@ import { FiltrationComponent } from '../../Category/Componenets/AsideFilter/filt
     styleUrl: './home.component.css',
     imports: [MainsliderComponent, HeaderComponent, FooterComponent, NavBarComponent, PaymentWaysComponent,
         CartComponent, MarketComponent, Item1Component, Item2Component, Item3Component, Item4Component, Item5Component,
-        Item6Component, ProductListComponent, ProductsComponent, ProductByCategoryComponent,MainCategoryComponent,FiltrationComponent]
+        Item6Component, ProductsComponent, ProductByCategoryComponent,MainCategoryComponent,FiltrationComponent]
           
 })
 export class HomeComponent {

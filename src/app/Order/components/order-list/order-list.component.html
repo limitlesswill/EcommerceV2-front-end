@@ -19,10 +19,12 @@
                   <td>{{ Order.id }}</td>
                   <td>{{Order.finalPrice}} $</td>
                   <td>{{Order.date}}</td>
-                  @if(Order.state==1){<td>Pending</td>}@else if(Order.state==2){<td>Confirmed</td>}@else{<td>Canceled</td>}
+                  @if(Order.state==1){<td>Pending</td>}@else if(Order.state==2){<td>Confirmed</td>}@else if(Order.state==3){<td>Canceled</td>}@else{<td>Paid</td>}
                   <td>
+                    @if(Order.state==1){<i (click)="payOrder(Order)"  class="mdi mdi-credit-card"style="padding-right: 5px;" >    </i>}
                      <i (click)="editOrder(Order.id)" class="mdi mdi-pencil" style="padding-right: 5px;">    </i>
                      <i (click)="deleteOrder(Order.id)" class="mdi mdi-trash-can-outline"></i> 
+                     
                   </td>
               </tr>
               }

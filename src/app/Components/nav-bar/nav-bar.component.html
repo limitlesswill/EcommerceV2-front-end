@@ -52,7 +52,7 @@
           {{ lang === 'en' ? c.enName : c.arName }}
           <i class="fa fa-caret-down"></i>
         </button>
-        <div class="subnav-content shadow" style="margin-left: 100px;">
+        <div class="subnav-content shadow" [style.margin-left.px]="[lang ==='en' ? 0 : 250]">
           <div>
 
             <img [src]="'../../../assets/CategoryAndProductImg/' + (lang === 'en' ? c.imgURL : c.imgURLAr)" width="100%"
