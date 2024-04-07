@@ -1,10 +1,11 @@
 import { OrderDetailsService } from './../../Service/order-details.service';
+import { OrderService } from '../../Service/order.service';
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { Order, OrderDetails } from '../../models/order/order.module';
-import { OrderService } from '../../Service/order.service';
+
 
 @Component({
   selector: 'app-order-list',
@@ -33,6 +34,12 @@ export class OrderListComponent {
       this.OrdersDetails = Orders;
     });
   }
+  payOrder(Order:Order): void {
+    Order.state=1;
+    this.OrderService.UpdateOrder(Order.id,Order).subscribe((d) => {
+    this.fetchOrders();});
+  }
+
 
   editOrder(id: number): void {
     this.fetchOrdersDetails(id);

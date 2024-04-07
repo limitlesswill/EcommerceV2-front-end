@@ -22,14 +22,13 @@ import { Item3Component } from './Components/static-items/static-items/item3/ite
 import { Item4Component } from './Components/static-items/static-items/item4/item4.component';
 import { Item5Component } from './Components/static-items/static-items/item5/item5.component';
 import { Item6Component } from './Components/static-items/static-items/item6/item6.component';
-import { ProductListComponent } from './Components/product-list/product-list.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, CartComponent,AppliancesComponent,HeaderComponent,NavBarComponent,RegisterComponent,HomeComponent
-    ,PaymentWaysComponent,FooterComponent,MainsliderComponent,MarketComponent,ThirdThingComponent,ProductDetailsComponent,ProductListComponent,
+    ,PaymentWaysComponent,FooterComponent,MainsliderComponent,MarketComponent,ThirdThingComponent,ProductDetailsComponent,
     Item1Component,Item2Component,Item3Component,Item4Component,Item5Component,Item6Component ,ProductDetailsComponent,LoginComponent,AppComponent],
   templateUrl:'./app.component.html',
   styleUrl: './app.component.css'

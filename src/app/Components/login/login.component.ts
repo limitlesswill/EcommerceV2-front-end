@@ -12,7 +12,7 @@ import { FormControl } from '@angular/forms';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import { HeaderComponent } from '../header/header.component';
 import { Subscription } from 'rxjs';
-
+import {jwtDecode} from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -53,8 +53,9 @@ export class LoginComponent implements OnInit {
         if(this.LoginForm.valid){
           this._auth.loginUser(this.LoginForm.value).subscribe(
             (response: any) => {
-              if (response && response.token) {
+              if (response && response.token && response.expiration) {
                 localStorage.setItem('token', response.token);
+                localStorage.setItem('expiration', response.expiration);
                 // Redirect to dashboard or any other page
                 this._router.navigate(['/home']);
               } else {
@@ -71,4 +72,8 @@ export class LoginComponent implements OnInit {
           )
         }
       }
-}
+
+     
+      
+  }
+

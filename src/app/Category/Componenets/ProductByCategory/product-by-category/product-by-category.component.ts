@@ -2,7 +2,7 @@ import { Component, Input, ViewChild, inject } from '@angular/core';
 import { CategoryService } from '../../../Services/category.service';
 import { IProduct } from '../../CategoryList/Model/iproduct';
 import { SubCategoryService } from '../Services/sub-category.service';
-import { PaginatorModule } from 'primeng/paginator';
+
 
 import { CartService } from '../../../../Services/cart.service';
 import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
@@ -10,7 +10,7 @@ import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/p
 @Component({
   selector: 'app-product-by-category',
   standalone: true,
-  imports: [PaginatorModule,MatPaginatorModule],
+  imports: [],
   templateUrl: './product-by-category.component.html',
   styleUrl: './product-by-category.component.css'
 })

@@ -14,7 +14,7 @@ import { CartService } from '../../../Services/cart.service';
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [MatPaginatorModule, RouterModule, RouterOutlet, ToolbarComponent, FiltrationComponent, NavBarComponent, HeaderComponent],
+  imports: [ RouterModule, RouterOutlet, ToolbarComponent, FiltrationComponent, NavBarComponent, HeaderComponent],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
