@@ -20,7 +20,7 @@
     
 </div> -->
 <!-- ///////////////////// -->
-<mat-paginator [length]="20"  [pageSize]="5" [pageSizeOptions]="[1, 5, 25, 100]" showFirstLastButtons (page)="onPageChange($event)" aria-label="Select page"></mat-paginator>
+<mat-paginator [length]="20"  [pageSize]="5" [pageSizeOptions]="[1, 2,3]" showFirstLastButtons (page)="onPageChange($event)" aria-label="Select page"></mat-paginator>
 <div class="products wrapper grid columns4 products-grid mb-4  ">
     <ol class="filterproducts products list items product-items">
         @for(product of Subproducts; track product.Id){
