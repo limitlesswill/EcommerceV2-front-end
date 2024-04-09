@@ -1,6 +1,5 @@
 
 import { CategoryService } from '../../Services/category.service';
-
 import { IProduct } from './Model/iproduct';
 import { Component, Input, ViewChild, inject, viewChild } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
@@ -14,7 +13,8 @@ import { CartService } from '../../../Services/cart.service';
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [ RouterModule, RouterOutlet, ToolbarComponent, FiltrationComponent, NavBarComponent, HeaderComponent],
+  imports: [ RouterModule, RouterOutlet, ToolbarComponent, FiltrationComponent, NavBarComponent, HeaderComponent,
+    MatPaginatorModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
@@ -23,6 +23,10 @@ export class ProductsComponent {
   addToCart(product: any) {
     this.CartService.AddtoCart(product);
   }
+  Addtofavourite(product: any) {
+    this.CartService.Addtofavourite(product);
+  }
+
 
 
 

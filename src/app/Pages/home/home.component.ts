@@ -28,7 +28,7 @@ import { FiltrationComponent } from '../../Category/Componenets/AsideFilter/filt
     styleUrl: './home.component.css',
     imports: [MainsliderComponent, HeaderComponent, FooterComponent, NavBarComponent, PaymentWaysComponent,
         CartComponent, MarketComponent, Item1Component, Item2Component, Item3Component, Item4Component, Item5Component,
-        Item6Component, ProductsComponent, ProductByCategoryComponent,MainCategoryComponent,FiltrationComponent]
+        Item6Component, ProductsComponent, ProductByCategoryComponent,MainCategoryComponent,FiltrationComponent ,ProductDetailsComponent ]
           
 })
 export class HomeComponent {

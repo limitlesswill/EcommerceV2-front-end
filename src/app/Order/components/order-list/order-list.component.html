@@ -1,50 +1,79 @@
-<div class="container mt-3">
-    <div class="row container " style="text-align: center; padding-left: 20px ;" >
-      @if(Orders.length > 0&&OrdersDetails.length<1)
-      {
-        <h2>Orders List</h2>
-        <table class="table">
-      <thead>
-        <tr>
-          <th>Order number</th>
-          <th>Cost</th>
-          <th>Date</th>
-          <th>State</th>
-        </tr>
-      </thead>
-           <tbody>
-              @for(Order of Orders; track Order.id ;)
+<div class="wrapper">
+ 
+@if(Orders.length > 0&&OrdersDetails.length<1)
+{
+
+  <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex flex-column">
+          <div class="h3">My Orders list</div>
+      </div>
+      <div class="btn" id="sub">
+        <i class="fas fa-cog"></i> Back
+      </div>
+  </div>
+  <div id="table" class="bg-white rounded">
+       <hr>
+      <div class="table-responsive">
+          <table class="table activitites">
+              <thead>
+                  <tr>
+                      <th scope="col" class="text-uppercase header">Order number</th>
+                      <th scope="col" class="text-uppercase">Cost</th>
+                      <th scope="col" class="text-uppercase">Destination  Address</th>
+                      <th scope="col" class="text-uppercase">Date</th>
+                      <th scope="col" class="text-uppercase">State</th>
+                  </tr>
+              </thead>
+              <tbody>
+                @for(Order of Orders; track Order.id ;)
                 {
-              <tr>
-                  <td>{{ Order.id }}</td>
-                  <td>{{Order.finalPrice}} $</td>
-                  <td>{{Order.date}}</td>
-                  @if(Order.state==1){<td>Pending</td>}@else if(Order.state==2){<td>Confirmed</td>}@else if(Order.state==3){<td>Canceled</td>}@else{<td>Paid</td>}
-                  <td>
-                    @if(Order.state==1){<i (click)="payOrder(Order)"  class="mdi mdi-credit-card"style="padding-right: 5px;" >    </i>}
-                     <i (click)="editOrder(Order.id)" class="mdi mdi-pencil" style="padding-right: 5px;">    </i>
-                     <i (click)="deleteOrder(Order.id)" class="mdi mdi-trash-can-outline"></i> 
-                     
-                  </td>
-              </tr>
-              }
-            </tbody>
-        </table>
-      }
-      @if(OrdersDetails.length>0)
+                  <tr>
+                    <td>{{ Order.id }}</td>
+                    <td>{{Order.finalPrice}} $</td>
+                    <td>{{Order.address}} </td>
+                    <td>{{Order.date}}</td>
+                    @if(Order.state==1){<td>Pending</td>}@else if(Order.state==2){<td>Confirmed</td>}@else if(Order.state==3){<td>Canceled</td>}@else{<td>Paid</td>}
+                    <td>
+                      @if(Order.state==1){<i (click)="payOrder(Order)"  class="mdi mdi-credit-card"style="padding-right: 5px;" >    </i>}
+                       <i (click)="editOrder(Order.id)" class="mdi mdi-pencil" style="padding-right: 5px;">    </i>
+                       <i (click)="deleteOrder(Order.id)" class="mdi mdi-trash-can-outline"></i> 
+                       
+                    </td>
+                </tr>
+               
+             
+                }
+              </tbody>
+          </table>
+      </div>
+      <hr class="items">
+   </div>
+
+  }
+
+   @if(OrdersDetails.length>0)
       {
-        <button (click)="back()">back</button>
-        <h2>Orders Items List</h2>
-        <table class="table">
-      <thead>
-        <tr>
-          <th>Number</th>
-          <th>TotalPrice</th>
-          <th>Product Name</th>
-          <th>Quantity</th>
-        </tr>
-      </thead>
-           <tbody>
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex flex-column">
+              <div class="h3">Orders Items List</div>
+          </div>
+         <div (click)="back()" class="btn" id="sub">
+          <i class="fas fa-cog"></i> Back
+        </div>
+        </div>
+        <div id="table" class="bg-white rounded">
+          <hr>
+         <div class="table-responsive">
+             <table class="table activitites">
+                 <thead>
+                     <tr>
+                         <th scope="col" class="text-uppercase header">Number</th>
+                         <th scope="col" class="text-uppercase">TotalPrice</th>
+                         <th scope="col" class="text-uppercase">Product Name</th>
+                        <th scope="col" class="text-uppercase">Quantity</th>
+                     </tr>
+                 </thead>
+                 <tbody>
               @for(Order of OrdersDetails; track Order.id;)
                 {
               <tr>
@@ -59,13 +88,12 @@
                   </td>
               </tr>
               }
-            </tbody>
-        </table>
-
+                 </tbody>
+              </table>
+        </div>
+        </div>
       }
-    </div>
-</div>
-    
-    
+
+</div>   
   
  

@@ -5,6 +5,7 @@ import { Router, RouterModule } from '@angular/router';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { Order, OrderDetails } from '../../models/order/order.module';
+import { PaymentService } from '../../../Services/payment.service';
 
 
 @Component({
@@ -15,17 +16,20 @@ import { Order, OrderDetails } from '../../models/order/order.module';
   styleUrl: './order-list.component.css'
 })
 export class OrderListComponent {
-
+   UserId: string="fb4efdeb-28f3-4f81-9cef-877310f6b438";
   Orders: Order[] = [];
   OrdersDetails: OrderDetails[] = [];
-  constructor(private OrderService: OrderService,private OrderDetailsService:OrderDetailsService, private router: Router) { }
-
+  constructor( private payment: PaymentService, private Router:Router ,private OrderService: OrderService,private OrderDetailsService:OrderDetailsService, private router: Router) { }
+  
+  transactionId = "";
+  
   ngOnInit(): void {
     this.fetchOrders();
+    
   }
 
   fetchOrders(): void {
-    this.OrderService.GetAllOrder().subscribe(Orders => {
+    this.OrderService.GetUserOrders(this.UserId).subscribe(Orders => {
       this.Orders = Orders;
     });
   }
@@ -35,9 +39,10 @@ export class OrderListComponent {
     });
   }
   payOrder(Order:Order): void {
-    Order.state=1;
-    this.OrderService.UpdateOrder(Order.id,Order).subscribe((d) => {
-    this.fetchOrders();});
+    localStorage.setItem('PaymentOrder',JSON.stringify(Order));
+    this.Router.navigate(['Pay']);
+    this.fetchOrders();
+    
   }
 
 
