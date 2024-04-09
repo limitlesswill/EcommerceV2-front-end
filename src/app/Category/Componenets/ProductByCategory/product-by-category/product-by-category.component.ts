@@ -32,9 +32,8 @@ export class ProductByCategoryComponent {
 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  pageIndex=6;
+  pageIndex: number = 0;
   pageSize=1;
-  flag: boolean = false;
   @Input() SubcategoryId!: number;
   Subproducts!: IProduct[];
 
@@ -47,18 +46,17 @@ export class ProductByCategoryComponent {
     }
   }
 
-  loadProducts(categoryId: number, pageIndex: number, pageSize: number): void {
-    // const pageIndex = this.paginator ? this.paginator.pageIndex : 1;
-    // const pageSize = this.paginator ? this.paginator.pageSize : 10;
-
-    this.SubcategoryService.getProductBySubCategory(categoryId, this.pageIndex, this.pageSize).subscribe(products => {
+  loadProducts(SubcategoryId: number, pageIndex: number, pageSize: number): void {
+    const num = pageSize; 
+    const pageNum = pageIndex + 1; 
+    this.SubcategoryService.getProductBySubCategory(SubcategoryId, num, pageNum).subscribe(products => {
       this.Subproducts = products;
     });
   }
   onPageChange(event: PageEvent): void {
-    this.pageIndex = event.pageIndex; // Set the pageIndex property of the component
-    this.pageSize = event.pageSize; // Set the pageSize property of the component
-    this.loadProducts(this.SubcategoryId, this.pageIndex, this.pageSize); // Load products with the new page index and page size
+    this.pageIndex = event.pageIndex;
+    const pageSize = event.pageSize;
+    this.loadProducts(this.SubcategoryId, this.pageIndex, pageSize);
   }
   
 }
