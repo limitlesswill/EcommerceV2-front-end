@@ -1,6 +1,8 @@
-*{
+* {
     user-select: none;
+    box-sizing: border-box;
 }
+
 .nav,
 .tab-content {
     direction: rtl;
@@ -23,4 +25,9 @@
 .location-table img {
     height: 20px;
     width: 20px;
+}
+
+.container-fluid {
+    max-width: 84%;
+    max-height: 84%;
 }
