@@ -1,20 +1,12 @@
-img{
-    max-width: 100%;
-    height: auto;
-    border: 0;
+* {
+    box-sizing: border-box;
 }
-.row {
-    margin-left: -10px;
-    margin-right: -10px;
+
+.container-fluid {
+    max-width: 84%;
+    max-height: 84%;
 }
-.container {
-    width: 100%;
-}
-[data-content-type='html'] {
-    word-wrap: break-word;
-}
-.container:after {
-    content: "";
-    display: table;
-    clear: both;
+
+.col-4\.5 {
+    width: 37.5%;
 }
