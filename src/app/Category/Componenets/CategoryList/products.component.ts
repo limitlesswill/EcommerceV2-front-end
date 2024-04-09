@@ -8,9 +8,10 @@ import { ToolbarComponent } from '../Toolbar/toolbar/toolbar.component';
 import { FiltrationComponent } from '../AsideFilter/filtration/filtration.component';
 import { NavBarComponent } from '../../../Components/nav-bar/nav-bar.component';
 import { HeaderComponent } from '../../../Components/header/header.component';
-import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import { CartService } from '../../../Services/cart.service';
 import { Component, Input, ViewChild, inject } from '@angular/core';
+
 
 @Component({
   selector: 'app-products',
