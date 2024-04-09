@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { MainsliderComponent } from '../../Components/main-slider/mainslider.component';
+import { AppliancesComponent } from "../../Components/appliances/appliances.component";
+import { ThirdThingComponent } from "../../Components/thirdthing/thirdthing.component";
 import { HeaderComponent } from '../../Components/header/header.component';
 import { FooterComponent } from '../../Components/footer/footer.component';
 import { PaymentWaysComponent } from '../../Components/payment-ways/payment-ways.component';
@@ -28,8 +30,7 @@ import { FiltrationComponent } from '../../Category/Componenets/AsideFilter/filt
     styleUrl: './home.component.css',
     imports: [MainsliderComponent, HeaderComponent, FooterComponent, NavBarComponent, PaymentWaysComponent,
         CartComponent, MarketComponent, Item1Component, Item2Component, Item3Component, Item4Component, Item5Component,
-        Item6Component, ProductsComponent, ProductByCategoryComponent,MainCategoryComponent,FiltrationComponent]
-          
+        Item6Component, ProductsComponent, ProductByCategoryComponent, MainCategoryComponent, FiltrationComponent, AppliancesComponent, ThirdThingComponent]
 })
 export class HomeComponent {
   selectedCategoryId!: number;

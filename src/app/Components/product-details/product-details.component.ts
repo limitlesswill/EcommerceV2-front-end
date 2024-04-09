@@ -8,14 +8,18 @@ import { RatingService } from '../../Services/rating.service';
 import { IComment } from '../../Models/i-comment';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { NavBarComponent } from "../nav-bar/nav-bar.component";
+import { HeaderComponent } from "../header/header.component";
+import { StarsComponent } from "../Shared/stars/stars.component";
 
 
 @Component({
-  selector: 'app-product-details',
-  standalone: true,
-  imports: [RouterOutlet, FormsModule, CommonModule,],
-  templateUrl: './product-details.component.html',
-  styleUrl: './product-details.component.css'
+    selector: 'app-product-details',
+    standalone: true,
+    templateUrl: './product-details.component.html',
+    styleUrl: './product-details.component.css',
+    imports: [RouterOutlet, FormsModule, CommonModule, TranslateModule, NavBarComponent, HeaderComponent, StarsComponent]
 })
 export class ProductDetailsComponent implements OnInit,OnDestroy {
 
@@ -24,24 +28,41 @@ export class ProductDetailsComponent implements OnInit,OnDestroy {
   selectedRating: number;
   userName: string;
   commentStatement: string;
-  stars: number[];
   product!:IProduct;
   comments: IComment[] = [];  
-  commentCreated!: IComment;
+  commentCreated: IComment = {
+    id: 0, // Initialize with a default value
+    productId: 0, // Initialize with a default value
+    review: '',
+    quality: 0
+};
+
   productId!:Number;
  
-  
+  lang:any="en"; 
+  langChangeSubscription: Subscription;
+
 
   constructor(
+    private translate: TranslateService ,
     private route: ActivatedRoute,
     private productService: ProductDetailsService,
     private ratingService: RatingService,
    
   ) {
     this.selectedRating=0;
-    this.userName = ''; 
-    this.commentStatement = ''; 
-    this.stars = [1, 2, 3, 4, 5];
+    this.userName = 'User'; 
+    this.commentStatement = 'good'; 
+   
+
+    this.lang = localStorage.getItem('lang');
+    translate.use(this.lang);
+
+    // Subscribe to langChange event
+    this.langChangeSubscription = translate.onLangChange.subscribe(event => {
+      this.lang = event.lang;
+      // Update any component-specific properties or UI elements here
+    });
   }
 
   sub! : Subscription;
@@ -102,7 +123,7 @@ export class ProductDetailsComponent implements OnInit,OnDestroy {
         console.log(err);
       }
     });
-     
+ 
     
   }
 
