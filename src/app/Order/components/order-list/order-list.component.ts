@@ -16,7 +16,7 @@ import { PaymentService } from '../../../Services/payment.service';
   styleUrl: './order-list.component.css'
 })
 export class OrderListComponent {
-   UserId: string="fb4efdeb-28f3-4f81-9cef-877310f6b438";
+  UserId: string="fb4efdeb-28f3-4f81-9cef-877310f6b438";
   Orders: Order[] = [];
   OrdersDetails: OrderDetails[] = [];
   constructor( private payment: PaymentService, private Router:Router ,private OrderService: OrderService,private OrderDetailsService:OrderDetailsService, private router: Router) { }
@@ -70,18 +70,18 @@ export class OrderListComponent {
     this.OrderDetailsService.UpdateOrderDetails(OrdersDetails.id,OrdersDetails).subscribe((d) => {
       this.fetchOrdersDetails(OrdersDetails.orderId); // Refresh the list
       this.fetchOrders();
-
     }); 
   }
-  back(): void {
-    this.OrdersDetails=[];
-  }
+  
   DecreamentQuantity(OrdersDetails:OrderDetails): void {
     OrdersDetails.quantity--;
     this.OrderDetailsService.UpdateOrderDetails(OrdersDetails.id,OrdersDetails).subscribe((d) => {
       this.fetchOrdersDetails(OrdersDetails.orderId); // Refresh the list
       this.fetchOrders();
     }); 
+  }
+  back(): void {
+    this.OrdersDetails=[];
   }
 
 }

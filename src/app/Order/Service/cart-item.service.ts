@@ -34,5 +34,9 @@ export class CartItemService {
   DeleteCart(id:number) : Observable<void>
   {
     return this.http.delete<void>(`${this.CartApiUrl}/${id}`);
+  } 
+  GetUserCart(UId:string):Observable<Cart[]> {
+    return this.http.get<Cart[]>(`${this.CartApiUrl}/${UId}/GetUserCartItems`);
   }
+
 }

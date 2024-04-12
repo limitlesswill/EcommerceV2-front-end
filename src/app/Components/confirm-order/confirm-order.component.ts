@@ -14,17 +14,32 @@ import { OrderService } from './../../Order/Service/order.service';
   styleUrl: './confirm-order.component.css'
 })
 export class ConfirmOrderComponent implements OnInit {
-Order!:Order;
+Order:Order=JSON.parse(localStorage.getItem('PaymentOrder') as any) || [];
 amount = 0;
-
+Perom:string=" ";
+AddressDe!:string;
   @ViewChild('paymentRef', {static: true}) paymentRef!: ElementRef;
 
   constructor(private OrderService: OrderService,private router: Router, private payment: PaymentService) { }
 
+Peromo (num:string) {
+  this.Perom=num;
+  }
+Addres(Add:string) {
+    this.Perom=Add;
+    this.Order.address = Add;
+    this.OrderService.UpdateOrder(this.Order.id,this.Order).subscribe((d) => {});
+     
+  }
+
+
   ngOnInit(): void {
     this.Order=JSON.parse(localStorage.getItem('PaymentOrder') as any) || [];
-    //this.amount = JSON.parse(localStorage.getItem('PaymentAmount') as any) || [];
     this.amount =this.Order.finalPrice;
+    if(this.Perom=="123M")
+      {
+        this.amount -=500;
+      }
     window.paypal.Buttons(
       {
         style: {
@@ -48,10 +63,16 @@ amount = 0;
         onApprove: (data: any, actions: any) => {
           return actions.order.capture().then((details: any) => {
             if (details.status === 'COMPLETED') {
+              if(this.Perom=="123M")
+                {
+                  this.amount -=500;
+                  this.Order.finalPrice-=500;
+                }
+              this.Order.address=this.AddressDe;  
               this.payment.transactionID = details.id;
               this.Order.state=4;
               this.OrderService.UpdateOrder(this.Order.id,this.Order).subscribe((d) => {});
-              localStorage.setItem('PaymentOrder',JSON.stringify(0));
+              localStorage.removeItem('PaymentOrder');
               this.router.navigate(['list']);
             }
           });

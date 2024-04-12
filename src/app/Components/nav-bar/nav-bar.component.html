@@ -12,8 +12,9 @@
       <a routerLink="/home" class="navbar-logo">
         <img src="../../../assets/Logo-White.png" alt="logo">
       </a>
+      
       <div class="navbar-center">
-        <input type="text" placeholder="{{ 'nav.search' | translate }}...">
+        <input type="text" #searchInput (input)="Search(searchInput.value)" placeholder="{{ 'nav.search' | translate }}...">
       </div>
       <div [ngClass]="{
         'navbar-icons-arabic': lang === 'ar',

@@ -1,3 +1,5 @@
+import { IProduct } from './../../Models/i-product';
+import { SearchproductService } from './../../Services/searchproduct.service';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation, input, output } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
@@ -5,6 +7,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../_services/auth.service';
 import { ICategory, ISubCategory } from '../../Category/Model/icategory';
 import { CategoryService } from '../../Category/Services/category.service';
+import { Product } from '../../Order/models/order/order.module';
 
 
 @Component({
@@ -32,7 +35,7 @@ export class NavBarComponent implements OnInit {
   
   lang:any="en";
   isSubmitted = false;
-
+  Products: Product[] = [];
   
   imageUrlEnglish: string = '../../../assets/download.png';
   imageUrlOtherLanguage: string = 'https://r2media.horizondm.com/wysiwyg/smartwave/porto/flags/en.png';
@@ -44,7 +47,7 @@ export class NavBarComponent implements OnInit {
     else
     return this.imageUrlOtherLanguage;
   }
-  constructor(private _auth:AuthService, private _router:Router, private translate: TranslateService, private cdr: ChangeDetectorRef,private categoryServices: CategoryService, private route: ActivatedRoute) {
+  constructor(private SearchproductService:SearchproductService, private _auth:AuthService, private _router:Router, private translate: TranslateService, private cdr: ChangeDetectorRef,private categoryServices: CategoryService, private route: ActivatedRoute) {
     translate.use(this.lang);
   }
   ngOnInit(): void {
@@ -72,6 +75,17 @@ export class NavBarComponent implements OnInit {
     this._auth.logout();
     this._router.navigate(['/home']);
   }
- 
+  
+  Search(name: string): void {
+    if(name=="")
+      {
+        localStorage.removeItem('Search');
+      }else{
+     this.SearchproductService.getSearchProducts(name).subscribe(products => {
+        this.Products = products;
+        console.log(this.Products);
+        localStorage.setItem('Search', JSON.stringify(this.Products));
+      });}
+  }
  
 }

@@ -1,4 +1,5 @@
-import { Order} from './../../../Order/models/order/order.module';
+import { CartItemService } from './../../../Order/Service/cart-item.service';
+import { Cart, Order} from './../../../Order/models/order/order.module';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Component, inject } from '@angular/core';
 import { NavComponent } from '../../nav/nav.component';
@@ -19,7 +20,50 @@ import { OrderService , } from '../../../Order/Service/order.service';
 })
 
 export class CartComponent {
+  lang:any="en"; 
+  langChangeSubscription: Subscription;
+  
   private Items:any[]= JSON.parse(localStorage.getItem('CartItems')||"[]");
+  Items2:Cart[]=[];
+  UserId: string="fb4efdeb-28f3-4f81-9cef-877310f6b438";
+
+  isLoggedIn(): boolean {
+    const token = localStorage.getItem('token');
+    return token ? true : false;
+  }
+  ngOnInit(): void {
+    this.fetchCart();
+  }
+  fetchCart(){
+    if(this.isLoggedIn()){
+      this.CartItemService.GetUserCart(this.UserId).subscribe(Carts => {
+        this.Items2 =Carts;
+      });
+    }else
+    {
+      this.Items= JSON.parse(localStorage.getItem('CartItems')||"[]");
+    }
+  }
+  deleteItem(id:number)
+  {
+    this.CartItemService.DeleteCart(id).subscribe((d) => {
+    this.fetchCart(); // Refresh the list
+     }); 
+  }
+  IncreamentItemQuantity(Cart:Cart): void {
+    Cart.quantity++;
+    this.CartItemService.UpdateCart(Cart.id,Cart).subscribe((d) => {
+    this.fetchCart(); // Refresh the list
+     }); 
+  }
+  DecreamentItemQuantity(Cart:Cart): void {
+    Cart.quantity--;
+    if(Cart.quantity==0)
+      {this.deleteItem(Cart.id);}
+    this.CartItemService.UpdateCart(Cart.id,Cart).subscribe((d) => {
+    this.fetchCart(); // Refresh the list
+     }); 
+  }
   private Order:Order={
     id: 0,
     finalPrice: 0,
@@ -27,13 +71,16 @@ export class CartComponent {
     state: 1,
     userID: "string",
     address:" "
-  } ;
- 
-
-  lang:any="en"; 
-  langChangeSubscription: Subscription;
+  };
+  checkout(){
+   this.Order.date= new Date(Date.now());
+   this.Order.address=" ";
+   this.OrderService.CreateOrder(this.Order).subscribe();
+   this.Items.forEach(element => {this.CartServic.delete(element);});  
+   this.router.navigate(['list']);
+    }
   constructor(private router: Router,private translate: TranslateService , private Router:Router ,
-    private OrderService: OrderService,private OrderDetailsService:OrderDetailsService,) {
+    private OrderService: OrderService,private CartItemService: CartItemService) {
     this.lang = localStorage.getItem('lang');
     translate.use(this.lang);
 
@@ -52,8 +99,18 @@ export class CartComponent {
   totalprice: number = 0;
   CartServic = inject(CartService);
   getTotal(){
-    return this.CartServic.getTotal();}
-    getItemPrice(product:any){
+    if(this.isLoggedIn())
+      {
+        const sum = this.Items2.reduce((accumulator, currentValue) => accumulator + currentValue.totalPrice, 0);
+        return sum;
+      }
+      else
+      {
+        return this.CartServic.getTotal();
+      }
+  
+  }
+  getItemPrice(product:any){
       return this.CartServic.getItemPrice(product.id);}
      
   delete(product:any){
@@ -67,12 +124,5 @@ export class CartComponent {
     this.CartServic.DecreamentQuantity(product.id);
   }
 
-checkout(){
- this.Order.date= new Date(Date.now());
- this.Order.address="Alex";
- this.OrderService.CreateOrder(this.Order).subscribe();
- this.Items.forEach(element => {this.CartServic.delete(element);});  
- this.router.navigate(['list']);
-  }
 
 }
