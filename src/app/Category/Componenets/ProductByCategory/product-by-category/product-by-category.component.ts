@@ -6,11 +6,12 @@ import { SubCategoryService } from '../Services/sub-category.service';
 
 import { CartService } from '../../../../Services/cart.service';
 import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-product-by-category',
   standalone: true,
-  imports: [MatPaginatorModule],
+  imports: [MatPaginatorModule,RouterModule],
   templateUrl: './product-by-category.component.html',
   styleUrl: './product-by-category.component.css'
 })
@@ -19,13 +20,20 @@ export class ProductByCategoryComponent {
   addToCart(product: any) {
     this.CartService.AddtoCart(product);
   }
+  Addtofavourite(product: any) {
+    this.CartService.Addtofavourite(product);
+  }
+
+
+
+
+
 
 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  pageIndex=6;
+  pageIndex: number = 0;
   pageSize=1;
-  flag: boolean = false;
   @Input() SubcategoryId!: number;
   Subproducts!: IProduct[];
 
@@ -38,18 +46,17 @@ export class ProductByCategoryComponent {
     }
   }
 
-  loadProducts(categoryId: number, pageIndex: number, pageSize: number): void {
-    // const pageIndex = this.paginator ? this.paginator.pageIndex : 1;
-    // const pageSize = this.paginator ? this.paginator.pageSize : 10;
-
-    this.SubcategoryService.getProductBySubCategory(categoryId, this.pageIndex, this.pageSize).subscribe(products => {
+  loadProducts(SubcategoryId: number, pageIndex: number, pageSize: number): void {
+    const num = pageSize; 
+    const pageNum = pageIndex + 1; 
+    this.SubcategoryService.getProductBySubCategory(SubcategoryId, num, pageNum).subscribe(products => {
       this.Subproducts = products;
     });
   }
   onPageChange(event: PageEvent): void {
-    this.pageIndex = event.pageIndex; // Set the pageIndex property of the component
-    this.pageSize = event.pageSize; // Set the pageSize property of the component
-    this.loadProducts(this.SubcategoryId, this.pageIndex, this.pageSize); // Load products with the new page index and page size
+    this.pageIndex = event.pageIndex;
+    const pageSize = event.pageSize;
+    this.loadProducts(this.SubcategoryId, this.pageIndex, pageSize);
   }
   
 }

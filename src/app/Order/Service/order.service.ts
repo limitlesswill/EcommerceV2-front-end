@@ -23,7 +23,10 @@ export class OrderService {
   }
   CreateOrder(Order:Order):Observable<Order>
   {
-    return this.http.post<Order>(this.OrderApiUrl,Order , this.httpOptions);
+    const token = localStorage.getItem('token');
+    let headers = new HttpHeaders();
+    if (token) {headers = headers.append('Authorization', `Bearer ${token}`);}
+    return this.http.post<Order>(this.OrderApiUrl,Order ,{headers});
   }
   GetOrderById(id : number) : Observable<Order>
   {

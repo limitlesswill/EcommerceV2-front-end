@@ -1,0 +1,23 @@
+*{
+    box-sizing: border-box;
+}
+.container-fluid {
+    max-width: 84%;
+    max-height: 84%;
+}
+
+#carouselExample {
+    height: 100%;
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+.active {
+    height: 100%;
+}
+
+.active img {
+    height: 100%;
+}

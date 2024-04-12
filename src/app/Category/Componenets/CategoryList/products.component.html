@@ -39,12 +39,16 @@
         </div>  -->
 <!-- <div class="col-10"> -->
 <!-- <div> -->
-<mat-paginator [length]="20"  [pageSize]="5" [pageSizeOptions]="[2, 5, 25, 100]" showFirstLastButtons (page)="onPageChange($event)" aria-label="Select page"></mat-paginator>
+    <div class="col-10 p-0">
+        <mat-paginator class="paginator col-10" (page)="onPageChange($event)"
+        [length]="6"  [pageSize]="2" [pageSizeOptions]="[1,2,3]" showFirstLastButtons aria-label="Select page" ></mat-paginator>
+    </div>
+<!-- <mat-paginator [length]="20"  [pageSize]="5" [pageSizeOptions]="[2, 5]" showFirstLastButtons (page)="onPageChange($event)" aria-label="Select page"></mat-paginator> -->
 <!-- <mat-paginator [length]="products?.length"   [pageSize]="1" [pageSizeOptions]="[3, 10, 25, 100]" (page)="onPageChange($event)" aria-label="Select page"></mat-paginator> -->
 <div class="products wrapper grid columns4 products-grid mb-4 ">
     <ol class="filterproducts products list items product-items">
         @for(product of products; track product.Id){
-        <li class="item product product-item">
+        <li (click)="Addtofavourite(product)"  class="item product product-item">
             <div class="product-item-info type1">
                 <div class="product photo product-item-photo">
                     <a href="#">
@@ -59,7 +63,7 @@
                 <div class="product details product-item-details">
                     <strong class="product name product-item-name">
                         <a class="product-item-link" href="#">
-                            {{product.description}} </a>
+                            {{product.enDescription}} </a>
                     </strong>
 
                     <div class="price-box price-final_price" data-product-id="11884">

@@ -1,5 +1,4 @@
 import { Order} from './../../../Order/models/order/order.module';
-import { routes } from './../../../app.routes';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Component, inject } from '@angular/core';
 import { NavComponent } from '../../nav/nav.component';
@@ -7,7 +6,6 @@ import { HeaderComponent } from '../../header/header.component';
 import { NavBarComponent } from '../../nav-bar/nav-bar.component';
 import { CartService } from '../../../Services/cart.service';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { OrderDetailsService } from '../../../Order/Service/order-details.service';
 import { OrderService , } from '../../../Order/Service/order.service';
@@ -27,13 +25,14 @@ export class CartComponent {
     finalPrice: 0,
     date: new Date('2024-01-01'),
     state: 1,
-    userID: "string"
+    userID: "string",
+    address:" "
   } ;
  
 
   lang:any="en"; 
   langChangeSubscription: Subscription;
-  constructor(private translate: TranslateService , private Router:Router ,
+  constructor(private router: Router,private translate: TranslateService , private Router:Router ,
     private OrderService: OrderService,private OrderDetailsService:OrderDetailsService,) {
     this.lang = localStorage.getItem('lang');
     translate.use(this.lang);
@@ -54,7 +53,6 @@ export class CartComponent {
   CartServic = inject(CartService);
   getTotal(){
     return this.CartServic.getTotal();}
-   
     getItemPrice(product:any){
       return this.CartServic.getItemPrice(product.id);}
      
@@ -69,21 +67,12 @@ export class CartComponent {
     this.CartServic.DecreamentQuantity(product.id);
   }
 
-  checkout(){
-   
-  
-  
-  
-  
-  
-  
- //Order creation
+checkout(){
  this.Order.date= new Date(Date.now());
- this.Order.userID="2ac5b300-67e7-4750-8205-7de2bf74c6b1";
+ this.Order.address="Alex";
  this.OrderService.CreateOrder(this.Order).subscribe();
- console.log(this.Items);
- this.Items.forEach(element => {this.CartServic.delete(element);});   
- //this.Router.navigate(['Pay']);
+ this.Items.forEach(element => {this.CartServic.delete(element);});  
+ this.router.navigate(['list']);
   }
 
 }

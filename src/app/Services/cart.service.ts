@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ProductDetailsComponent } from './../Components/product-details/product-details.component';
 import { Injectable } from '@angular/core';
 
@@ -6,18 +7,29 @@ import { Injectable } from '@angular/core';
 })
 export class CartService {
 private Items:any[]= JSON.parse(localStorage.getItem('CartItems')||"[]");
+private  Products:any[]= JSON.parse(localStorage.getItem('favouriteProduct')||"[]");
 private Total:number=0;
 
-  constructor() { }
+  constructor(private router:Router ) { }
 
   AddtoCart(Product:any) {
     let Item = this.Items.find(i => i.id== Product.id);
     if(Item==null)
    {this.Items.push({...Product,wanted:1});
   localStorage.setItem('CartItems',JSON.stringify(this.Items));
-  } 
+  }
+  
 
   }
+ 
+  Addtofavourite(Product:any) {
+    let Item = this.Products.find(i => i.id== Product.id);
+    if(Item==null)
+   {this.Products.push({...Product,wanted:1});
+  localStorage.setItem('favouriteProduct',JSON.stringify(this.Products)); 
+  } 
+  }
+
   getTotal(){
     localStorage.setItem('CartItems',JSON.stringify(this.Items));
     this.Total= this.Items.reduce((acc, item) =>{return acc += item.price*item.wanted},0);

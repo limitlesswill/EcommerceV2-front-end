@@ -1,6 +1,8 @@
+import { AddressComponent } from './../../../Components/address/address.component';
 export interface Order {
   id: number;
   finalPrice:number;
+  address:string;
   date: Date; 
   state:number;
   userID:string;
