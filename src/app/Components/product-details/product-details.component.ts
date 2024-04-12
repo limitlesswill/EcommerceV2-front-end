@@ -6,7 +6,7 @@ import { IProduct } from '../../Models/i-product';
 import { ProductDetailsService } from '../../Services/product-details.service';
 import { RatingService } from '../../Services/rating.service';
 import { IComment } from '../../Models/i-comment';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NavBarComponent } from "../nav-bar/nav-bar.component";
@@ -19,24 +19,19 @@ import { StarsComponent } from "../Shared/stars/stars.component";
     standalone: true,
     templateUrl: './product-details.component.html',
     styleUrl: './product-details.component.css',
-    imports: [RouterOutlet, FormsModule, CommonModule, TranslateModule, NavBarComponent, HeaderComponent, StarsComponent]
+    imports: [RouterOutlet, FormsModule, CommonModule, TranslateModule, NavBarComponent, HeaderComponent, StarsComponent,ReactiveFormsModule]
 })
 export class ProductDetailsComponent implements OnInit,OnDestroy {
 
 
   
-  selectedRating: number;
-  userName: string;
-  commentStatement: string;
+  selectedRating!: number;
+  userName!: string;
+  commentStatement!: string;
   product!:IProduct;
   comments: IComment[] = [];  
-  commentCreated: IComment = {
-    id: 0, // Initialize with a default value
-    productId: 0, // Initialize with a default value
-    review: '',
-    quality: 0
-};
-
+ 
+commentForm!: FormGroup;
   productId!:Number;
  
   lang:any="en"; 
@@ -48,11 +43,14 @@ export class ProductDetailsComponent implements OnInit,OnDestroy {
     private route: ActivatedRoute,
     private productService: ProductDetailsService,
     private ratingService: RatingService,
+    private formBuilder: FormBuilder
    
   ) {
-    this.selectedRating=0;
-    this.userName = 'User'; 
-    this.commentStatement = 'good'; 
+    this.commentForm = this.formBuilder.group({
+      userName: ['', Validators.required],
+      commentStatement: ['', Validators.required],
+      selectedRating: [0, Validators.required]
+    });
    
 
     this.lang = localStorage.getItem('lang');
@@ -106,25 +104,30 @@ export class ProductDetailsComponent implements OnInit,OnDestroy {
 
   // making a comment
   submitComment() {
-    
-    console.log('Username:', this.userName);
-    console.log('Comment:', this.commentStatement);
+    if (this.commentForm.valid) {
+      const userName = this.commentForm.get('userName')?.value;
+      const commentStatement = this.commentForm.get('commentStatement')?.value;
 
-    this.commentCreated.productId=this.productId;
-    this.commentCreated.review=this.commentStatement;
-    this.commentCreated.quality=this.selectedRating;
-    //post a comment
-    this.ratingService.makeProductComment(this.commentCreated).subscribe({
-      next: (data: IComment) => {
-        console.log(data);
-        this.comments.push(data);
-      },
-      error: (err: any) => {
-        console.log(err);
-      }
-    });
- 
-    
+      const commentCreated: IComment = {
+        id: 0,
+        productId: this.productId,
+        review: commentStatement,
+        quality: this.selectedRating
+      };
+
+      this.ratingService.makeProductComment(commentCreated).subscribe({
+        next: (data: IComment) => {
+          console.log(data);
+          this.comments.push(data);
+          // Reset form after submission
+          this.commentForm.reset();
+          this.selectedRating = 0;
+        },
+        error: (err: any) => {
+          console.log(err);
+        }
+      });
+    }
   }
 
   ngOnDestroy(): void {
@@ -133,3 +136,7 @@ export class ProductDetailsComponent implements OnInit,OnDestroy {
 
 
 }
+
+
+
+
