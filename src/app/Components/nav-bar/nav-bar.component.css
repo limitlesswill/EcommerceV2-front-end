@@ -288,3 +288,27 @@
 
   
  
+
+  /* Responsive styles */
+  
+@media screen and (max-width: 768px) {
+  /* Adjustments for smaller screens */
+  #navbarHeader .language-icon {
+      margin-left: 10px;
+  }
+
+  #navbarHeader .navbar-logo img {
+      margin-left: 0;
+  }
+
+  #navbarHeader .navbar-center input[type="text"] {
+      width: 70%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Adjustments for even smaller screens */
+  #navbarHeader .navbar-center input[type="text"] {
+      width: 60%;
+  }
+}

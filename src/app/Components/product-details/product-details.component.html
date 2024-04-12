@@ -113,10 +113,11 @@
     
     <div class="add-comment">
         <h3>Add Your Comment</h3>
-        <form (ngSubmit)="submitComment()">
-          <input type="text" placeholder="Your Username" required [(ngModel)]="userName">
-          <textarea placeholder="Your Comment" required [(ngModel)]="commentStatement"></textarea>
-          <button type="submit">Comment</button>
+        <form [formGroup]="commentForm" (ngSubmit)="submitComment()">
+          <input type="text" formControlName="userName" placeholder="Your Username">
+          <textarea formControlName="commentStatement" placeholder="Your Comment"></textarea>
+          <button type="submit" [disabled]="commentForm.invalid">Comment</button>
         </form>
+        
       </div>
  
