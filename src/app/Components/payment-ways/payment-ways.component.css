@@ -1,3 +1,31 @@
+product-item {
+  border: dashed 1px seagreen;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.product-item img {
+  width: 100%;
+}
+.filterproducts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.filterproducts li {
+  width: 24%;
+}
+@media (max-width: 768px) {
+  .filterproducts li {
+      width: 48%;
+  }
+}
+@media (max-width: 480px) {
+  .filterproducts li {
+      width: 100%;
+  }
+}
+
+
 
 .tbody{
     -webkit-text-size-adjust: 100%;
@@ -347,11 +375,8 @@ strong {
   line-height: inherit;
   color: inherit;
   font-family: 'porto-icons';
-  vertical-align: middle;
-
   font-weight: normal;
   overflow: hidden;
-  speak: none;
   text-align: center;
 }
 
@@ -464,17 +489,14 @@ form {
 .action.tocompare:before {
   content: '\f83b';
   display: block;
-  webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   
   line-height: inherit;
   color: inherit;
   font-family: 'porto-icons';
-  vertical-align: middle;
  
   font-weight: normal;
   overflow: hidden;
-  speak: none;
   text-align: center;
 }
 .product-item-actions .action.tocompare>span {

@@ -51,7 +51,8 @@ private Cart:Cart={
     if(Item==null)
    {this.Products.push({...Product,wanted:1});
   localStorage.setItem('favouriteProduct',JSON.stringify(this.Products)); 
-  } 
+  }
+  this.router.navigate(['product', Product.id]);
   }
 
   getTotal(){

@@ -1,14 +1,13 @@
-import { IProduct } from './../../Models/i-product';
 import { SearchproductService } from './../../Services/searchproduct.service';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation, input, output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation, inject, input, output } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../_services/auth.service';
 import { ICategory, ISubCategory } from '../../Category/Model/icategory';
 import { CategoryService } from '../../Category/Services/category.service';
 import { Product } from '../../Order/models/order/order.module';
-
+import { CartService } from '../../Services/cart.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -20,7 +19,9 @@ import { Product } from '../../Order/models/order/order.module';
 })
 export class NavBarComponent implements OnInit {
   CategoryList: ICategory[] = [];
- 
+ CartService = inject(CartService);
+  addToCart(product: any) {
+    this.CartService.AddtoCart(product);}
   SubCategoryList:ISubCategory[]=[];
   @Output() categoryClicked = new EventEmitter<number>();
   @Output() SubcategoryClicked =new EventEmitter<number>();
@@ -35,7 +36,7 @@ export class NavBarComponent implements OnInit {
   
   lang:any="en";
   isSubmitted = false;
-  Products: Product[] = [];
+  Products:any[]= JSON.parse(localStorage.getItem('Search')||"[]");
   
   imageUrlEnglish: string = '../../../assets/download.png';
   imageUrlOtherLanguage: string = 'https://r2media.horizondm.com/wysiwyg/smartwave/porto/flags/en.png';
@@ -80,12 +81,13 @@ export class NavBarComponent implements OnInit {
     if(name=="")
       {
         localStorage.removeItem('Search');
+        this.Products=[];
+        this._router.navigate(['home']);
       }else{
-     this.SearchproductService.getSearchProducts(name).subscribe(products => {
+        this._router.navigate(['Search']);
+        this.SearchproductService.getSearchProducts(name).subscribe(products => {
         this.Products = products;
-        console.log(this.Products);
         localStorage.setItem('Search', JSON.stringify(this.Products));
       });}
-  }
- 
+      } 
 }

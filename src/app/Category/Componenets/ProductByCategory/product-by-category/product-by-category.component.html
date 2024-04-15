@@ -23,7 +23,7 @@
     <ol class="filterproducts products list items product-items">
         @for(product of Subproducts; track product.Id){
         <li (click)="Addtofavourite(product)"class="item product product-item">
-            <a [routerLink]="['/product',product.Id]" routerLinkActive="router-link-active">
+            <a routerLinkActive="router-link-active">
             <div class="product-item-info type1">
                 <div class="product photo product-item-photo">
                     <a href="#">

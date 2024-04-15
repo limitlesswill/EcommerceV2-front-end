@@ -9,6 +9,7 @@ import { BoardUserComponent } from './Components/board-user/board-user.component
 import { BoardAdminComponent } from './Components/board-admin/board-admin.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { LoginComponent } from './Components/login/login.component';
+import { SearchproductComponent } from './Components/searchproduct/searchproduct.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent,canActivate:[authGuard] },
   { path: 'user', component: BoardUserComponent },
   { path: 'admin', component: BoardAdminComponent },
+  { path: 'Search', component: SearchproductComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

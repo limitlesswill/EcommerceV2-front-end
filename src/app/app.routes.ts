@@ -17,6 +17,7 @@ import { MainCategoryComponent } from './Category/Componenets/MainComponentForCA
 import { ProductByCategoryComponent } from './Category/Componenets/ProductByCategory/product-by-category/product-by-category.component';
 import { AllProductOfCAtComponent } from './Category/Componenets/GetPeoductOfCat/all-product-of-cat/all-product-of-cat.component';
 import { ContactusComponent } from './Components/contactus/contactus.component';
+import { SearchproductComponent } from './Components/searchproduct/searchproduct.component';
 
 
 
@@ -37,12 +38,13 @@ export const routes: Routes = [
   
 
     { path: '', redirectTo: 'home', pathMatch: 'full' , },
+    { path: 'Search', component: SearchproductComponent },
     {
       path: 'Order',
       component: OrderLayoutComponent,
       title: 'Order',
       children: [
-    {path: 'list', component: OrderListComponent, title: 'Order List'}]}
+     {path: 'list', component: OrderListComponent, title: 'Order List'}]}
     ,{path: 'list', component: OrderListComponent, title: 'Order List'},
 
      {path:'Product',component:MainCategoryComponent,title:'Products'}
