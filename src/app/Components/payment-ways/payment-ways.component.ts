@@ -15,4 +15,8 @@ export class PaymentWaysComponent {
   addToCart(product: any) {
     this.CartService.AddtoCart(product);
   }
+  
+Addtofavourite(product: any) {
+  this.CartService.Addtofavourite(product);
+}
 }

@@ -24,22 +24,22 @@ AddressDe!:string;
 
 Peromo (num:string) {
   this.Perom=num;
+  if (this.Perom==="123")
+    {}
   }
 Addres(Add:string) {
-    this.Perom=Add;
-    this.Order.address = Add;
-    this.OrderService.UpdateOrder(this.Order.id,this.Order).subscribe((d) => {});
-     
+    if(Add!="")
+      {
+      this.Order.address = Add;
+      this.OrderService.UpdateOrder(this.Order.id,this.Order).subscribe((d) => {});
+      }
   }
 
 
   ngOnInit(): void {
     this.Order=JSON.parse(localStorage.getItem('PaymentOrder') as any) || [];
     this.amount =this.Order.finalPrice;
-    if(this.Perom=="123M")
-      {
-        this.amount -=500;
-      }
+    
     window.paypal.Buttons(
       {
         style: {
@@ -68,7 +68,7 @@ Addres(Add:string) {
                   this.amount -=500;
                   this.Order.finalPrice-=500;
                 }
-              this.Order.address=this.AddressDe;  
+              
               this.payment.transactionID = details.id;
               this.Order.state=4;
               this.OrderService.UpdateOrder(this.Order.id,this.Order).subscribe((d) => {});

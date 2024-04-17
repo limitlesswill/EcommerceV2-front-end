@@ -20,9 +20,13 @@ import { CartService } from '../../Services/cart.service';
 export class NavBarComponent implements OnInit {
   CategoryList: ICategory[] = [];
  CartService = inject(CartService);
-  addToCart(product: any) {
-    this.CartService.AddtoCart(product);}
-  SubCategoryList:ISubCategory[]=[];
+ addToCart(product: any) {
+  this.CartService.AddtoCart(product);
+}
+Addtofavourite(product: any) {
+  this.CartService.Addtofavourite(product);
+}
+ SubCategoryList:ISubCategory[]=[];
   @Output() categoryClicked = new EventEmitter<number>();
   @Output() SubcategoryClicked =new EventEmitter<number>();
   

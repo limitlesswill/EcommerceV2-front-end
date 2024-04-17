@@ -40,23 +40,14 @@
                      </div>
                     
               </div>	
-            
-
-
                 <div class="buttons d-flex my-5">
-                   
                     <div class="block">
-                        <button class="shadow btn custom-btn">{{'productDetails.addCart'| translate}}</button>
+                        <button (click)="addToCart(product)" class="shadow btn custom-btn">{{'productDetails.addCart'| translate}}</button>
                     </div>
-
                     <div class="block quantity">
                         <input type="number" class="form-control" id="cart_quantity" value="1" min="0" max="5" placeholder="Enter email" name="cart_quantity">
                     </div>
                 </div>
-
-
-
-
             </div>
 
             <div class="product-details my-4">

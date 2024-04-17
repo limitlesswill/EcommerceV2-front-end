@@ -6,6 +6,7 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { Order, OrderDetails } from '../../models/order/order.module';
 import { PaymentService } from '../../../Services/payment.service';
+import { environment } from '../../../../environment/environment';
 
 
 @Component({
@@ -16,7 +17,7 @@ import { PaymentService } from '../../../Services/payment.service';
   styleUrl: './order-list.component.css'
 })
 export class OrderListComponent {
-  UserId: string="fb4efdeb-28f3-4f81-9cef-877310f6b438";
+  UserId: string=environment.UId;
   Orders: Order[] = [];
   OrdersDetails: OrderDetails[] = [];
   constructor( private payment: PaymentService, private Router:Router ,private OrderService: OrderService,private OrderDetailsService:OrderDetailsService, private router: Router) { }
