@@ -1,3 +1,4 @@
+import { User } from './../../interfaces/auth';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -12,6 +13,7 @@ import { FormControl } from '@angular/forms';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import { HeaderComponent } from '../header/header.component';
 import { Subscription } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';
 // import {jwtDecode} from 'jwt-decode';
 
 @Component({
@@ -27,6 +29,7 @@ export class LoginComponent implements OnInit {
     errorMessage: string ="";
     lang:any; 
     langChangeSubscription: Subscription;
+    
 
     constructor(private translate: TranslateService, private _auth:AuthService, private _router:Router) {
       this.lang = localStorage.getItem('lang')
@@ -48,31 +51,54 @@ export class LoginComponent implements OnInit {
     get UserEmail(){ return this.LoginForm.get('UserEmail')}
     get Password(){ return this.LoginForm.get('Password')}
 
-    handleLogin(){
-        this.isSubmitted = true
-        if(this.LoginForm.valid){
-          this._auth.loginUser(this.LoginForm.value).subscribe(
-            (response: any) => {
-              if (response && response.token && response.expiration) {
-                localStorage.setItem('token', response.token);
-                localStorage.setItem('expiration', response.expiration);
+    handleLogin() {
+      this.isSubmitted = true;
+      if (this.LoginForm.valid) {
+        this._auth.loginUser(this.LoginForm.value).subscribe(
+          (response: any) => {
+            if (response && response.token && response.expiration) {
+              localStorage.setItem('token', response.token);
+              localStorage.setItem('expiration', response.expiration);
+    
+              // Decode the token to get user ID
+              const decodedToken: any = jwtDecode(response.token);
+              console.log('Decoded Token:', decodedToken); // Log decoded token for debugging
+              
+              if (decodedToken && decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']) {
+                const userId = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
+  
+                // Now you can use userId as needed, for example, store it in local storage
+                localStorage.setItem('userId', userId);
+                console.log('userId:', userId); // Log userId for debugging
+                
+
+
+
+
+
                 // Redirect to dashboard or any other page
                 this._router.navigate(['/home']);
               } else {
-                this.errorMessage = 'Invalid response from server';
+                console.error('Name claim not found in token.');
+                this.errorMessage = 'Invalid token.';
               }
-            },
-            (err)=>{
-              console.log(err)
-            },
-            ()=>{
-              this.LoginForm.reset()
-              this._auth.isAuth = true
+            } else {
+              console.error('Invalid response from server.');
+              this.errorMessage = 'Invalid response from server.';
             }
-          )
-        }
+          },
+          (err) => {
+            console.error('Error occurred during login:', err);
+            this.errorMessage = 'An error occurred while logging in.';
+          },
+          () => {
+            this.LoginForm.reset();
+            this.isSubmitted = true;
+            this._auth.isAuth = true
+          }
+        );
       }
-
+    }
      
       
   }

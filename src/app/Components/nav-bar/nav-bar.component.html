@@ -55,11 +55,8 @@
         </button>
         <div class="subnav-content shadow" [style.margin-left.px]="[lang ==='en' ? 0 : 250]">
           <div>
-
-            <img [src]="'../../../assets/CategoryAndProductImg/' + (lang === 'en' ? c.imgURL : c.imgURLAr)" width="100%"
+          <img [src]="'../../../assets/CategoryAndProductImg/' + (lang === 'en' ? c.imgURL : c.imgURLAr)" width="100%"
               alt="">
-            <img src="https://r2media.horizondm.com/Backend-developer/Ramadan-Ong.png"
-              style="width: 100%; margin-top: 5px;" alt="">
           </div>
           <ng-container class="w-25 ">
             @for(s of c.subCategories; track $index){

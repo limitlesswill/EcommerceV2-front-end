@@ -17,7 +17,7 @@ import { environment } from '../../../../environment/environment';
   styleUrl: './order-list.component.css'
 })
 export class OrderListComponent {
-  UserId: string=environment.UId;
+  UserId: string|null= localStorage.getItem('userId');
   Orders: Order[] = [];
   OrdersDetails: OrderDetails[] = [];
   constructor( private payment: PaymentService, private Router:Router ,private OrderService: OrderService,private OrderDetailsService:OrderDetailsService, private router: Router) { }
@@ -30,6 +30,7 @@ export class OrderListComponent {
   }
 
   fetchOrders(): void {
+    if(this.UserId!=null)
     this.OrderService.GetUserOrders(this.UserId).subscribe(Orders => {
       this.Orders = Orders;
     });
@@ -45,6 +46,10 @@ export class OrderListComponent {
     this.fetchOrders();
     
   }
+  cancel(){
+    this.Router.navigate(['cart']);
+  }
+
 
 
   editOrder(id: number): void {

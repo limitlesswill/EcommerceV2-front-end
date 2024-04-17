@@ -73,7 +73,7 @@ Addres(Add:string) {
               this.Order.state=4;
               this.OrderService.UpdateOrder(this.Order.id,this.Order).subscribe((d) => {});
               localStorage.removeItem('PaymentOrder');
-              this.router.navigate(['list']);
+              
             }
           });
         },
@@ -87,5 +87,7 @@ Addres(Add:string) {
   cancel() {
     this.router.navigate(['list']);
   }
-
+  Vieworders() {
+    this.router.navigate(['list']);
+  }
 }
