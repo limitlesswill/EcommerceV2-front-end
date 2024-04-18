@@ -1,6 +1,5 @@
 
 import { CategoryService } from '../../Services/category.service';
-
 import { IProduct } from './Model/iproduct';
 
 import { RouterModule, RouterOutlet } from '@angular/router';
@@ -16,7 +15,8 @@ import { Component, Input, ViewChild, inject } from '@angular/core';
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [RouterModule,RouterOutlet, ToolbarComponent, FiltrationComponent, NavBarComponent, HeaderComponent,MatPaginatorModule],
+  imports: [ RouterModule, RouterOutlet, ToolbarComponent, FiltrationComponent, NavBarComponent, HeaderComponent,
+    MatPaginatorModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
@@ -25,7 +25,12 @@ export class ProductsComponent {
   addToCart(product: any) {
     this.CartService.AddtoCart(product);
   }
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  Addtofavourite(product: any) {
+    this.CartService.Addtofavourite(product);
+  }
+
+
+ @ViewChild(MatPaginator) paginator!: MatPaginator;
   pageIndex: number = 0;
   pageSize=1;
   @Input() categoryId!: number;

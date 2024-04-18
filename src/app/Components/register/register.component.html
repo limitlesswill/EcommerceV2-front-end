@@ -119,8 +119,6 @@
       <div class="mt-2">Not a member? <a href="/login" routerLink="login">Login</a></div>
   </p-card>
 </form>  -->
-<app-nav-bar></app-nav-bar>
-<app-header></app-header> 
 <div class="titleForm">{{'userInfo.CreateNewCustomerAccount'| translate}}</div>
 <div class="container" style="width: 775px; margin-bottom: 70px;" [style.direction]="lang=='ar' ? 'rtl' : 'ltr'">
     <form [formGroup]="registerForm" (ngSubmit)="handleRegister()" class="row g-3">
@@ -204,12 +202,9 @@
                 }
             </small>
             }
-        
       </div>
     <div class="col-12">
       <button type="submit" [disabled]="registerForm.invalid" class="mybtn">{{'userInfo.CreateAccount'| translate}}</button>
     </div>
   </form>
 </div>
-
-<app-footer></app-footer>

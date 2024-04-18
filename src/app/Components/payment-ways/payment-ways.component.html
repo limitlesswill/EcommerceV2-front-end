@@ -1,19 +1,79 @@
-
-
-
-
-
-
-
-
-
-
-<div class="container">
-
-    <div style="width: 770px;border: dashed  seagreen; padding-bottom: 10px; width: 1300px;"  >
-    <img src="https://r2media.horizondm.com/wysiwyg/smartwave/homepage/PRODUCTS/backend-developer/Recently-View-Bann2.png" style="width: 1200px;padding-top: 10px;"alt="">
-       </div>
-
+<div class="container-fluid">
+    <div class="row" style="border: dashed  seagreen; padding: 10px; margin: 5px ;" >
+        <div class="col-12">
+            <img src="https://r2media.horizondm.com/wysiwyg/smartwave/homepage/PRODUCTS/backend-developer/Recently-View-Bann2.png" class="img-fluid">
+            <ol class="filterproducts products list items product-items">
+                @for(product of Products; track product.id){
+                    <li (click)="Addtofavourite(product)" class="item product product-item">
+                        <div class="product-item-info type1">
+                            <div class="product photo product-item-photo">
+                                <a href="#">
+                                    <img class="product-image-photo default_image rounded porto-lazyload porto-lazyload-loaded"
+                                        width="300" height="300" alt=""
+                                        src="../../../assets/CategoryAndProductImg/{{product.imgURL}}" style="display: block;">
+                                </a>
+                                <div class="product-labels">
+                                    <div class="product-label sale-label">-13%</div>
+                                </div>
+                            </div>
+                            <div class="product details product-item-details">
+                                <strong class="product name product-item-name">
+                                    <a class="product-item-link" href="#">
+                                        {{product.enDescription}} </a>
+                                </strong>
+            
+                                <div class="price-box price-final_price" data-product-id="11884">
+            
+                                    <span class="old-price">
+            
+            
+                                        <span class="price-container price-final_price tax weee">
+                                            <span class="price-label">was</span>
+                                            <span id="old-price-11884" data-price-amount="27900" data-price-type="oldPrice"
+                                                class="price-wrapper "><span class="price">27900.00 &nbsp;EGP</span></span>
+                                        </span>
+                                    </span>
+                                    <span class="special-price">
+                                        <span class="price-container price-final_price tax weee">
+                                            <span class="price-label">Special Price</span>
+                                            <span id="product-price-11884" data-price-amount="24400" data-price-type="finalPrice"
+                                                class="price-wrapper "><span class="price">{{product.price}} &nbsp;EGP</span></span>
+                                        </span>
+                                    </span>
+            
+                                </div>
+                                <div class="product-item-inner">
+                                    <div class="product actions product-item-actions">
+                                        <a href="#" class="action towishlist actions-secondary" title="Add to Wish List"
+                                            aria-label="Add to Wish List" data-action="add-to-wishlist" role="button">
+                                            <span>Add to Wish List</span>
+                                        </a>
+                                        <div class="actions-primary">
+                                            <form data-role="tocart-form">
+                                                <input type="hidden" name="product" value="11884">
+                                                <input type="hidden" name="uenc" value="">
+                                                <input name="form_key" type="hidden" value=""> <button type="submit"
+                                                    title="Add to Cart" class="action tocart primary"(click)="addToCart(product)">
+                                                    <span>Add to Cart</span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <a href="#" class="action tocompare actions-secondary" title="Add to Compare"
+                                            aria-label="Add to Compare" role="button">
+                                            <span>Add to Compare</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    }
+               
+            </ol>
+        </div>
+    </div>
+</div>
+<div class=" container-fluid">
 <div data-content-type="row" data-appearance="full-bleed" data-enable-parallax="0" data-parallax-speed="0.5" data-background-images="{}" data-background-type="image" data-video-loop="true" data-video-play-only-visible="true" data-video-lazy-load="true" data-video-fallback-src="" data-element="main" data-pb-style="BSIDE1S">
     <div class="pagebuilder-column-group" style="display: flex;" data-content-type="column-group" data-grid-size="12" data-element="main">
         <div class="pagebuilder-column" data-content-type="column" data-appearance="full-height" data-background-images="{}" data-element="main" data-pb-style="KRNL20A">
@@ -46,5 +106,7 @@
     </tr>
     </tbody>
     </table></div></div>
+
 </div>
+
 <br><br>

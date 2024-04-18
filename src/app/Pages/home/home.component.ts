@@ -30,7 +30,7 @@ import { FiltrationComponent } from '../../Category/Componenets/AsideFilter/filt
     styleUrl: './home.component.css',
     imports: [MainsliderComponent, HeaderComponent, FooterComponent, NavBarComponent, PaymentWaysComponent,
         CartComponent, MarketComponent, Item1Component, Item2Component, Item3Component, Item4Component, Item5Component,
-        Item6Component, ProductsComponent, ProductByCategoryComponent, MainCategoryComponent, FiltrationComponent, AppliancesComponent, ThirdThingComponent]
+        Item6Component, ProductsComponent, ProductByCategoryComponent,MainCategoryComponent,FiltrationComponent ,ProductDetailsComponent,AppliancesComponent, ThirdThingComponent]
 })
 export class HomeComponent {
   selectedCategoryId!: number;

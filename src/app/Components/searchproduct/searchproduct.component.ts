@@ -3,20 +3,16 @@ import { RouterOutlet } from '@angular/router';
 import { CartService } from '../../Services/cart.service';
 
 @Component({
-  selector: 'app-payment-ways',
+  selector: 'app-searchproduct',
   standalone: true,
   imports: [RouterOutlet],
-  templateUrl: './payment-ways.component.html',
-  styleUrl: './payment-ways.component.css'
+  templateUrl: './searchproduct.component.html',
+  styleUrl: './searchproduct.component.css'
 })
-export class PaymentWaysComponent {
-  Products:any[]= JSON.parse(localStorage.getItem('favouriteProduct')||"[]");
+export class SearchproductComponent {
+  Products:any[]= JSON.parse(localStorage.getItem('Search')||"[]");
   CartService = inject(CartService);
   addToCart(product: any) {
     this.CartService.AddtoCart(product);
   }
-  
-Addtofavourite(product: any) {
-  this.CartService.Addtofavourite(product);
-}
 }

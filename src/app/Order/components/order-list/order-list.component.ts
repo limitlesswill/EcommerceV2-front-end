@@ -5,6 +5,8 @@ import { Router, RouterModule } from '@angular/router';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { Order, OrderDetails } from '../../models/order/order.module';
+import { PaymentService } from '../../../Services/payment.service';
+import { environment } from '../../../../environment/environment';
 
 
 @Component({
@@ -15,17 +17,21 @@ import { Order, OrderDetails } from '../../models/order/order.module';
   styleUrl: './order-list.component.css'
 })
 export class OrderListComponent {
-
+  UserId: string|null= localStorage.getItem('userId');
   Orders: Order[] = [];
   OrdersDetails: OrderDetails[] = [];
-  constructor(private OrderService: OrderService,private OrderDetailsService:OrderDetailsService, private router: Router) { }
-
+  constructor( private payment: PaymentService, private Router:Router ,private OrderService: OrderService,private OrderDetailsService:OrderDetailsService, private router: Router) { }
+  
+  transactionId = "";
+  
   ngOnInit(): void {
     this.fetchOrders();
+    
   }
 
   fetchOrders(): void {
-    this.OrderService.GetAllOrder().subscribe(Orders => {
+    if(this.UserId!=null)
+    this.OrderService.GetUserOrders(this.UserId).subscribe(Orders => {
       this.Orders = Orders;
     });
   }
@@ -35,10 +41,15 @@ export class OrderListComponent {
     });
   }
   payOrder(Order:Order): void {
-    Order.state=1;
-    this.OrderService.UpdateOrder(Order.id,Order).subscribe((d) => {
-    this.fetchOrders();});
+    localStorage.setItem('PaymentOrder',JSON.stringify(Order));
+    this.Router.navigate(['Pay']);
+    this.fetchOrders();
+    
   }
+  cancel(){
+    this.Router.navigate(['cart']);
+  }
+
 
 
   editOrder(id: number): void {
@@ -65,18 +76,18 @@ export class OrderListComponent {
     this.OrderDetailsService.UpdateOrderDetails(OrdersDetails.id,OrdersDetails).subscribe((d) => {
       this.fetchOrdersDetails(OrdersDetails.orderId); // Refresh the list
       this.fetchOrders();
-
     }); 
   }
-  back(): void {
-    this.OrdersDetails=[];
-  }
+  
   DecreamentQuantity(OrdersDetails:OrderDetails): void {
     OrdersDetails.quantity--;
     this.OrderDetailsService.UpdateOrderDetails(OrdersDetails.id,OrdersDetails).subscribe((d) => {
       this.fetchOrdersDetails(OrdersDetails.orderId); // Refresh the list
       this.fetchOrders();
     }); 
+  }
+  back(): void {
+    this.OrdersDetails=[];
   }
 
 }

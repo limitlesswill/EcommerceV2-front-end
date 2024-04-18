@@ -1,11 +1,13 @@
+import { SearchproductService } from './../../Services/searchproduct.service';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation, input, output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation, inject, input, output } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../_services/auth.service';
 import { ICategory, ISubCategory } from '../../Category/Model/icategory';
 import { CategoryService } from '../../Category/Services/category.service';
-
+import { Product } from '../../Order/models/order/order.module';
+import { CartService } from '../../Services/cart.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -17,8 +19,14 @@ import { CategoryService } from '../../Category/Services/category.service';
 })
 export class NavBarComponent implements OnInit {
   CategoryList: ICategory[] = [];
- 
-  SubCategoryList:ISubCategory[]=[];
+ CartService = inject(CartService);
+ addToCart(product: any) {
+  this.CartService.AddtoCart(product);
+}
+Addtofavourite(product: any) {
+  this.CartService.Addtofavourite(product);
+}
+ SubCategoryList:ISubCategory[]=[];
   @Output() categoryClicked = new EventEmitter<number>();
   @Output() SubcategoryClicked =new EventEmitter<number>();
   
@@ -32,7 +40,7 @@ export class NavBarComponent implements OnInit {
   
   lang:any="en";
   isSubmitted = false;
-
+  Products:any[]= JSON.parse(localStorage.getItem('Search')||"[]");
   
   imageUrlEnglish: string = '../../../assets/download.png';
   imageUrlOtherLanguage: string = 'https://r2media.horizondm.com/wysiwyg/smartwave/porto/flags/en.png';
@@ -44,7 +52,7 @@ export class NavBarComponent implements OnInit {
     else
     return this.imageUrlOtherLanguage;
   }
-  constructor(private _auth:AuthService, private _router:Router, private translate: TranslateService, private cdr: ChangeDetectorRef,private categoryServices: CategoryService, private route: ActivatedRoute) {
+  constructor(private SearchproductService:SearchproductService, private _auth:AuthService, private _router:Router, private translate: TranslateService, private cdr: ChangeDetectorRef,private categoryServices: CategoryService, private route: ActivatedRoute) {
     translate.use(this.lang);
   }
   ngOnInit(): void {
@@ -72,6 +80,18 @@ export class NavBarComponent implements OnInit {
     this._auth.logout();
     this._router.navigate(['/home']);
   }
- 
- 
+  
+  Search(name: string): void {
+    if(name=="")
+      {
+        localStorage.removeItem('Search');
+        this.Products=[];
+        this._router.navigate(['home']);
+      }else{
+        this._router.navigate(['Search']);
+        this.SearchproductService.getSearchProducts(name).subscribe(products => {
+        this.Products = products;
+        localStorage.setItem('Search', JSON.stringify(this.Products));
+      });}
+      } 
 }

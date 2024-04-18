@@ -4,12 +4,12 @@
             <h1 class="text-center">Payment Form</h1>
             <form>
                 <div class="mb-3">
-                    <label for="cardNumber" class="form-label">Card Number</label>
-                    <input type="text" class="form-control" id="cardNumber" placeholder="Enter Card Number">
+                    <label for="cardNumber" class="form-label">Use your Peromo Code and Get your offers </label>
+                    <input type="text" #PeromoInput (input)="Peromo(PeromoInput.value)" class="form-control" id="cardNumber" placeholder="Enter Peromo Code">
                 </div>
                 <div class="mb-3">
-                    <label for="cardName" class="form-label">Card Name</label>
-                    <input type="text" class="form-control" id="cardName" placeholder="Enter Card Name">
+                    <label for="cardName" class="form-label">Address</label>
+                    <input type="text" class="form-control"#AddresInput (input)="Addres(AddresInput.value)" id="cardName" placeholder="Enter The Addres to Delivary">
                 </div>
                 <div class="d-grid">
                     <div #Payment ></div>
@@ -20,9 +20,10 @@
                   <div class="amount">Total amount to pay: ${{amount}}</div>
                   <div class="info">Please do not refresh the browser while the transaction is processing</div>
                   <div #paymentRef></div>
-                  <div class="back" (click)="cancel()">Cancel</div>
                 </div>
             </form>
+            <div class="back" (click)="cancel()"> Back </div>
+            <div class="back" (click)="Vieworders()"> view orders </div>
         </div>
     </div>
 

@@ -6,11 +6,12 @@ import { SubCategoryService } from '../Services/sub-category.service';
 
 import { CartService } from '../../../../Services/cart.service';
 import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-product-by-category',
   standalone: true,
-  imports: [MatPaginatorModule],
+  imports: [MatPaginatorModule,RouterModule],
   templateUrl: './product-by-category.component.html',
   styleUrl: './product-by-category.component.css'
 })
@@ -19,6 +20,14 @@ export class ProductByCategoryComponent {
   addToCart(product: any) {
     this.CartService.AddtoCart(product);
   }
+  Addtofavourite(product: any) {
+    this.CartService.Addtofavourite(product);
+  }
+
+
+
+
+
 
 
 
