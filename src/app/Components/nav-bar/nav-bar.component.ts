@@ -1,6 +1,6 @@
 import { SearchproductService } from './../../Services/searchproduct.service';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation, inject, input, output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, HostListener, Input, OnInit, Output, ViewEncapsulation, inject, input, output } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../_services/auth.service';
@@ -80,8 +80,21 @@ Addtofavourite(product: any) {
     this._auth.logout();
     this._router.navigate(['/home']);
   }
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const navbarBottom = document.querySelector('.navbar-bottom') as HTMLElement;
+    if (navbarBottom) {
+      if (window.pageYOffset >= navbarBottom.offsetTop)
+        navbarBottom.classList.add('sticky-navbar-bottom');
+      else
+        navbarBottom.classList.remove('sticky-navbar-bottom');
+    }
+    if (window.pageYOffset <= 0)
+      navbarBottom.classList.remove('sticky-navbar-bottom');
+  }
   
   Search(name: string): void {
+    console.log(name);
     if(name=="")
       {
         localStorage.removeItem('Search');
