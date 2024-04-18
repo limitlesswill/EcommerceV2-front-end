@@ -23,14 +23,6 @@ export class ProductByCategoryComponent {
   Addtofavourite(product: any) {
     this.CartService.Addtofavourite(product);
   }
-
-
-
-
-
-
-
-
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   pageIndex: number = 0;
   pageSize=1;
