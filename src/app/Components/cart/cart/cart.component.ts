@@ -74,13 +74,6 @@ export class CartComponent {
     address:" "
   };
   checkout(){
-   this.Order.date= new Date(Date.now());
-   this.Order.address=" ";
-   if(this.isLoggedIn() && this.UserId!=null && this.Items2.length>0){
-   this.Order.userID=this.UserId;
-   this.OrderService.CreateOrder(this.Order).subscribe(); 
-   alert("Order created");
-    }
     if(this.isLoggedIn()! && this.UserId==null ){
       alert("Please login");
     }
@@ -88,6 +81,15 @@ export class CartComponent {
     if(this.Items2.length<=0)
       {alert("There is no items in Cart");}
       }
+   
+   this.Order.date= new Date(Date.now());
+   this.Order.address=" ";
+   if(this.isLoggedIn() && this.UserId!=null && this.Items2.length>0){
+   this.Order.userID=this.UserId;
+   this.OrderService.CreateOrder(this.Order).subscribe(); 
+   this.Items2 =[];
+   alert("Order created");
+    }
     }
     checkout2(){
       if(this.isLoggedIn() && this.UserId!=null){

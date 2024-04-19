@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CartService } from '../../Services/cart.service';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-searchproduct',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet,NavBarComponent],
   templateUrl: './searchproduct.component.html',
   styleUrl: './searchproduct.component.css'
 })

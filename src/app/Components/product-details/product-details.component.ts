@@ -36,6 +36,7 @@ commentForm!: FormGroup;
  
   lang:any="en"; 
   langChangeSubscription: Subscription;
+ 
 
 
   constructor(
@@ -44,7 +45,8 @@ commentForm!: FormGroup;
     private productService: ProductDetailsService,
     private ratingService: RatingService,
     private formBuilder: FormBuilder,
-    private CartService: CartService
+    private CartService: CartService,
+    private  Router:Router 
    
   ) {
     this.commentForm = this.formBuilder.group({
@@ -141,6 +143,11 @@ commentForm!: FormGroup;
 
     }
   }
+
+  cancel(){
+    this.Router.navigate(['home']);
+  }
+
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();

@@ -46,8 +46,6 @@
     </div>
     <div class="navbar-bottom">
       @for(c of CategoryList; track $index ){
-
-
       <div class="subnav">
         <button class="subnavbtn" [routerLink]="['/Product']" (click)="onCategoryClick(c.id)" routerLinkActive="router-link-active">
           {{ lang === 'en' ? c.enName : c.arName }}
@@ -154,7 +152,17 @@
                   }
              
           </ol>
+
+
+         
       </div>
   </div>
+</div>}
+@if(Show){
+<div id="alterdiv" class="hidden" style="width:100%;padding: 10%; " >
+  <h1 style="align-items: center; color:green;">
+   <img src="" alt="">
+    We can not find any products in this Name
+  </h1>
 </div>}
 <router-outlet></router-outlet>

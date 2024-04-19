@@ -7,12 +7,13 @@ import { ButtonModule } from 'primeng/button';
 import { Order, OrderDetails } from '../../models/order/order.module';
 import { PaymentService } from '../../../Services/payment.service';
 import { environment } from '../../../../environment/environment';
+import { NavBarComponent } from '../../../Components/nav-bar/nav-bar.component';
 
 
 @Component({
   selector: 'app-order-list',
   standalone: true,
-  imports: [],
+  imports: [NavBarComponent],
   templateUrl: './order-list.component.html',
   styleUrl: './order-list.component.css'
 })

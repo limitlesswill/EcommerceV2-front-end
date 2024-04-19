@@ -37,7 +37,7 @@ Addtofavourite(product: any) {
     this.categoryClicked.emit(categoryId);
   }
 
-  
+  Show: boolean=false;
   lang:any="en";
   isSubmitted = false;
   Products:any[]= JSON.parse(localStorage.getItem('Search')||"[]");
@@ -93,18 +93,30 @@ Addtofavourite(product: any) {
       navbarBottom.classList.remove('sticky-navbar-bottom');
   }
   
-  Search(name: string): void {
-    console.log(name);
-    if(name=="")
+  Search(name:string): void {
+  if(name=="")
       {
         localStorage.removeItem('Search');
+        this.Show=false;
         this.Products=[];
         this._router.navigate(['home']);
       }else{
+        this.Show=false;
         this._router.navigate(['Search']);
         this.SearchproductService.getSearchProducts(name).subscribe(products => {
         this.Products = products;
         localStorage.setItem('Search', JSON.stringify(this.Products));
+         if(this.Products.length<1&&name.length>0)
+           {
+            this.Show=true;
+            // alert("We cannot find any products in this Name ");
+             localStorage.removeItem('Search');
+           }
       });}
       } 
+
+
+
+
+      
 }

@@ -5,11 +5,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { PaymentService } from '../../Services/payment.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { OrderService } from './../../Order/Service/order.service';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-confirm-order',
   standalone: true,
-  imports: [],
+  imports: [NavBarComponent],
   templateUrl: './confirm-order.component.html',
   styleUrl: './confirm-order.component.css'
 })
