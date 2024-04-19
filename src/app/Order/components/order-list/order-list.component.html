@@ -1,3 +1,4 @@
+<app-nav-bar></app-nav-bar> 
 <div class="wrapper">
  
 @if(Orders.length > 0&&OrdersDetails.length<1)
@@ -7,7 +8,7 @@
       <div class="d-flex flex-column">
           <div class="h3">My Orders list</div>
       </div>
-      <div class="btn" id="sub">
+      <div class="btn" (click)="cancel()" id="sub">
         <i class="fas fa-cog"></i> Back
       </div>
   </div>
@@ -35,8 +36,9 @@
                     <td>{{Order.date}}</td>
                     @if(Order.state==1){<td>Pending</td>}@else if(Order.state==2){<td>Confirmed</td>}@else if(Order.state==3){<td>Canceled</td>}@else{<td>Paid</td>}
                     <td>
-                      @if(Order.state==1){<i (click)="payOrder(Order)"  class="mdi mdi-credit-card"style="padding-right: 5px;" >    </i>}
-                       <i (click)="editOrder(Order.id)" class="mdi mdi-pencil" style="padding-right: 5px;">    </i>
+                      @if(Order.state==1){
+                        <i (click)="payOrder(Order)"  class="mdi mdi-credit-card"style="padding-right: 5px;" >    </i>
+                        <i (click)="editOrder(Order.id)" class="mdi mdi-pencil" style="padding-right: 5px;">    </i>}
                        <i (click)="deleteOrder(Order.id)" class="mdi mdi-trash-can-outline"></i>                     
                     </td>
                 </tr>
@@ -67,7 +69,6 @@
              <table class="table activitites">
                  <thead>
                      <tr>
-                         <th scope="col" class="text-uppercase header">Number</th>
                          <th scope="col" class="text-uppercase">TotalPrice</th>
                          <th scope="col" class="text-uppercase">Product Name</th>
                         <th scope="col" class="text-uppercase">Quantity</th>
@@ -77,7 +78,6 @@
               @for(Order of OrdersDetails; track Order.id;)
                 {
               <tr>
-                  <td>{{ Order.id }}</td>
                   <td>{{Order.totalPrice}} $</td>
                   <td>{{Order.productName}}</td>
                   <td>{{Order.quantity}} </td>

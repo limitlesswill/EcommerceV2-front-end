@@ -12,7 +12,6 @@
       <a routerLink="/home" class="navbar-logo">
         <img src="../../../assets/Logo-White.png" alt="logo">
       </a>
-      
       <div class="navbar-center">
         <input type="text" #searchInput (input)="Search(searchInput.value)" placeholder="{{ 'nav.search' | translate }}...">
       </div>
@@ -46,8 +45,6 @@
     </div>
     <div class="navbar-bottom">
       @for(c of CategoryList; track $index ){
-
-
       <div class="subnav">
         <button class="subnavbtn" [routerLink]="['/Product']" (click)="onCategoryClick(c.id)" routerLinkActive="router-link-active">
           {{ lang === 'en' ? c.enName : c.arName }}
@@ -55,17 +52,14 @@
         </button>
         <div class="subnav-content shadow" [style.margin-left.px]="[lang ==='en' ? 0 : 250]">
           <div>
-
-            <img [src]="'../../../assets/CategoryAndProductImg/' + (lang === 'en' ? c.imgURL : c.imgURLAr)" width="100%"
+          <img [src]="'../../../assets/CategoryAndProductImg/' + (lang === 'en' ? c.imgURL : c.imgURLAr)" width="100%"
               alt="">
-            <img src="https://r2media.horizondm.com/Backend-developer/Ramadan-Ong.png"
-              style="width: 100%; margin-top: 5px;" alt="">
           </div>
           <ng-container class="w-25 ">
             @for(s of c.subCategories; track $index){
             <div class="column w-25 h-25">
               <div class="row">
-               <a (click)="onSubCategoryClick(s.id)" [routerLink]="['/productOfCAt']" routerLinkActive="router-link-active">  <!-- [routerLink]="['/category/productbycategory',c.id]" -->
+               <a (click)="onSubCategoryClick(s.id)" [routerLink]="['/productOfCAt']" routerLinkActive="router-link-active">  
                   <span>{{ lang === 'en' ? s.enName : s.arName }}</span>
                 </a>
               </div>
@@ -91,10 +85,10 @@
       <div class="col-12">
           <ol class="filterproducts products list items product-items">
               @for(product of Products; track product.id){
-                  <li class="item product product-item">
+                  <li  (click)="Addtofavourite(product)" class="item product product-item">
                       <div class="product-item-info type1">
                           <div class="product photo product-item-photo">
-                              <a href="#">
+                              <a>
                                   <img class="product-image-photo default_image rounded porto-lazyload porto-lazyload-loaded"
                                       width="300" height="300" alt=""
                                       src="../../../assets/CategoryAndProductImg/{{product.imgURL}}" style="display: block;">
@@ -157,6 +151,9 @@
                   }
              
           </ol>
+
+
+         
       </div>
   </div>
 </div>}

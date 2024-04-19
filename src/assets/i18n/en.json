@@ -12,7 +12,8 @@
         "MoreOptions":"More Options",
         "ContinueShopping":"Continue Shopping",
         "checkout":"Checkout",
-        "shoppingcart":"shopping cart"
+        "shoppingcart":"shopping cart",
+        "orderState":"View Orders"
     },
     "nav":{
         "search":"Enter Keyword Or Item",

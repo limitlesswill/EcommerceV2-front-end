@@ -9,7 +9,7 @@ import { Product } from '../Order/models/order/order.module';
   providedIn: 'root'
 })
 export class SearchproductService {
-  private baseUrl = 'http://localhost:5000/api/Product/';
+  private baseUrl = 'http://EcommerceWebSite.somee.com/api/Product/';
   
   constructor(private http: HttpClient) { }
 

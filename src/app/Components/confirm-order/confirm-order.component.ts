@@ -5,11 +5,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { PaymentService } from '../../Services/payment.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { OrderService } from './../../Order/Service/order.service';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-confirm-order',
   standalone: true,
-  imports: [],
+  imports: [NavBarComponent],
   templateUrl: './confirm-order.component.html',
   styleUrl: './confirm-order.component.css'
 })
@@ -24,22 +25,22 @@ AddressDe!:string;
 
 Peromo (num:string) {
   this.Perom=num;
+  if (this.Perom==="123")
+    {}
   }
 Addres(Add:string) {
-    this.Perom=Add;
-    this.Order.address = Add;
-    this.OrderService.UpdateOrder(this.Order.id,this.Order).subscribe((d) => {});
-     
+    if(Add!="")
+      {
+      this.Order.address = Add;
+      this.OrderService.UpdateOrder(this.Order.id,this.Order).subscribe((d) => {});
+      }
   }
 
 
   ngOnInit(): void {
     this.Order=JSON.parse(localStorage.getItem('PaymentOrder') as any) || [];
     this.amount =this.Order.finalPrice;
-    if(this.Perom=="123M")
-      {
-        this.amount -=500;
-      }
+    
     window.paypal.Buttons(
       {
         style: {
@@ -68,12 +69,12 @@ Addres(Add:string) {
                   this.amount -=500;
                   this.Order.finalPrice-=500;
                 }
-              this.Order.address=this.AddressDe;  
+              
               this.payment.transactionID = details.id;
               this.Order.state=4;
               this.OrderService.UpdateOrder(this.Order.id,this.Order).subscribe((d) => {});
               localStorage.removeItem('PaymentOrder');
-              this.router.navigate(['list']);
+              
             }
           });
         },
@@ -87,5 +88,7 @@ Addres(Add:string) {
   cancel() {
     this.router.navigate(['list']);
   }
-
+  Vieworders() {
+    this.router.navigate(['list']);
+  }
 }

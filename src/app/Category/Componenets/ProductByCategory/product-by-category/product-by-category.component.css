@@ -614,11 +614,9 @@ strong {
   line-height: inherit;
   color: inherit;
   font-family: 'porto-icons';
-  vertical-align: middle;
 
   font-weight: normal;
   overflow: hidden;
-  speak: none;
   text-align: center;
 }
 
@@ -731,17 +729,14 @@ form {
 .action.tocompare:before {
   content: '\f83b';
   display: block;
-  webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   
   line-height: inherit;
   color: inherit;
   font-family: 'porto-icons';
-  vertical-align: middle;
  
   font-weight: normal;
   overflow: hidden;
-  speak: none;
   text-align: center;
 }
 .product-item-actions .action.tocompare>span {

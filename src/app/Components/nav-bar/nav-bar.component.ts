@@ -1,6 +1,6 @@
 import { SearchproductService } from './../../Services/searchproduct.service';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation, inject, input, output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, HostListener, Input, OnInit, Output, ViewEncapsulation, inject, input, output } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../_services/auth.service';
@@ -20,9 +20,13 @@ import { CartService } from '../../Services/cart.service';
 export class NavBarComponent implements OnInit {
   CategoryList: ICategory[] = [];
  CartService = inject(CartService);
-  addToCart(product: any) {
-    this.CartService.AddtoCart(product);}
-  SubCategoryList:ISubCategory[]=[];
+ addToCart(product: any) {
+  this.CartService.AddtoCart(product);
+}
+Addtofavourite(product: any) {
+  this.CartService.Addtofavourite(product);
+}
+ SubCategoryList:ISubCategory[]=[];
   @Output() categoryClicked = new EventEmitter<number>();
   @Output() SubcategoryClicked =new EventEmitter<number>();
   
@@ -32,8 +36,6 @@ export class NavBarComponent implements OnInit {
   onCategoryClick(categoryId: number): void {
     this.categoryClicked.emit(categoryId);
   }
-
-  
   lang:any="en";
   isSubmitted = false;
   Products:any[]= JSON.parse(localStorage.getItem('Search')||"[]");
@@ -76,18 +78,42 @@ export class NavBarComponent implements OnInit {
     this._auth.logout();
     this._router.navigate(['/home']);
   }
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const navbarBottom = document.querySelector('.navbar-bottom') as HTMLElement;
+    if (navbarBottom) {
+      if (window.pageYOffset >= navbarBottom.offsetTop)
+        navbarBottom.classList.add('sticky-navbar-bottom');
+      else
+        navbarBottom.classList.remove('sticky-navbar-bottom');
+    }
+    if (window.pageYOffset <= 0)
+      navbarBottom.classList.remove('sticky-navbar-bottom');
+  }
   
-  Search(name: string): void {
-    if(name=="")
+  Search(name:string): void {
+  if(name=="")
       {
         localStorage.removeItem('Search');
         this.Products=[];
-        this._router.navigate(['home']);
+        //this._router.navigate(['home']);
       }else{
-        this._router.navigate(['Search']);
+               // this._router.navigate(['Search']);
         this.SearchproductService.getSearchProducts(name).subscribe(products => {
         this.Products = products;
         localStorage.setItem('Search', JSON.stringify(this.Products));
+         if(this.Products.length<1&&name.length>0)
+           {
+             alert("We cannot find any product with this name");
+             localStorage.removeItem('Search');
+             name ="";
+             this.Search(name);
+           }
       });}
       } 
+
+
+
+
+      
 }

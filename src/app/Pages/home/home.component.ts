@@ -52,7 +52,6 @@ export class HomeComponent {
 
   GetIdOFCategory(categoryId: number): void {
     this.selectedCategoryId = categoryId;
-   
     localStorage.setItem('selectedCategoryId', categoryId.toString());
   }
 
@@ -60,4 +59,11 @@ export class HomeComponent {
     this.selectedSubCategoryId = subcategoryId;
     localStorage.setItem('selectedSubCategoryId', subcategoryId.toString());
   }
+
+
+  isSearchIn(): boolean {
+    const Search  = localStorage.getItem('Search');
+    return Search ? true : false;
+  }
+
 }

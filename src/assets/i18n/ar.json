@@ -12,7 +12,8 @@
         "MoreOptions":"المزيد من الخيارات",
         "ContinueShopping":"متابعه الشحن",
         "checkout":"تأكيد الطلب",
-        "shoppingcart":"سله التسوق"
+        "shoppingcart":"سله التسوق",
+        "orderState":"عرض الطلبات"
     },
     "nav":{
         "search":"أبحث عن منتجك هنا",

@@ -8,8 +8,8 @@ import { NavBarComponent } from '../../nav-bar/nav-bar.component';
 import { CartService } from '../../../Services/cart.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { OrderDetailsService } from '../../../Order/Service/order-details.service';
 import { OrderService , } from '../../../Order/Service/order.service';
+import { environment } from '../../../../environment/environment';
 
 @Component({
   selector: 'app-cart',
@@ -25,7 +25,8 @@ export class CartComponent {
   
   private Items:any[]= JSON.parse(localStorage.getItem('CartItems')||"[]");
   Items2:Cart[]=[];
-  UserId: string="fb4efdeb-28f3-4f81-9cef-877310f6b438";
+  UserId: string|null=localStorage.getItem("userId");
+
 
   isLoggedIn(): boolean {
     const token = localStorage.getItem('token');
@@ -35,7 +36,7 @@ export class CartComponent {
     this.fetchCart();
   }
   fetchCart(){
-    if(this.isLoggedIn()){
+     if(this.isLoggedIn() && this.UserId!=null){
       this.CartItemService.GetUserCart(this.UserId).subscribe(Carts => {
         this.Items2 =Carts;
       });
@@ -69,16 +70,35 @@ export class CartComponent {
     finalPrice: 0,
     date: new Date('2024-01-01'),
     state: 1,
-    userID: "string",
+    userID:"",
     address:" "
   };
   checkout(){
+    if(this.isLoggedIn()! && this.UserId==null ){
+      alert("Please login");
+    }
+   else{
+    if(this.Items2.length<=0)
+      {alert("There is no items in Cart");}
+      }
+   
    this.Order.date= new Date(Date.now());
    this.Order.address=" ";
-   this.OrderService.CreateOrder(this.Order).subscribe();
-   this.Items.forEach(element => {this.CartServic.delete(element);});  
-   this.router.navigate(['list']);
+   if(this.isLoggedIn() && this.UserId!=null && this.Items2.length>0){
+   this.Order.userID=this.UserId;
+   this.OrderService.CreateOrder(this.Order).subscribe(); 
+   this.Items2 =[];
+   alert("Order created");
     }
+    }
+    checkout2(){
+      if(this.isLoggedIn() && this.UserId!=null){
+      this.router.navigate(['list']);
+     }
+     else{
+      alert("Please login");
+     }
+       }
   constructor(private router: Router,private translate: TranslateService , private Router:Router ,
     private OrderService: OrderService,private CartItemService: CartItemService) {
     this.lang = localStorage.getItem('lang');

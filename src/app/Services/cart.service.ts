@@ -11,11 +11,11 @@ export class CartService {
 private Items:any[]= JSON.parse(localStorage.getItem('CartItems')||"[]");
 private  Products:any[]= JSON.parse(localStorage.getItem('favouriteProduct')||"[]");
 private Total:number=0;
-UserId: string="fb4efdeb-28f3-4f81-9cef-877310f6b438";
+UserId: string|null=localStorage.getItem("userId");
 private Cart:Cart={
   id:0,
   productId:0,
-  custId:this.UserId,
+  custId:" ",
    enName: "",
   arName: "",
   imgURL: "",
@@ -31,9 +31,11 @@ private Cart:Cart={
   }
 
   AddtoCart(Product:any) {
-    if(this.isLoggedIn()){
+    debugger
+    if(this.isLoggedIn()&&this.UserId!=null){
       this.Cart.quantity= 1;
       this.Cart.productId= Product.id;
+      this.Cart.custId=this.UserId;
       this.CartItemService.CreateCart(this.Cart).subscribe();
     }
     else{
@@ -53,6 +55,7 @@ private Cart:Cart={
   localStorage.setItem('favouriteProduct',JSON.stringify(this.Products)); 
   }
   this.router.navigate(['product', Product.id]);
+  localStorage.removeItem('Search');
   }
 
   getTotal(){
