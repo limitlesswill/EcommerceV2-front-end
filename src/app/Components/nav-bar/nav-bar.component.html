@@ -12,7 +12,6 @@
       <a routerLink="/home" class="navbar-logo">
         <img src="../../../assets/Logo-White.png" alt="logo">
       </a>
-      
       <div class="navbar-center">
         <input type="text" #searchInput (input)="Search(searchInput.value)" placeholder="{{ 'nav.search' | translate }}...">
       </div>
@@ -157,12 +156,5 @@
          
       </div>
   </div>
-</div>}
-@if(Show){
-<div id="alterdiv" class="hidden" style="width:100%;padding: 10%; " >
-  <h1 style="align-items: center; color:green;">
-   <img src="" alt="">
-    We can not find any products in this Name
-  </h1>
 </div>}
 <router-outlet></router-outlet>

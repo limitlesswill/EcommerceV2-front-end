@@ -53,6 +53,7 @@ private Cart:Cart={
   localStorage.setItem('favouriteProduct',JSON.stringify(this.Products)); 
   }
   this.router.navigate(['product', Product.id]);
+  localStorage.removeItem('Search');
   }
 
   getTotal(){
