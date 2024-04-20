@@ -9,7 +9,7 @@ import { CartItemService } from '../Order/Service/cart-item.service';
 })
 export class CartService {
 private Items:any[]= JSON.parse(localStorage.getItem('CartItems')||"[]");
-private  Products:any[]= JSON.parse(localStorage.getItem('favouriteProduct')||"[]");
+private Products:any[]= JSON.parse(localStorage.getItem('favouriteProduct')||"[]");
 private Total:number=0;
 UserId: string|null=localStorage.getItem("userId");
 private Cart:Cart={
@@ -32,20 +32,30 @@ private Cart:Cart={
 
   AddtoCart(Product:any) {
     debugger
-    if(this.isLoggedIn()&&this.UserId!=null){
+    if(!this.isLoggedIn()||this.UserId==null){
+      let Item = this.Items.find(i => i.id== Product.id);
+      if(Item==null)
+        {this.Items.push({...Product,wanted:1});
+        localStorage.setItem('CartItems',JSON.stringify(this.Items));}
+    }
+    else{
       this.Cart.quantity= 1;
       this.Cart.productId= Product.id;
       this.Cart.custId=this.UserId;
-      this.CartItemService.CreateCart(this.Cart).subscribe();
-    }
-    else{
-         let Item = this.Items.find(i => i.id== Product.id);
-          if(Item==null)
-            {this.Items.push({...Product,wanted:1});
-            localStorage.setItem('CartItems',JSON.stringify(this.Items));}
-         }
-  
+      this.CartItemService.CreateCart(this.Cart).subscribe(
 
+{
+  next:(x)=>{
+    console.log("my ca  ",this.Cart);
+  }
+  ,
+  error:(err)=>{
+    console.log(err);
+  }
+}
+
+        );
+    }   
   }
  
   Addtofavourite(Product:any) {

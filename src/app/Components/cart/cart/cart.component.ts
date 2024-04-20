@@ -74,7 +74,7 @@ export class CartComponent {
     address:" "
   };
   checkout(){
-    if(this.isLoggedIn()! && this.UserId==null ){
+    if(!this.isLoggedIn() || this.UserId==null ){
       alert("Please login");
     }
    else{
@@ -86,9 +86,9 @@ export class CartComponent {
    this.Order.address=" ";
    if(this.isLoggedIn() && this.UserId!=null && this.Items2.length>0){
    this.Order.userID=this.UserId;
-   this.OrderService.CreateOrder(this.Order).subscribe(); 
    this.Items2 =[];
    alert("Order created");
+   this.OrderService.CreateOrder(this.Order).subscribe(); 
     }
     }
     checkout2(){
