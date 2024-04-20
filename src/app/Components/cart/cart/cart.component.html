@@ -2,7 +2,6 @@
 <div class="container" [style.direction]="lang=='ar' ? 'rtl' : 'ltr'">
     <h3 class="titlecart">{{'cart.shoppingcart'| translate}}</h3>
     <div class="row">
-        <h1>{{isLoggedIn()}}</h1>
         <div class="col-xl-8">       
             @if(isLoggedIn()){
             @for(item of Items2; track item.productId)

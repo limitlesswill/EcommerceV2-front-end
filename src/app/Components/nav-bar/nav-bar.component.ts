@@ -23,6 +23,10 @@ export class NavBarComponent implements OnInit {
  addToCart(product: any) {
   this.CartService.AddtoCart(product);
 }
+isLoggedIn(): boolean {
+  const token = localStorage.getItem('token');
+  return token ? true : false;
+}
 Addtofavourite(product: any) {
   this.CartService.Addtofavourite(product);
 }

@@ -1,10 +1,11 @@
 import { Component, ElementRef } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 @Component({
   selector: 'contactus',
   standalone: true,
-  imports: [],
+  imports: [NavBarComponent],
   templateUrl: './contactus.component.html',
   styleUrl: './contactus.component.css'
 })
