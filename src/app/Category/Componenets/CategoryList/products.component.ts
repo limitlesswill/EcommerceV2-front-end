@@ -32,7 +32,7 @@ export class ProductsComponent {
 
  @ViewChild(MatPaginator) paginator!: MatPaginator;
   pageIndex: number = 0;
-  pageSize=1;
+  pageSize=10;
   @Input() categoryId!: number;
   products!: IProduct[];
 
