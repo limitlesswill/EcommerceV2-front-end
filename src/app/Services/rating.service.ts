@@ -8,7 +8,7 @@ import { IComment } from '../Models/i-comment';
 })
 export class RatingService {
 
-  private baseUrl = 'http://EcommerceWebSite.somee.com/api/';
+  private baseUrl = 'https://EcommerceWebSite.somee.com/api/';
 
   constructor(private http: HttpClient) { }
 

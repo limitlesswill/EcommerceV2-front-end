@@ -18,10 +18,10 @@ export class AuthService {
   constructor(private _http: HttpClient) {}
 
   loginUser(userData: any):Observable<any>{
-    return this._http.post(`http://EcommerceWebSite.somee.com/api/Account/login`, userData)
+    return this._http.post(`https://EcommerceWebSite.somee.com/api/Account/login`, userData)
   }
   register(userData: registerUserData):Observable<any>{
-    return this._http.post(`http://EcommerceWebSite.somee.com/api/Account/register`, userData)
+    return this._http.post(`https://EcommerceWebSite.somee.com/api/Account/register`, userData)
   }
 
   logout() {

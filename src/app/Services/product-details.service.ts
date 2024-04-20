@@ -8,7 +8,7 @@ import { IProduct } from '../Models/i-product';
 })
 export class ProductDetailsService {
 
-  private baseUrl = 'http://EcommerceWebSite.somee.com/api/';
+  private baseUrl = 'https://EcommerceWebSite.somee.com/api/';
 
   constructor(private http: HttpClient) { }
 
