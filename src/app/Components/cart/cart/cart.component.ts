@@ -22,7 +22,6 @@ import { environment } from '../../../../environment/environment';
 export class CartComponent {
   lang:any="en"; 
   langChangeSubscription: Subscription;
-  
   private Items:any[]= JSON.parse(localStorage.getItem('CartItems')||"[]");
   Items2:Cart[]=[];
   UserId: string|null=localStorage.getItem("userId");
@@ -75,7 +74,9 @@ export class CartComponent {
   };
   checkout(){
     if(!this.isLoggedIn() || this.UserId==null ){
+     
       alert("Please login");
+      
     }
    else{
     if(this.Items2.length<=0)

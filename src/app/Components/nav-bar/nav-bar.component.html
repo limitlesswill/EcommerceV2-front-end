@@ -38,10 +38,14 @@
             'icos-arabic': lang === 'ar',
             'icos': lang === 'en'
           }"></i>
+          
+          @if(Items2.length > 0){
           <span [ngClass]="{
             'count-arabic': lang === 'ar',
             'count': lang === 'en'
-          }">1</span>
+          }">
+          {{Items2.length}}
+        </span>}
         </a>
       </div>
     </div>

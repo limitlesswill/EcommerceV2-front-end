@@ -186,11 +186,13 @@
 
         <div class="col-xl-4">
             <div class="mt-5 mt-lg-0">
-                <div class="card border shadow-none">
+                <div class="card border shadow-none">@if(Items2.length > 0){
+                    
                     <div class="card-header bg-transparent border-bottom py-3 px-4">
                         <h5 class="font-size-16 mb-0">{{'cart.OrderSummary'| translate}}</h5>
                     </div>
                     <div class="card-body p-4 pt-2">
+                        
 
                         <div class="table-responsive">
                             <table class="table mb-0">
@@ -219,7 +221,9 @@
                             </table>
                         </div>
                         <!-- end table-responsive -->
+                    
                     </div>
+                }
                 </div>
             </div>
         </div>
