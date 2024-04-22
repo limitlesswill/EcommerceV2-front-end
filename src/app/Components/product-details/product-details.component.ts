@@ -12,6 +12,7 @@ import { NavBarComponent } from "../nav-bar/nav-bar.component";
 import { HeaderComponent } from "../header/header.component";
 import { StarsComponent } from "../Shared/stars/stars.component";
 import { CartService } from '../../Services/cart.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -39,12 +40,8 @@ export class ProductDetailsComponent implements OnInit,OnDestroy {
     private productService: ProductDetailsService,
     private ratingService: RatingService,
     private formBuilder: FormBuilder,
-    private CartService: CartService,
-    private  Router:Router 
-   
-  ) {
+    private CartService: CartService ) {
     this.commentForm = this.formBuilder.group({
-      userName: ['', Validators.required],
       commentStatement: ['', Validators.required],
       selectedRating: [0, Validators.required]
     });
@@ -101,13 +98,12 @@ export class ProductDetailsComponent implements OnInit,OnDestroy {
 // making a rating
   onRatingChanged(rating: number) {
     this.selectedRating = rating;
-    console.log("Selected rating:", this.selectedRating); 
+    // console.log("Selected rating:", this.selectedRating); 
   }
 
   // making a comment
   submitComment() {
     if (this.commentForm.valid) {
-      const userName = this.commentForm.get('userName')?.value;
       const commentStatement = this.commentForm.get('commentStatement')?.value;
       const commentCreated: IComment = {
         id: 0,
@@ -117,7 +113,7 @@ export class ProductDetailsComponent implements OnInit,OnDestroy {
       };
       this.ratingService.makeProductComment(commentCreated).subscribe({
         next: (data: IComment) => {
-          console.log(data);
+          // console.log(data);
           this.comments.push(data);
           // Reset form after submission
           this.commentForm.reset();
@@ -130,21 +126,15 @@ export class ProductDetailsComponent implements OnInit,OnDestroy {
       
       this.ratingService.getProductComments(this.productId).subscribe({
         next: (data: IComment[]) => {
-         // console.log(data);
           this.comments = data;
         },
         error: (err: any) => {
           console.log(err);
         },
       });
-  
-
-
-
-
     }
     this.ShowAddComments=false;
-
+    
   }
 
 
