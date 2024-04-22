@@ -25,7 +25,7 @@ export class ProductByCategoryComponent {
   }
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   pageIndex: number = 0;
-  pageSize=1;
+  pageSize=10;
   @Input() SubcategoryId!: number;
   Subproducts!: IProduct[];
 

@@ -2,7 +2,6 @@
 <div class="container" [style.direction]="lang=='ar' ? 'rtl' : 'ltr'">
     <h3 class="titlecart">{{'cart.shoppingcart'| translate}}</h3>
     <div class="row">
-        <h1>{{isLoggedIn()}}</h1>
         <div class="col-xl-8">       
             @if(isLoggedIn()){
             @for(item of Items2; track item.productId)
@@ -187,16 +186,18 @@
 
         <div class="col-xl-4">
             <div class="mt-5 mt-lg-0">
-                <div class="card border shadow-none">
+                <div class="card border shadow-none">@if(Items2.length > 0){
+                    
                     <div class="card-header bg-transparent border-bottom py-3 px-4">
                         <h5 class="font-size-16 mb-0">{{'cart.OrderSummary'| translate}}</h5>
                     </div>
                     <div class="card-body p-4 pt-2">
+                        
 
                         <div class="table-responsive">
                             <table class="table mb-0">
                                 <tbody>
-                                    <tr>
+                                    <!-- <tr>
                                         <td>{{'cart.subtotal'| translate}}:</td>
                                         <td class="text-end">$ {{ getTotal()+53}}</td>
                                     </tr>
@@ -207,7 +208,7 @@
                                     <tr>
                                         <td>{{'cart.ShippingCharge'| translate}}:</td>
                                         <td class="text-end">$ 25</td>
-                                    </tr>
+                                    </tr> -->
                                     <tr class="bg-light">
                                         <th>{{'cart.total'| translate}}:</th>
                                         <td class="text-end">
@@ -220,7 +221,9 @@
                             </table>
                         </div>
                         <!-- end table-responsive -->
+                    
                     </div>
+                }
                 </div>
             </div>
         </div>

@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { OrderService , } from '../../../Order/Service/order.service';
 import { environment } from '../../../../environment/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cart',
@@ -22,7 +23,6 @@ import { environment } from '../../../../environment/environment';
 export class CartComponent {
   lang:any="en"; 
   langChangeSubscription: Subscription;
-  
   private Items:any[]= JSON.parse(localStorage.getItem('CartItems')||"[]");
   Items2:Cart[]=[];
   UserId: string|null=localStorage.getItem("userId");
@@ -74,21 +74,25 @@ export class CartComponent {
     address:" "
   };
   checkout(){
-    if(this.isLoggedIn()! && this.UserId==null ){
-      alert("Please login");
+    if(!this.isLoggedIn() || this.UserId==null ){
+      Swal.fire("Please login");
+      this.router.navigate(['login']);
     }
    else{
     if(this.Items2.length<=0)
-      {alert("There is no items in Cart");}
-      }
+      {Swal.fire("There is no items in Cart");}}
    
    this.Order.date= new Date(Date.now());
    this.Order.address=" ";
    if(this.isLoggedIn() && this.UserId!=null && this.Items2.length>0){
    this.Order.userID=this.UserId;
-   this.OrderService.CreateOrder(this.Order).subscribe(); 
    this.Items2 =[];
-   alert("Order created");
+   Swal.fire({
+        title: "Good job!",
+        text: "Your Order have been created",
+        icon: "success"
+      });
+   this.OrderService.CreateOrder(this.Order).subscribe(); 
     }
     }
     checkout2(){
@@ -96,7 +100,8 @@ export class CartComponent {
       this.router.navigate(['list']);
      }
      else{
-      alert("Please login");
+      Swal.fire("Please login");
+      this.router.navigate(['login']);
      }
        }
   constructor(private router: Router,private translate: TranslateService , private Router:Router ,
@@ -143,6 +148,5 @@ export class CartComponent {
   DecreamentQuantity(product:any){
     this.CartServic.DecreamentQuantity(product.id);
   }
-
 
 }

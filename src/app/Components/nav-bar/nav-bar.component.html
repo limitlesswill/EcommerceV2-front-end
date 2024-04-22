@@ -21,25 +21,31 @@
       }">
         <a href="/contactus" style="margin-right: -43px;"><i class="mdi mdi-map-marker-outline"></i><span>{{ 'nav.storelocation' |
             translate }}</span></a>
-        <a *ngIf="!isSubmitted; else loggedOut" routerLink="/login" style="margin-right: 6px">
+            @if(isLoggedIn())
+            {
+              <a (click)="logout()" style="margin-right: 6px">
+                <i class="mdi mdi-account-outline"></i>
+                <span>{{ 'nav.logout' | translate }}</span>
+              </a>
+            }@else{
+        <a routerLink="/login" style="margin-right: 6px">
           <i class="mdi mdi-account-outline"></i>
           <span>{{ 'nav.signin' | translate }}</span>
         </a>
-        <ng-template #loggedOut>
-          <a (click)="logout()" style="margin-right: 6px">
-            <i class="mdi mdi-account-outline"></i>
-            <span>{{ 'nav.logout' | translate }}</span>
-          </a>
-        </ng-template>
+      }
         <a routerLink="/cart">
           <i class="mdi mdi-cart-outline" [ngClass]="{
             'icos-arabic': lang === 'ar',
             'icos': lang === 'en'
           }"></i>
+          
+          @if(Items2.length > 0){
           <span [ngClass]="{
             'count-arabic': lang === 'ar',
             'count': lang === 'en'
-          }">1</span>
+          }">
+          {{Items2.length}}
+        </span>}
         </a>
       </div>
     </div>

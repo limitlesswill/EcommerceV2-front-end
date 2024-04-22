@@ -30,7 +30,7 @@ export const routes: Routes = [
     { path: 'admin', component: BoardAdminComponent },
     { path: 'cart', component: CartComponent },
     { path: 'product/:id', component: ProductDetailsComponent },
-    { path: 'Pay', component: ConfirmOrderComponent },
+    { path: 'Pay', component: ConfirmOrderComponent ,canActivate:[authGuard]},
     { path: '', redirectTo: 'home', pathMatch: 'full'  },
     { path: 'products', component: MainCategoryComponent },
     { path: 'productOfCAt', component: AllProductOfCAtComponent,title:'productOFcategory' },
@@ -39,13 +39,8 @@ export const routes: Routes = [
 
     { path: '', redirectTo: 'home', pathMatch: 'full' , },
     { path: 'Search', component: SearchproductComponent },
-    {
-      path: 'Order',
-      component: OrderLayoutComponent,
-      title: 'Order',
-      children: [
-     {path: 'list', component: OrderListComponent, title: 'Order List'}]}
-    ,{path: 'list', component: OrderListComponent, title: 'Order List'},
+    {path: 'Order',component: OrderLayoutComponent,title: 'Order'}
+     ,{path: 'list', component: OrderListComponent, title: 'Order List',canActivate:[authGuard]},
 
      {path:'Product',component:MainCategoryComponent,title:'Products'}
   

@@ -8,6 +8,7 @@ import { Order, OrderDetails } from '../../models/order/order.module';
 import { PaymentService } from '../../../Services/payment.service';
 import { environment } from '../../../../environment/environment';
 import { NavBarComponent } from '../../../Components/nav-bar/nav-bar.component';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -62,6 +63,11 @@ export class OrderListComponent {
       this.OrderService.DeleteOrder(id).subscribe((d) => {
         this.fetchOrders(); // Refresh the list
       });
+      Swal.fire({
+        title: "Good job!",
+        text: "Your Order have been deleted",
+        icon: "success"
+      });
     }
   }
   deleteOrderDetails(id: number,OId:number): void {
@@ -69,6 +75,11 @@ export class OrderListComponent {
       this.OrderDetailsService.DeleteOrder(id).subscribe((d) => {
         this.fetchOrdersDetails(OId); // Refresh the list
         this.fetchOrders();
+      });
+      Swal.fire({
+        title: "Good job!",
+        text: "Item have been deleted",
+        icon: "success"
       });
     }
   }

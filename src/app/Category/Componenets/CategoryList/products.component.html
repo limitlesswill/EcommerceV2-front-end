@@ -41,10 +41,11 @@
 <!-- <div> -->
     <div class="col-10 p-0">
         <mat-paginator class="paginator col-10" (page)="onPageChange($event)"
-        [length]="6"  [pageSize]="2" [pageSizeOptions]="[1,2,3]" showFirstLastButtons aria-label="Select page" ></mat-paginator>
+        [length]="200"  [pageSize]="10" [pageSizeOptions]="[10,20,30,40]" showFirstLastButtons aria-label="Select page" ></mat-paginator>
     </div>
 <!-- <mat-paginator [length]="20"  [pageSize]="5" [pageSizeOptions]="[2, 5]" showFirstLastButtons (page)="onPageChange($event)" aria-label="Select page"></mat-paginator> -->
 <!-- <mat-paginator [length]="products?.length"   [pageSize]="1" [pageSizeOptions]="[3, 10, 25, 100]" (page)="onPageChange($event)" aria-label="Select page"></mat-paginator> -->
+<a href=""> <Button style="margin: 20px; " class="Prime"class="btn btn-success"> <i class="fa fa-chevron-left"></i> Back to Home </Button></a>
 <div class="products wrapper grid columns4 products-grid mb-4 ">
     <ol class="filterproducts products list items product-items">
         @for(product of products; track product.Id){
@@ -71,7 +72,7 @@
                             <span class="price-container price-final_price tax weee">
                                 <span class="price-label">was</span>
                                 <span id="old-price-11884" data-price-amount="27900" data-price-type="oldPrice"
-                                    class="price-wrapper "><span class="price">27900.00 &nbsp;EGP</span></span>
+                                    class="price-wrapper "><span class="price">{{product.price + 200}} &nbsp;EGP</span></span>
                             </span>
                         </span>
                         <span class="special-price">
@@ -89,15 +90,11 @@
                                 aria-label="Add to Wish List" data-action="add-to-wishlist" role="button">
                                 <span>Add to Wish List</span>
                             </a>
-                            <div class="actions-primary">
-                                <form data-role="tocart-form">
-                                    <input type="hidden" name="product" value="11884">
-                                    <input type="hidden" name="uenc" value="">
-                                    <input name="form_key" type="hidden" value=""> <button type="submit"
+                            <div class="actions-primary"><button type="button"
                                         title="Add to Cart" class="action tocart primary" (click)="addToCart(product)">
                                         <span>Add to Cart</span>
                                     </button>
-                                </form>
+                                
                             </div>
                             <a href="#" class="action tocompare actions-secondary" title="Add to Compare"
                                 aria-label="Add to Compare" role="button">
@@ -110,6 +107,10 @@
         </li>
         }
     </ol>
+</div>
+<div class="col-10 p-0">
+    <mat-paginator class="paginator col-10" (page)="onPageChange($event)"
+    [length]="200"  [pageSize]="10" [pageSizeOptions]="[10,20,30,40]" showFirstLastButtons aria-label="Select page" ></mat-paginator>
 </div>
 <!-- </div> -->
 <!-- </div> -->

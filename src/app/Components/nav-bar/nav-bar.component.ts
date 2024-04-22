@@ -6,8 +6,10 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../_services/auth.service';
 import { ICategory, ISubCategory } from '../../Category/Model/icategory';
 import { CategoryService } from '../../Category/Services/category.service';
-import { Product } from '../../Order/models/order/order.module';
+import { Cart, Product } from '../../Order/models/order/order.module';
 import { CartService } from '../../Services/cart.service';
+import { CartItemService } from './../../Order/Service/cart-item.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-nav-bar',
@@ -18,10 +20,30 @@ import { CartService } from '../../Services/cart.service';
   encapsulation: ViewEncapsulation.None
 })
 export class NavBarComponent implements OnInit {
-  CategoryList: ICategory[] = [];
+  
+  
+  ///////////////////////////////////////////////////////////////////////
+  Items2:Cart[]=[];
+  UserId: string|null=localStorage.getItem("userId");
+  fetchCart(){
+     if(this.isLoggedIn() && this.UserId!=null){
+      this.CartItemService.GetUserCart(this.UserId).subscribe(Carts => {
+        this.Items2 =Carts;
+      });
+    }else
+    {
+      this.Items2= JSON.parse(localStorage.getItem('CartItems')||"[]");
+    }
+  }
+  //////////////////////////////////////////////////////////////////////
+ CategoryList: ICategory[] = [];
  CartService = inject(CartService);
  addToCart(product: any) {
   this.CartService.AddtoCart(product);
+}
+isLoggedIn(): boolean {
+  const token = localStorage.getItem('token');
+  return token ? true : false;
 }
 Addtofavourite(product: any) {
   this.CartService.Addtofavourite(product);
@@ -50,10 +72,12 @@ Addtofavourite(product: any) {
     else
     return this.imageUrlOtherLanguage;
   }
-  constructor(private SearchproductService:SearchproductService, private _auth:AuthService, private _router:Router, private translate: TranslateService, private cdr: ChangeDetectorRef,private categoryServices: CategoryService, private route: ActivatedRoute) {
+  constructor(private CartItemService: CartItemService,
+     private SearchproductService:SearchproductService, private _auth:AuthService, private _router:Router, private translate: TranslateService, private cdr: ChangeDetectorRef,private categoryServices: CategoryService, private route: ActivatedRoute) {
     translate.use(this.lang);
   }
   ngOnInit(): void {
+    this.fetchCart();
     this.lang = this.translate.currentLang;
     document.documentElement.lang = this.lang;
     this.categoryServices.getallCategoryAndSubCategoryOFit().subscribe({  next :(data) => {  this.CategoryList = data;}})
@@ -77,6 +101,7 @@ Addtofavourite(product: any) {
   logout() {
     this._auth.logout();
     this._router.navigate(['/home']);
+    this.fetchCart();
   }
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -104,16 +129,15 @@ Addtofavourite(product: any) {
         localStorage.setItem('Search', JSON.stringify(this.Products));
          if(this.Products.length<1&&name.length>0)
            {
-             alert("We cannot find any product with this name");
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "We cannot find any product with this name",
+            });
              localStorage.removeItem('Search');
              name ="";
              this.Search(name);
            }
       });}
-      } 
-
-
-
-
-      
+      }       
 }
