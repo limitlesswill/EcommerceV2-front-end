@@ -9,6 +9,7 @@ import { CategoryService } from '../../Category/Services/category.service';
 import { Cart, Product } from '../../Order/models/order/order.module';
 import { CartService } from '../../Services/cart.service';
 import { CartItemService } from './../../Order/Service/cart-item.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-nav-bar',
@@ -128,7 +129,11 @@ Addtofavourite(product: any) {
         localStorage.setItem('Search', JSON.stringify(this.Products));
          if(this.Products.length<1&&name.length>0)
            {
-             alert("We cannot find any product with this name");
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "We cannot find any product with this name",
+            });
              localStorage.removeItem('Search');
              name ="";
              this.Search(name);

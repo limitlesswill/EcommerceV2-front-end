@@ -22,23 +22,17 @@ import { CartService } from '../../Services/cart.service';
     imports: [RouterOutlet, FormsModule, CommonModule, TranslateModule, NavBarComponent, HeaderComponent, StarsComponent,ReactiveFormsModule]
 })
 export class ProductDetailsComponent implements OnInit,OnDestroy {
-
-
-  
   selectedRating!: number;
   userName!: string;
   commentStatement!: string;
   product!:IProduct;
   comments: IComment[] = [];  
- 
-commentForm!: FormGroup;
+  commentForm!: FormGroup;
   productId!:Number;
- 
   lang:any="en"; 
   langChangeSubscription: Subscription;
- 
-
-
+  ShowComments: boolean=false; 
+  ShowAddComments: boolean=false;
   constructor(
     private translate: TranslateService ,
     private route: ActivatedRoute,
@@ -54,18 +48,14 @@ commentForm!: FormGroup;
       commentStatement: ['', Validators.required],
       selectedRating: [0, Validators.required]
     });
-   
-
     this.lang = localStorage.getItem('lang');
     translate.use(this.lang);
-
-    // Subscribe to langChange event
+   // Subscribe to langChange event
     this.langChangeSubscription = translate.onLangChange.subscribe(event => {
       this.lang = event.lang;
       // Update any component-specific properties or UI elements here
     });
   }
-
   sub! : Subscription;
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -81,20 +71,31 @@ commentForm!: FormGroup;
       },
     });
   
-    //get comments
-   
-    this.ratingService.getProductComments(id).subscribe({
-      next: (data: IComment[]) => {
-       // console.log(data);
-        this.comments = data;
-      },
-      error: (err: any) => {
-        console.log(err);
-      },
-    });
   }
 
-  
+  ShowComment(){
+    if(this.ShowComments==false)
+      {
+   this.ShowComments=true;
+   this.ShowAddComments=false;
+   const id = Number(this.route.snapshot.paramMap.get('id'));
+   this.ratingService.getProductComments(id).subscribe({
+    next: (data: IComment[]) => {
+     // console.log(data);
+      this.comments = data;
+    },
+    error: (err: any) => {
+      console.log(err);
+    },
+  }); }
+  else {
+    this.ShowComments=false;
+  }
+  }
+  AddComment(){
+    this.ShowAddComments=true;
+    this.ShowComments=false;
+  }
 
   
 // making a rating
@@ -142,11 +143,10 @@ commentForm!: FormGroup;
 
 
     }
+    this.ShowAddComments=false;
+
   }
 
-  cancel(){
-    this.Router.navigate(['home']);
-  }
 
 
   ngOnDestroy(): void {
@@ -156,7 +156,8 @@ commentForm!: FormGroup;
   addToCart(product: any) {
    this.CartService.AddtoCart(product);
  }
-
+ 
+ 
 
 }
 

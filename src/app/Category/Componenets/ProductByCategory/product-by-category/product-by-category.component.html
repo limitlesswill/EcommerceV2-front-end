@@ -22,6 +22,7 @@
     <mat-paginator class="paginator col-10" (page)="onPageChange($event)"
     [length]="200"  [pageSize]="10" [pageSizeOptions]="[10,20,30,40]" showFirstLastButtons aria-label="Select page" ></mat-paginator>
 </div>
+<a href=""> <Button style="margin: 20px; " class="Prime"class="btn btn-success"> <i class="fa fa-chevron-left"></i> Back to Home </Button></a>
 <div class="products wrapper grid columns4 products-grid mb-4  ">
     <ol class="filterproducts products list items product-items">
         @for(product of Subproducts; track product.Id){

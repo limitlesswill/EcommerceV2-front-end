@@ -8,8 +8,8 @@
       <div class="d-flex flex-column">
           <div class="h3">My Orders list</div>
       </div>
-      <div class="btn" (click)="cancel()" id="sub">
-        <i class="fas fa-cog"></i> Back
+      <div class="btn" style="margin: 20px;" (click)="cancel()" id="sub">
+        <i class="fa fa-chevron-left"></i> Back
       </div>
   </div>
   <div id="table" class="bg-white rounded">
@@ -56,11 +56,11 @@
    @if(OrdersDetails.length>0)
       {
         <div class="d-flex align-items-center justify-content-between">
-          <div class="d-flex flex-column">
+          <div  class="d-flex flex-column">
               <div class="h3">Orders Items List</div>
           </div>
-         <div (click)="back()" class="btn" id="sub">
-          <i class="fas fa-cog"></i> Back
+         <div style="margin: 20px; " (click)="back()" class="btn" id="sub">
+          <i class="fa fa-chevron-left"></i> Back
         </div>
         </div>
         <div id="table" class="bg-white rounded">

@@ -6,6 +6,7 @@ import { PaymentService } from '../../Services/payment.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { OrderService } from './../../Order/Service/order.service';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-confirm-order',
@@ -77,7 +78,13 @@ Addres(Add:string) {
               this.Order.state=4;
               this.OrderService.UpdateOrder(this.Order.id,this.Order).subscribe((d) => {});
               localStorage.removeItem('PaymentOrder');
-            }
+              Swal.fire({
+                title: "Good job!",
+                text: "Your Order have been Paid",
+                icon: "success"
+              });
+              this.router.navigate(['home']);
+             }
           });
         },
         onError: (error: any) => {
@@ -86,7 +93,6 @@ Addres(Add:string) {
       }
     ).render(this.paymentRef.nativeElement);
   }
-
   cancel() {
     this.router.navigate(['list']);
   }
