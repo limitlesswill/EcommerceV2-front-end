@@ -22,7 +22,7 @@ import Swal from 'sweetalert2';
     styleUrl: './product-details.component.css',
     imports: [RouterOutlet, FormsModule, CommonModule, TranslateModule, NavBarComponent, HeaderComponent, StarsComponent,ReactiveFormsModule]
 })
-export class ProductDetailsComponent implements OnInit,OnDestroy {
+export class ProductDetailsComponent implements OnInit {
   selectedRating!: number;
   userName!: string;
   commentStatement!: string;
@@ -90,6 +90,7 @@ export class ProductDetailsComponent implements OnInit,OnDestroy {
   }
   }
   AddComment(){
+    
     this.ShowAddComments=true;
     this.ShowComments=false;
   }
@@ -124,24 +125,26 @@ export class ProductDetailsComponent implements OnInit,OnDestroy {
         }
       });
       
-      this.ratingService.getProductComments(this.productId).subscribe({
-        next: (data: IComment[]) => {
-          this.comments = data;
-        },
-        error: (err: any) => {
-          console.log(err);
-        },
-      });
+      // this.ratingService.getProductComments(this.productId).subscribe({
+      //   next: (data: IComment[]) => {
+      //     this.comments = data;
+      //   },
+      //   error: (err: any) => {
+      //     console.log(err);
+      //   },
+      // });
+      
+     
+
     }
+    
     this.ShowAddComments=false;
     
   }
 
 
 
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
-  }
+ 
 
   addToCart(product: any) {
    this.CartService.AddtoCart(product);
