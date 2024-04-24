@@ -26,11 +26,6 @@ AddressDe!:string;
 
   constructor(private OrderService: OrderService,private router: Router, private payment: PaymentService) { }
 
-Peromo (num:string) {
-  this.Perom=num;
-  if (this.Perom==="123")
-    {}
-  }
 Addres(Add:string) {
     if(Add!="")
       {
@@ -68,12 +63,6 @@ Addres(Add:string) {
         onApprove: (data: any, actions: any) => {
           return actions.order.capture().then((details: any) => {
             if (details.status === 'COMPLETED') {
-              if(this.Perom=="123M")
-                {
-                  this.amount -=500;
-                  this.Order.finalPrice-=500;
-                }
-              
               this.payment.transactionID = details.id;
               this.Order.state=4;
               this.OrderService.UpdateOrder(this.Order.id,this.Order).subscribe((d) => {});

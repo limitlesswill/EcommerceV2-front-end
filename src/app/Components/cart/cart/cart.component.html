@@ -186,29 +186,29 @@
 
         <div class="col-xl-4">
             <div class="mt-5 mt-lg-0">
-                <div class="card border shadow-none">@if(Items2.length > 0){
+                <div class="card border shadow-none">
                     
                     <div class="card-header bg-transparent border-bottom py-3 px-4">
                         <h5 class="font-size-16 mb-0">{{'cart.OrderSummary'| translate}}</h5>
                     </div>
                     <div class="card-body p-4 pt-2">
-                        
+                        @if(Items2.length > 0){
 
                         <div class="table-responsive">
                             <table class="table mb-0">
                                 <tbody>
-                                    <!-- <tr>
+                                     <tr>
                                         <td>{{'cart.subtotal'| translate}}:</td>
-                                        <td class="text-end">$ {{ getTotal()+53}}</td>
+                                        <td class="text-end">$ {{ getTotal()}}</td>
                                     </tr>
-                                    <tr>
+                                    <!-- <tr>
                                         <td>{{'cart.discount'| translate}}:</td>
                                         <td class="text-end">- $ 78</td>
                                     </tr>
                                     <tr>
                                         <td>{{'cart.ShippingCharge'| translate}}:</td>
                                         <td class="text-end">$ 25</td>
-                                    </tr> -->
+                                    </tr>  -->
                                     <tr class="bg-light">
                                         <th>{{'cart.total'| translate}}:</th>
                                         <td class="text-end">
@@ -221,9 +221,40 @@
                             </table>
                         </div>
                         <!-- end table-responsive -->
-                    
+                        }@else{
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <tbody>
+                                         <tr>
+                                            <td>{{'cart.subtotal'| translate}}:</td>
+                                            <td class="text-end">0</td>
+                                        </tr>
+                                        <!-- <tr>
+                                            <td>{{'cart.discount'| translate}}:</td>
+                                            <td class="text-end">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{'cart.ShippingCharge'| translate}}:</td>
+                                            <td class="text-end">0</td>
+                                        </tr>  -->
+                                        <tr class="bg-light">
+                                            <th>{{'cart.total'| translate}}:</th>
+                                            <td class="text-end">
+                                                <span class="fw-bold">
+                                                    0
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                          
+
+
+
+                        }
                     </div>
-                }
+                
                 </div>
             </div>
         </div>
