@@ -121,7 +121,7 @@
         </button>
         <div class="subnav-content shadow" [style.margin-left.px]="[lang ==='en' ? 0 : 250]">
           <div>
-          <img [src]="'../../../assets/CategoryAndProductImg/' + (lang === 'en' ? c.imgURL : c.imgURLAr)" width="100%"
+          <img [src]=" (lang === 'en' ? c.imgURL : c.imgURLAr)" width="100%"
               alt="">
           </div>
           <ng-container class="w-25 ">

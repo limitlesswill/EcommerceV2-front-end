@@ -31,7 +31,6 @@ private Cart:Cart={
   }
 
   AddtoCart(Product:any) {
-    debugger
     if(!this.isLoggedIn()||this.UserId==null){
       let Item = this.Items.find(i => i.id== Product.id);
       if(Item==null)
