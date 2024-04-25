@@ -94,7 +94,7 @@
                                         title="Add to Cart" class="action tocart primary" (click)="addToCart(product)">
                                         <span>Add to Cart</span>
                                     </button>
-                                
+                                    @if(product.quantity>0){<span style="color: green;">Instock</span>}@else{<span style="color: red;">Instock</span>}
                             </div>
                             <a href="#" class="action tocompare actions-secondary" title="Add to Compare"
                                 aria-label="Add to Compare" role="button">

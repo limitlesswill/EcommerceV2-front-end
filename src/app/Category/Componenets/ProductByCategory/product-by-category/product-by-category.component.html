@@ -64,7 +64,8 @@
                                 <div class="actions-primary">
                                      <button type="button" title="Add to Cart" class="action tocart primary"(click)="addToCart(product)">
                                         <span>Add to Cart</span>
-                                    </button>
+                                    </button> 
+                                    @if(product.quantity>0){<span style="color: green;">Instock</span>}@else{<span style="color: red;">Instock</span>}
                                 </div>
                         </div>
                     </div>

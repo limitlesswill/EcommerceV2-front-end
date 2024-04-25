@@ -1,5 +1,5 @@
 export const environment = {
-  
+  UserApiUrl: 'https://EcommerceWebSite.somee.com/api/Category',
   CategoryApiUrl : 'https://EcommerceWebSite.somee.com/api/Category',
   ProductApiUrl : 'https://EcommerceWebSite.somee.com/api/product',
   SubCategoryApiUrl:'https://EcommerceWebSite.somee.com/api/SubCategory',

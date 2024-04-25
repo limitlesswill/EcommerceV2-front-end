@@ -28,7 +28,7 @@ export const routes: Routes = [
     { path: 'register', component: RegisterComponent}, //canActivate:[authGuard]},
     { path: 'user', component: BoardUserComponent },
     { path: 'admin', component: BoardAdminComponent },
-    { path: 'cart', component: CartComponent },
+    { path: 'cart', component: CartComponent, canActivate:[authGuard]},
     { path: 'product/:id', component: ProductDetailsComponent },
     { path: 'Pay', component: ConfirmOrderComponent ,canActivate:[authGuard]},
     { path: '', redirectTo: 'home', pathMatch: 'full'  },

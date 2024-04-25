@@ -34,7 +34,9 @@ export class ProductDetailsComponent implements OnInit {
   langChangeSubscription: Subscription;
   ShowComments: boolean=false; 
   ShowAddComments: boolean=false;
+  UserId: string|null=localStorage.getItem("userId");
   constructor(
+    private router: Router,
     private translate: TranslateService ,
     private route: ActivatedRoute,
     private productService: ProductDetailsService,
@@ -90,9 +92,13 @@ export class ProductDetailsComponent implements OnInit {
   }
   }
   AddComment(){
-    
-    this.ShowAddComments=true;
+    if(!this.isLoggedIn() || this.UserId==null ){
+      Swal.fire("Please login");
+      this.router.navigate(['login']);
+    }else{
+     this.ShowAddComments=true;
     this.ShowComments=false;
+   }
   }
 
   
@@ -100,6 +106,10 @@ export class ProductDetailsComponent implements OnInit {
   onRatingChanged(rating: number) {
     this.selectedRating = rating;
     // console.log("Selected rating:", this.selectedRating); 
+  }
+  isLoggedIn(): boolean {
+    const token = localStorage.getItem('token');
+    return token ? true : false;
   }
 
   // making a comment
@@ -110,8 +120,14 @@ export class ProductDetailsComponent implements OnInit {
         id: 0,
         productId: this.productId,
         review: commentStatement,
-        quality: this.selectedRating
+        quality: this.selectedRating,
+        UserId: "",
+        userName:"",
+        date:new Date('2024-01-01')
       };
+      commentCreated.date= new Date(Date.now());
+      if(this.UserId!=null){
+      commentCreated.UserId= this.UserId;}
       this.ratingService.makeProductComment(commentCreated).subscribe({
         next: (data: IComment) => {
           // console.log(data);
