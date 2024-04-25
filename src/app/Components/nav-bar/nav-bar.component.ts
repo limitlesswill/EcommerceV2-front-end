@@ -21,6 +21,11 @@ import Swal from 'sweetalert2';
 })
 export class NavBarComponent implements OnInit {
   
+  menuVisible = false;
+
+  toggleMenu() {
+    this.menuVisible = !this.menuVisible;
+  }
   
   ///////////////////////////////////////////////////////////////////////
   Items2:Cart[]=[];

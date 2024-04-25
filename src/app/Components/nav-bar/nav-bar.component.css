@@ -811,13 +811,62 @@ body {
   }
 
 
+
+
+ /* Hide the menu-button by default */  
+  .menu-button{
+    display: none;
+  } 
+  
+  /* Hide the drop-down by default */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%; /* Positioning below the menu button */
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure it's on top */
+  width: 100%; /* Full width to span across the page */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(-10px); /* Slightly off screen */
+}
+
+.dropdown-menu a{
+
+ 
+  padding: 12px 16px;
+  text-align: left;
+  display: inline;
+  margin: 115px;
+  width: 100%;
+  font-size: larger;
   
  
+}
+
+
+
+.internalCategories button{
+  
+  border: #08c;
+  border-radius: 16px;
+  padding: 8px 12px;
+  text-align: center;
+  display: inline;
+  margin: 10px;
+  background-color: #08c;
+  width: 180px;
+}
+
 
   /* Responsive styles */
   
-@media screen and (max-width: 768px) {
-  /* Adjustments for smaller screens */
+@media screen and (max-width: 1320px) {
+ 
+  
   #navbarHeader .language-icon {
       margin-left: 10px;
   }
@@ -829,11 +878,45 @@ body {
   #navbarHeader .navbar-center input[type="text"] {
       width: 70%;
   }
+  
 }
 
-@media screen and (max-width: 480px) {
-  /* Adjustments for even smaller screens */
-  #navbarHeader .navbar-center input[type="text"] {
-      width: 60%;
+@media only screen and (max-width: 650px) {
+  /* When menuVisible is true, make it visible */
+.dropdown-menu.open {
+  display: block;
+  opacity: 1;
+  transform: translateY(0); /* Return to normal position */
+}
+  .menu-button{
+    display: block;
+  }
+ .navIcons{
+  display: none;
+ }
+   
+  .subnav{
+    display:none;
+  }
+  
+  #navbarHeader .navbar-center input [type="text"] {
+    
+      width: 20%;
+  }
+  
+}
+
+@media only screen and (max-width: 600px)
+
+
+{
+  .dropdown-menu a{
+
+ 
+    
+    margin: 65px;
+    
+    
+   
   }
 }
