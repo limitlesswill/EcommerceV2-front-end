@@ -84,6 +84,10 @@
             translate }}</span></a>
             @if(isLoggedIn())
             {
+              <a (click)="profile()" style="margin-right: 6px">
+                <i class="mdi mdi-account-outline"></i>
+                <span>{{ 'nav.profile' | translate }}</span>
+              </a>
               <a (click)="logout()" style="margin-right: 6px">
                 <i class="mdi mdi-account-outline"></i>
                 <span>{{ 'nav.logout' | translate }}</span>
@@ -121,8 +125,12 @@
         </button>
         <div class="subnav-content shadow" [style.margin-left.px]="[lang ==='en' ? 0 : 250]">
           <div>
-          <img [src]=" (lang === 'en' ? c.imgURL : c.imgURLAr)" width="100%"
-              alt="">
+            @if(lang === 'en')
+            {<img src="https://ecommercedashboard.somee.com/images/{{c.imgURL}}" width="100%" alt="">}
+            @else
+            {<img src="https://ecommercedashboard.somee.com/images/{{c.imgURLAr}}" width="100%" alt="" >}
+           <!-- <img [src]="( ? c.imgURL : c.imgURLAr)" width="100%" alt=""> -->
+          <!-- https://ecommercedashboard.somee.com/images/ -->
           </div>
           <ng-container class="w-25 ">
             @for(s of c.subCategories; track $index){
@@ -154,70 +162,71 @@
       <div class="col-12">
           <ol class="filterproducts products list items product-items">
               @for(product of Products; track product.id){
-                  <li  (click)="Addtofavourite(product)" class="item product product-item">
-                      <div class="product-item-info type1">
-                          <div class="product photo product-item-photo">
-                              <a>
-                                  <img class="product-image-photo default_image rounded porto-lazyload porto-lazyload-loaded"
-                                      width="300" height="300" alt=""
-                                      src="https://ecommercedashboard.somee.com{{product.imgURL}}" style="display: block;">
+                 
+            <li  class="item product product-item">
+              <div class="product-item-info type1">
+                  <div class="product photo product-item-photo">
+                      <a>
+                          <img (click)="Addtofavourite(product)" class="product-image-photo default_image rounded porto-lazyload porto-lazyload-loaded"
+                              width="300" height="300" alt=""
+                              src="https://ecommercedashboard.somee.com{{product.imgURL}}" style="display: block;">
+                      </a>
+                      @if(product.priceBeforeDiscount>0)
+                      {
+                      <div class="product-labels">
+                          <div class="product-label sale-label">-{{product.priceBeforeDiscount}}%</div>   
+                      </div>
+                      }
+                  </div>
+                  <div class="product details product-item-details">
+                      <strong class="product name product-item-name">
+                          <a class="product-item-link" href="#">
+                              {{product.enDescription}} </a>
+                      </strong>
+  
+                      <div class="price-box price-final_price" data-product-id="11884">
+                          <span class="old-price">
+                              <span class="price-container price-final_price tax weee">
+                                  <span class="price-label">was</span>
+                                  <span id="old-price-11884" data-price-amount="27900" data-price-type="oldPrice"
+                                      class="price-wrapper "><span class="price">{{product.price}} &nbsp;EGP</span></span>
+                              </span>
+                          </span>
+                          <span class="special-price">
+                              <span class="price-container price-final_price tax weee">
+                                  <span class="price-label">Special Price</span>
+                                  <span id="product-price-11884" data-price-amount="24400" data-price-type="finalPrice"
+                                      class="price-wrapper "><span class="price">{{product.price * (100-product.priceBeforeDiscount)/100 }} &nbsp;EGP</span></span>
+                              </span>
+                          </span>
+  
+                      </div>
+                      <div class="product-item-inner">
+                          <div class="product actions product-item-actions">
+                              <a href="#" class="action towishlist actions-secondary" title="Add to Wish List"
+                                  aria-label="Add to Wish List" data-action="add-to-wishlist" role="button">
+                                  <span>Add to Wish List</span>
                               </a>
-                              <div class="product-labels">
-                                  <div class="product-label sale-label">-13%</div>
+                              <div class="actions-primary"><button type="button"
+                                          title="Add to Cart" class="action tocart primary" (click)="addToCart(product)">
+                                          <span>Add to Cart</span>
+                                      </button>
+                                      <br>
+                                      @if(product.quantity>0){<span style="color: green;">Instock</span>}@else{<span style="color: red;">Instock</span>}
                               </div>
-                          </div>
-                          <div class="product details product-item-details">
-                              <strong class="product name product-item-name">
-                                  <a class="product-item-link" href="#">
-                                      {{product.enDescription}} </a>
-                              </strong>
-          
-                              <div class="price-box price-final_price" data-product-id="11884">
-          
-                                  <span class="old-price">
-          
-          
-                                      <span class="price-container price-final_price tax weee">
-                                          <span class="price-label">was</span>
-                                          <span id="old-price-11884" data-price-amount="27900" data-price-type="oldPrice"
-                                              class="price-wrapper "><span class="price">27900.00 &nbsp;EGP</span></span>
-                                      </span>
-                                  </span>
-                                  <span class="special-price">
-                                      <span class="price-container price-final_price tax weee">
-                                          <span class="price-label">Special Price</span>
-                                          <span id="product-price-11884" data-price-amount="24400" data-price-type="finalPrice"
-                                              class="price-wrapper "><span class="price">{{product.price}} &nbsp;EGP</span></span>
-                                      </span>
-                                  </span>
-          
-                              </div>
-                              <div class="product-item-inner">
-                                  <div class="product actions product-item-actions">
-                                      <a href="#" class="action towishlist actions-secondary" title="Add to Wish List"
-                                          aria-label="Add to Wish List" data-action="add-to-wishlist" role="button">
-                                          <span>Add to Wish List</span>
-                                      </a>
-                                      <div class="actions-primary">
-                                          <form data-role="tocart-form">
-                                              <input type="hidden" name="product" value="11884">
-                                              <input type="hidden" name="uenc" value="">
-                                              <input name="form_key" type="hidden" value=""> <button type="submit"
-                                                  title="Add to Cart" class="action tocart primary"(click)="addToCart(product)">
-                                                  <span>Add to Cart</span>
-                                              </button>
-                                          </form>
-                                      </div>
-                                      <a href="#" class="action tocompare actions-secondary" title="Add to Compare"
-                                          aria-label="Add to Compare" role="button">
-                                          <span>Add to Compare</span>
-                                      </a>
-                                  </div>
-                              </div>
+                              <a href="#" class="action tocompare actions-secondary" title="Add to Compare"
+                                  aria-label="Add to Compare" role="button">
+                                  <span>Add to Compare</span>
+                              </a>
                           </div>
                       </div>
-                  </li>
-                  }
+                  </div>
+              </div>
+          </li>
+
+              
+              
+              }
              
           </ol>
 

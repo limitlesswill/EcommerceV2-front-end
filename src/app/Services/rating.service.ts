@@ -13,7 +13,7 @@ export class RatingService {
   constructor(private http: HttpClient) { }
 
   getProductComments(productId: Number): Observable<IComment[]> {
-    return this.http.get<IComment[]>(`${this.baseUrl}Comment/product/ ${productId}`);
+    return this.http.get<IComment[]>(`${this.baseUrl}Comment/product/${productId}`);
   }
 
   makeProductComment( comment: IComment): Observable<any> {

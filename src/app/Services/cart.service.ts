@@ -35,7 +35,8 @@ private Cart:Cart={
       let Item = this.Items.find(i => i.id== Product.id);
       if(Item==null)
         {this.Items.push({...Product,wanted:1});
-        localStorage.setItem('CartItems',JSON.stringify(this.Items));}
+        //localStorage.setItem('CartItems',JSON.stringify(this.Items));
+      }
     }
     else{
       this.Cart.quantity= 1;

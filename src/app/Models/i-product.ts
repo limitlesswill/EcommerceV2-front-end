@@ -7,5 +7,6 @@ export interface IProduct {
     imgURL: string;
     quantity: number;
     price: number;
+    priceBeforeDiscount:number
     subCategoryId:number;
 }

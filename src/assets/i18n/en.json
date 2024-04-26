@@ -28,7 +28,8 @@
         "appliances":"appliances",
         "tvs":"tvs",
         "gaming":"gaming",
-        "hotdeals":"hotdeals"
+        "hotdeals":"hotdeals",
+        "profile":"profile"
 
     },
     "productDetails":{

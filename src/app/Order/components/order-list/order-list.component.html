@@ -34,7 +34,7 @@
                     @if(Order.address===" ")
                     {<td>Not Speicified</td>}@else{<td>{{Order.address}} </td>}
                     <td>{{Order.date}}</td>
-                    @if(Order.state==1){<td>Pending</td>}@else if(Order.state==2){<td>Confirmed</td>}@else if(Order.state==3){<td>Canceled</td>}@else{<td>Paid</td>}
+                    @if(Order.state==1){<td>Pending</td>}@else if(Order.state==2){<td>Confirmed</td>}@else if(Order.state==3){<td>Canceled</td>}@else if(Order.state==4){<td>Paid</td>}@else{<td>Delivered</td>}
                     <td>
                       @if(Order.state==1){
                         <i (click)="payOrder(Order)"  class="mdi mdi-credit-card"style="padding-right: 5px;" >    </i>

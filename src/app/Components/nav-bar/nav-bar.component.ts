@@ -108,6 +108,11 @@ Addtofavourite(product: any) {
     this._router.navigate(['/home']);
     this.fetchCart();
   }
+  profile(){
+    this._router.navigate(['/profile']);
+
+  }
+
   @HostListener('window:scroll', [])
   onWindowScroll() {
     const navbarBottom = document.querySelector('.navbar-bottom') as HTMLElement;

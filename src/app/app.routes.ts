@@ -18,11 +18,17 @@ import { ProductByCategoryComponent } from './Category/Componenets/ProductByCate
 import { AllProductOfCAtComponent } from './Category/Componenets/GetPeoductOfCat/all-product-of-cat/all-product-of-cat.component';
 import { ContactusComponent } from './Components/contactus/contactus.component';
 import { SearchproductComponent } from './Components/searchproduct/searchproduct.component';
+import { ProfileComponent } from './User/Components/profile/profile.component';
+import { UpdateprofileComponent } from './User/Components/updateprofile/updateprofile.component';
 
 
 
 export const routes: Routes = [
     { path: 'contactus', component : ContactusComponent },
+    { path: 'profile', component : ProfileComponent , canActivate:[authGuard]},
+    { path: 'UPprofile', component :  UpdateprofileComponent , canActivate:[authGuard]},
+   
+   
     { path: 'home', component : HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent}, //canActivate:[authGuard]},

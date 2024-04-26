@@ -1,0 +1,42 @@
+<app-nav-bar></app-nav-bar> 
+
+<a href=""> <Button style="margin-top: 20px; margin-left: 20px;" class="danger"class="btn btn-danger" (click)="logout()"> <i class="fa fa-chevron-left"></i> Logout </Button></a>
+<a href=""> <Button style="margin-top: 20px; margin-left: 20px;" class="Prime"class="btn btn-success"> <i class="fa fa-chevron-left"></i> Back to Home </Button></a>
+
+<div class="profile-container">
+    <div class="profile-header">
+        <img src="https://www.transparentpng.com/thumb/user/gray-user-profile-icon-png-fP8Q1P.png" alt="User Photo" class="user-photo">
+        <h2 class="user-name">{{pUser.fName}} {{pUser.lName}}</h2>
+        <button class="edit-button" style="margin: 10px ;"(click)="editUsers()"  >Edit Profile</button>
+        <button class="edit-button"(click)=" editOrders()" >Update Order</button>
+    </div>
+    <div class="orders-section">
+        <h3>Your Info</h3>
+        <div class="order-item">
+            <div class="order-details">
+                <strong>Email:</strong> {{pUser.email}} <br>
+                <strong>Phone:</strong> {{pUser.phoneNumber}} <br>
+           </div>
+        </div>
+   </div>
+  
+@if(Orders.length > 0){
+    <div class="orders-section">
+        <h3>Your Orders</h3>
+        @for(Order of Orders; track Order.id ;)
+        {
+            <div class="order-item">
+                <div class="order-details">
+                    <strong>Date:</strong> {{Order.date}}<br>
+                    <strong>Status:</strong> @if(Order.state==1){Pending}@else if(Order.state==2){Confirmed}@else if(Order.state==3){Canceled}@else if(Order.state==4){Paid}@else{Delivered}<br>
+                    <strong>Total Cost:</strong> {{Order.finalPrice}} $ <br>
+                    <strong>Destination Address:</strong> @if(Order.address===" ")
+                    {Not Speicified}@else{{{Order.address}}} 
+                </div>
+            </div>
+        
+        }
+        
+    </div>
+   }
+</div>
