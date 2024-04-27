@@ -48,13 +48,15 @@
                         </strong>
     
                         <div class="price-box price-final_price" data-product-id="11884">
+                            @if(product.priceBeforeDiscount>0)
+                            {
                             <span class="old-price">
                                 <span class="price-container price-final_price tax weee">
                                     <span class="price-label">was</span>
                                     <span id="old-price-11884" data-price-amount="27900" data-price-type="oldPrice"
                                         class="price-wrapper "><span class="price">{{product.price}} &nbsp;EGP</span></span>
                                 </span>
-                            </span>
+                            </span>}
                             <span class="special-price">
                                 <span class="price-container price-final_price tax weee">
                                     <span class="price-label">Special Price</span>
@@ -85,7 +87,8 @@
                         </div>
                     </div>
                 </div>
-            </li>   
+            </li>
+  
         }
     </ol>
 </div>

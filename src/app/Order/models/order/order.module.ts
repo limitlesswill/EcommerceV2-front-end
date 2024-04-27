@@ -35,5 +35,6 @@ export interface Cart{
   imgURL: string,
   quantity: number,
   totalPrice:number,
-  price:number
+  price:number,
+  discount :number
 }

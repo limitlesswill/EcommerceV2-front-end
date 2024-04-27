@@ -21,7 +21,8 @@ private Cart:Cart={
   imgURL: "",
   quantity:0,
   totalPrice:0,
-  price:0
+  price:0,
+  discount :0
 }
 
   constructor(private router:Router ,private CartItemService: CartItemService) { }
