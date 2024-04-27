@@ -1,2 +1,32 @@
 <app-nav-bar></app-nav-bar>
-<p>updateprofile works!</p>
+
+      <a href=""> <Button style="margin-top: 20px; margin-left: 20px;" class="danger"class="btn btn-danger" (click)="logout()"> <i class="fa fa-chevron-left"></i> Logout </Button></a> 
+      <a href=""> <Button style="margin-top: 20px; margin-left: 20px;" class="Prime"class="btn btn-success"> <i class="fa fa-chevron-left"></i> Back to Home </Button></a> 
+       <div class="con" >
+        <div class="form-container" >
+        <form>
+            <h2 style="color: black;">Profile Editting Form</h2>
+            <div class="input-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first_name">
+            </div>
+            <div class="input-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last_name">
+            </div>
+            <div class="input-group">
+                <label for="phone-number">Phone Number</label>
+                <input type="tel" id="phone-number" name="phone_number"  title="Please enter a valid mobile phone number" required>
+            </div>
+            <button type="submit" class="button1"(click)="handleFormSubmit()" >Edit</button>
+        </form>
+    </div>
+  </div> 
+
+
+
+
+
+
+
+      

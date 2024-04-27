@@ -1,0 +1,71 @@
+.con {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  margin: 0;
+  /* background: linear-gradient(to right, #f2eff6, #2575fc); */
+  color: #ffffff;
+}
+
+.form-container {
+  background: rgba(255, 255, 255, 0.9); 
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  width: 400px; 
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus {
+  border-color: #2575fc; 
+  outline: none;
+}
+
+.button1 {
+  background-color: #2575fc;
+  color: white;
+  border: none;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.button1:hover {
+  background-color: #1956d2;
+  transform: translateY(-2px); 
+}
+
+button:active {
+  transform: translateY(1px); 
+}

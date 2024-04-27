@@ -18,7 +18,7 @@ import { OrderService } from '../../../Order/Service/order.service';
 export class ProfileComponent {
   UserId: string|null= localStorage.getItem('userId');
   pUser:User={
-    id: 0,
+    id: "",
     fName: "",
     lName: "",
     email: "",

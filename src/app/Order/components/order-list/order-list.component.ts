@@ -51,37 +51,53 @@ export class OrderListComponent {
   cancel(){
     this.Router.navigate(['cart']);
   }
-
-
-
-  editOrder(id: number): void {
+ editOrder(id: number): void {
     this.fetchOrdersDetails(id);
   }
-
-  deleteOrder(id: number): void {
-    if (confirm('Are you sure to delete this Order?')) {
-      this.OrderService.DeleteOrder(id).subscribe((d) => {
-        this.fetchOrders(); // Refresh the list
-      });
-      Swal.fire({
-        title: "Good job!",
-        text: "Your Order have been deleted",
-        icon: "success"
-      });
-    }
+ deleteOrder(id: number): void {
+    Swal.fire({
+      title: 'Are you sure to delete this Order?',
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+        this.OrderService.DeleteOrder(id).subscribe((d) => {
+          this.fetchOrders(); // Refresh the list
+        });  
+      }
+    });
   }
   deleteOrderDetails(id: number,OId:number): void {
-    if (confirm('Are you sure to delete this Order Item?')) {
-      this.OrderDetailsService.DeleteOrder(id).subscribe((d) => {
-        this.fetchOrdersDetails(OId); // Refresh the list
-        this.fetchOrders();
-      });
-      Swal.fire({
-        title: "Good job!",
-        text: "Item have been deleted",
-        icon: "success"
-      });
-    }
+    Swal.fire({
+      title: 'Are you sure to delete this Order Item?',
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+        this.OrderDetailsService.DeleteOrder(id).subscribe((d) => {
+          this.fetchOrdersDetails(OId); // Refresh the list
+          this.fetchOrders();
+        });
+      }
+    });
   }
   IncreamentQuantity(OrdersDetails:OrderDetails): void {
     OrdersDetails.quantity++;
@@ -90,7 +106,6 @@ export class OrderListComponent {
       this.fetchOrders();
     }); 
   }
-  
   DecreamentQuantity(OrdersDetails:OrderDetails): void {
     OrdersDetails.quantity--;
     this.OrderDetailsService.UpdateOrderDetails(OrdersDetails.id,OrdersDetails).subscribe((d) => {
