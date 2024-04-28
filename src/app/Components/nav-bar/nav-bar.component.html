@@ -31,7 +31,13 @@
   <a (click)="logout()" style="margin-right: 6px" *ngIf="isLoggedIn()">
     <i class="mdi mdi-account-outline"></i><span>{{ 'nav.logout' | translate }}</span>
   </a>
-
+  @if(isLoggedIn())
+            {
+              <br>
+ <a (click)="profile()" style="margin-right: 6px" *ngIf="isLoggedIn()">
+    <i class="mdi mdi-account-outline"></i><span>{{ 'nav.profile' | translate }}</span>
+  </a>
+            }
   <a routerLink="/login" style="margin-right: 6px" *ngIf="!isLoggedIn()">
     <i class="mdi mdi-account-outline"></i><span>{{ 'nav.signin' | translate }}</span>
   </a>
@@ -69,9 +75,6 @@
         </div>
       </div>
       }
-      <div >
-        <button class="subnavbtn">{{ 'nav.hotdeals' | translate }}</button>
-      </div>
   </div>
 
 </div>
@@ -142,14 +145,10 @@
               </div>
             </div>
             }
-
           </ng-container>
         </div>
       </div>
       }
-      <div class="subnav">
-        <button class="subnavbtn">{{ 'nav.hotdeals' | translate }}</button>
-      </div>
       <div class="contacts">
         <a href=""><i style="color: aliceblue;" class="mdi mdi-phone-outline"></i> <span> 16942</span></a>
       </div>
