@@ -8,15 +8,15 @@
             <h2 style="color: black;">Profile Editting Form</h2>
             <div class="input-group">
                 <label for="first-name">First Name</label>
-                <input type="text" id="first-name" name="first_name">
+                <input type="text" id="first-name" value="{{this.pUser.fName}}"   name="first_name">
             </div>
             <div class="input-group">
                 <label for="last-name">Last Name</label>
-                <input type="text" id="last-name" name="last_name">
+                <input type="text" id="last-name"  value="{{this.pUser.lName}}"  name="last_name">
             </div>
             <div class="input-group">
                 <label for="phone-number">Phone Number</label>
-                <input type="tel" id="phone-number" name="phone_number"  title="Please enter a valid mobile phone number" required>
+                <input type="tel" id="phone-number" name="phone_number" value="{{this.pUser.phoneNumber}}"   title="Please enter a valid mobile phone number" required>
             </div>
             <button type="submit" class="button1"(click)="handleFormSubmit()" >Edit</button>
         </form>

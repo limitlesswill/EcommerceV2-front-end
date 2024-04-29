@@ -161,68 +161,62 @@
       <div class="col-12">
           <ol class="filterproducts products list items product-items">
               @for(product of Products; track product.id){  
-            <li  class="item product product-item">
-              <div class="product-item-info type1">
-                  <div class="product photo product-item-photo">
-                      <a>
-                          <img (click)="Addtofavourite(product)" class="product-image-photo default_image rounded porto-lazyload porto-lazyload-loaded"
-                              width="300" height="300" alt=""
-                              src="https://ecommercedashboard.somee.com{{product.imgURL}}" style="display: block;">
-                      </a>
-                      @if(product.priceBeforeDiscount>0)
-                      {
-                      <div class="product-labels">
-                          <div class="product-label sale-label">-{{product.priceBeforeDiscount}}%</div>   
-                      </div>
-                      }
-                  </div>
-                  <div class="product details product-item-details">
-                      <strong class="product name product-item-name">
-                          <a class="product-item-link" href="#">
-                              {{product.enDescription}} </a>
-                      </strong>
-  
-                      <div class="price-box price-final_price" data-product-id="11884">
+                <li  class="item product product-item">
+                  <div class="product-item-info type1">
+                      <div class="product photo product-item-photo">
+                          <a>
+                              <img (click)="Addtofavourite(product)" class="product-image-photo default_image rounded porto-lazyload porto-lazyload-loaded"
+                                  width="300" height="300" alt=""
+                                  src="https://ecommercedashboard.somee.com{{product.imgURL}}" style="display: block;">
+                          </a>
                           @if(product.priceBeforeDiscount>0)
                           {
-                          <span class="old-price">
-                              <span class="price-container price-final_price tax weee">
-                                  <span class="price-label">was</span>
-                                  <span id="old-price-11884" data-price-amount="27900" data-price-type="oldPrice"
-                                      class="price-wrapper "><span class="price">{{product.price}} &nbsp;EGP</span></span>
-                              </span>
-                          </span>}
-                          <span class="special-price">
-                              <span class="price-container price-final_price tax weee">
-                                  <span class="price-label">Special Price</span>
-                                  <span id="product-price-11884" data-price-amount="24400" data-price-type="finalPrice"
-                                      class="price-wrapper "><span class="price">{{product.price * (100-product.priceBeforeDiscount)/100 }} &nbsp;EGP</span></span>
-                              </span>
-                          </span>
-  
+                          <div class="product-labels">
+                              <div class="product-label sale-label">-{{product.priceBeforeDiscount}}%</div>   
+                          </div>
+                          }
                       </div>
-                      <div class="product-item-inner">
-                          <div class="product actions product-item-actions">
-                              <a href="#" class="action towishlist actions-secondary" title="Add to Wish List"
-                                  aria-label="Add to Wish List" data-action="add-to-wishlist" role="button">
-                                  <span>Add to Wish List</span>
-                              </a>
-                              <div class="actions-primary"><button type="button"
-                                          title="Add to Cart" class="action tocart primary" (click)="addToCart(product)">
-                                          <span>Add to Cart</span>
-                                      </button>
-                                      <br>
-                                      @if(product.quantity>0){<span style="color: green;">Instock</span>}@else{<span style="color: red;">Instock</span>}
+                      <div class="product details product-item-details">
+                          <strong class="product name product-item-name">
+                              <a class="product-item-link" href="#">
+                                  {{product.enDescription}} </a>
+                          </strong>
+      
+                          <div class="price-box price-final_price" data-product-id="11884">
+                             
+                              <span class="old-price">
+                                  <span class="price-container price-final_price tax weee">
+                                      <span class="price-label">was</span>
+                                      @if(product.priceBeforeDiscount>0)
+                                      { <span id="old-price-11884" data-price-amount="27900" data-price-type="oldPrice"
+                                          class="price-wrapper "><span class="price">{{product.price}} &nbsp;EGP</span></span>}
+                                  </span>
+                              </span>
+                              <span class="special-price">
+                                  <span class="price-container price-final_price tax weee">
+                                      <span class="price-label">Special Price</span>
+                                      <span id="product-price-11884" data-price-amount="24400" data-price-type="finalPrice"
+                                          class="price-wrapper "><span class="price">{{product.price * (100-product.priceBeforeDiscount)/100 }} &nbsp;EGP</span></span>
+                                  </span>
+                              </span>
+      
+                          </div>
+                          <div class="product-item-inner">
+                              <div class="product actions product-item-actions">
+                                  <div class="actions-primary"><button type="button"
+                                              title="Add to Cart" class="action tocart primary" (click)="addToCart(product)">
+                                              <span>Add to Cart</span>
+                                          </button>
+                                          <br>
+                                          @if(product.quantity>0){<span style="color: green;">Instock  {{product.quantity}}</span>}@else{<span style="color: red;">Instock</span>}
+                                  </div>
+                                  
                               </div>
-                              <a href="#" class="action tocompare actions-secondary" title="Add to Compare"
-                                  aria-label="Add to Compare" role="button">
-                                  <span>Add to Compare</span>
-                              </a>
                           </div>
                       </div>
                   </div>
-              </div>
-          </li>
+              </li>
+          
               }
              
           </ol>

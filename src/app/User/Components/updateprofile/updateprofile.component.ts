@@ -49,6 +49,8 @@ export class UpdateprofileComponent {
       this.UserService.GetUserById(this.UserId).subscribe(user => {
         this.pUser =user;
       });
+      
+ 
     }
   }
   
