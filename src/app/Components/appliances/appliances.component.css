@@ -1,6 +1,8 @@
 .item {
     background-color: rgb(245, 245, 245);
-    border-radius: 25px;
+    border-radius: 1.7vw;
     border: none;
-    width: 270px;
+    min-width: 21vw;
+    min-height: 21vw;
+    margin:0 auto;
 }

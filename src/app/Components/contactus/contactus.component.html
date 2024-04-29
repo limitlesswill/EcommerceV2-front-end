@@ -1,4 +1,4 @@
-<app-nav-bar></app-nav-bar> 
+<app-nav-bar></app-nav-bar>
 <div class="container-fluid">
     <img src="https://r2media.horizondm.com/Backend-developer/Branches.jpg" alt="" class="w-100">
 
@@ -12,15 +12,15 @@
     <div class="container">
         <div class="row">
             <img src="https://r2media.horizondm.com/Backend-developer/Ubber.jpg" width="100%" style="
-                                    width: 220px;" (click)="scrollTo('sa3id')" title="Sa3id">
+                                    width: 220px;cursor: pointer;" (click)="scrollTo('sa3id')" title="Sa3id">
             <img src="https://r2media.horizondm.com/Backend-developer/Delta.jpg" width="100%" style="
-                                    width: 220px;" (click)="scrollTo('delta')" title="Delta">
+                                    width: 220px;cursor: pointer;" (click)="scrollTo('delta')" title="Delta">
             <img src="https://r2media.horizondm.com/Backend-developer/alex.jpg" width="100%" style="
-                                    width: 220px;" (click)="scrollTo('alex')" title="Alex">
+                                    width: 220px;cursor: pointer;" (click)="scrollTo('alex')" title="Alex">
             <img src="https://r2media.horizondm.com/Backend-developer/Giza.jpg" width="100%" style="
-                                width: 220px;" (click)="scrollTo('giza')" title="Giza">
+                                width: 220px;cursor: pointer;" (click)="scrollTo('giza')" title="Giza">
             <img src="https://r2media.horizondm.com/Backend-developer/cairo.jpg" width="100%" style="
-                                width: 220px;" (click)="scrollTo('cairo')" title="Cairo">
+                                width: 220px;cursor: pointer;" (click)="scrollTo('cairo')" title="Cairo">
         </div>
     </div>
 
@@ -36,12 +36,11 @@
             <p
                 style="margin-top:70px;text-align:center;background-color: #1e90ff;border-radius: 20px;padding-bottom: 2px;box-shadow: 1px 4px 4px 1px;">
                 <span style="font-size:20px"><strong><span style="color:#ffffff">
-                    عناوين فروع</span> <span
-                            style="color:#ffffff"> القاهرة</span></strong></span>
+                            عناوين فروع</span> <span style="color:#ffffff"> القاهرة</span></strong></span>
             </p>
 
             <nav id="cairo">
-                <div class="nav nav-tabs">
+                <div class="nav nav-tabs justify-content-center">
                     @for(tab of cairo; track $index){
                     <button type="button" class="nav-link {{$index === 0 ? 'active' : ' '}}" data-bs-toggle="tab"
                         [attr.data-bs-target]="'#'+tab.title"
@@ -61,12 +60,11 @@
             <p
                 style="margin-top:50px;text-align:center;background-color: #1e90ff;border-radius: 20px;padding-bottom: 2px;box-shadow: 1px 4px 4px 1px;">
                 <span style="font-size:20px"><strong><span style="color:#ffffff">
-                    عناوين فروع</span> <span
-                            style="color:#ffffff"> الجيزة</span></strong></span>
+                            عناوين فروع</span> <span style="color:#ffffff"> الجيزة</span></strong></span>
             </p>
 
             <nav id="giza">
-                <div class="nav nav-tabs">
+                <div class="nav nav-tabs justify-content-center">
                     @for(tab of giza; track $index){
                     <button type="button" class="nav-link {{$index === 0 ? 'active' : ' '}}" data-bs-toggle="tab"
                         [attr.data-bs-target]="'#'+tab.title"
@@ -86,12 +84,11 @@
             <p
                 style="margin-top:50px;text-align:center;background-color: #1e90ff;border-radius: 20px;padding-bottom: 2px;box-shadow: 1px 4px 4px 1px;">
                 <span style="font-size:20px"><strong><span style="color:#ffffff">
-                    عناوين فروع</span> <span
-                            style="color:#ffffff"> الاسكندرية</span></strong></span>
+                            عناوين فروع</span> <span style="color:#ffffff"> الاسكندرية</span></strong></span>
             </p>
 
             <nav id="alex">
-                <div class="nav nav-tabs">
+                <div class="nav nav-tabs justify-content-center">
                     @for(tab of alex; track $index){
                     <button type="button" class="nav-link {{$index === 0 ? 'active' : ' '}}" data-bs-toggle="tab"
                         [attr.data-bs-target]="'#'+tab.title"
@@ -117,7 +114,7 @@
 
 
             <nav id="delta">
-                <div class="nav nav-tabs">
+                <div class="nav nav-tabs justify-content-center">
                     @for(tab of delta; track $index){
                     <button type="button" class="nav-link {{$index === 0 ? 'active' : ' '}}" data-bs-toggle="tab"
                         [attr.data-bs-target]="'#'+tab.title"
@@ -142,7 +139,7 @@
 
 
             <nav id="sa3id">
-                <div class="nav nav-tabs">
+                <div class="nav nav-tabs justify-content-center">
                     @for(tab of sa3id; track $index){
                     <button type="button" class="nav-link {{$index === 0 ? 'active' : ' '}}" data-bs-toggle="tab"
                         [attr.data-bs-target]="'#'+tab.title"
