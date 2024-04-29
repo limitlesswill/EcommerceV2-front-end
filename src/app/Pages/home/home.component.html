@@ -1,4 +1,5 @@
-<app-nav-bar></app-nav-bar>
+<!-- <app-nav-bar></app-nav-bar> -->
+<app-nav-bar (categoryClicked)="GetIdOFCategory($event)" (SubcategoryClicked)="GetIdOFSubCategory($event)"></app-nav-bar>
 @if(!isSearchIn()){
 <mainslider></mainslider>
 <item1></item1>
