@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" dir="{{lang === 'en' ? 'ltr' : 'rtl'}}">
         <div class="row">
                 <div creator="wael" class="mt-3 mb-4"></div>
 
@@ -6,21 +6,35 @@
                         <a href="#">
                                 <img src="https://r2media.horizondm.com/wysiwyg/web-test/50_off.gif" class="img-fluid">
                         </a>
+                        @if(lang === 'en'){
+                        <div class="text-center fw-bold">
+                                Discount Up to 50%
+                        </div>
+                        <div class="text-center">Discount for a limited Quantity</div>
+                        }@else {
                         <div class="text-center fw-bold">
                                 منتجات بخصم يصل الى
                                 50%
                         </div>
                         <div class="text-center">خصم بكمية محدودة</div>
+                        }
                 </div>
 
                 <div class="col-2 text-center">
                         <a href="#">
                                 <img src="https://r2media.horizondm.com/wysiwyg/web-test/Comp.gif" class="img-fluid">
                         </a>
+                        @if(lang === 'en'){
+                        <div class="text-center fw-bold">
+                                Corporate Solutions
+                        </div>
+                        <div class="text-center">Meet Your Business Needs</div>
+                        }@else {
                         <div class="text-center fw-bold">
                                 حلول الشركات
                         </div>
                         <div class="text-center">كل ما تحتاجة لادارة أعمالك بسهولة</div>
+                        }
                 </div>
 
                 <div class="col-2 text-center">
@@ -28,11 +42,17 @@
                                 <img src="https://r2media.horizondm.com/wysiwyg/web-test/Recovery.gif"
                                         class="img-fluid">
                         </a>
-
+                        @if(lang === 'en'){
+                        <div class="text-center fw-bold">
+                                Free Returns
+                        </div>
+                        <div class="text-center">Get free returnes on eligible items</div>
+                        }@else {
                         <div class="text-center fw-bold">
                                 استرجاع مجانى
                         </div>
                         <div class="text-center">استرجع جميع المنتجات بدون مصاريف</div>
+                        }
                 </div>
 
                 <div class="col-2 text-center">
@@ -40,10 +60,17 @@
                                 <img src="https://r2media.horizondm.com/wysiwyg/web-test/Free_Shipping.gif"
                                         class="img-fluid">
                         </a>
+                        @if(lang === 'en'){
+                        <div class="text-center fw-bold">
+                                Shipping Cost 1 EGP
+                        </div>
+                        <div class="text-center">For all governorates</div>
+                        }@else {
                         <div class="text-center fw-bold">
                                 شحن مجاني
                         </div>
                         <div class="text-center">لجميع المحافظات</div>
+                        }
                 </div>
 
                 <div class="col-2 text-center">
@@ -51,10 +78,17 @@
                                 <img src="https://r2media.horizondm.com/wysiwyg/web-test/Cash_on_Delivery.gif"
                                         class="img-fluid">
                         </a>
+                        @if(lang === 'en'){
+                        <div class="text-center fw-bold">
+                                Cash on Delivery
+                        </div>
+                        <div class="text-center">Fast Shipping at all Place in Egypt</div>
+                        }@else {
                         <div class="text-center fw-bold">
                                 دفع عند الاستلام
                         </div>
                         <div class="text-center">شحن سريع لجميع أنحاء الجمهورية</div>
+                        }
                 </div>
 
                 <div class="col-2 text-center">
@@ -62,10 +96,17 @@
                                 <img src="https://r2media.horizondm.com/wysiwyg/web-test/Installment.gif"
                                         class="img-fluid">
                         </a>
+                        @if(lang === 'en'){
+                        <div class="text-center fw-bold">
+                                Buy Now & Pay Later
+                        </div>
+                        <div class="text-center">Installment Up to 36 Month</div>
+                        }@else {
                         <div class="text-center fw-bold">
                                 اشترى دلوقتى و ادفع بعدين
                         </div>
                         <div class="text-center">قسط حتى 36 شهر</div>
+                        }
                 </div>
 
         </div>

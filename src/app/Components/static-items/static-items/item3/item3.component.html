@@ -1,10 +1,14 @@
 <div class="container-fluid mt-2 mb-2 text-center">
-    <div class="row text-center ms-1 mx-auto">
+    <div class="row text-center ms-1 mx-auto" dir="{{lang === 'en' ? 'ltr' : 'rtl'}}">
 
         <div class="col-3 m-0 p-0 align-self-center">
             <a href="#" class="m-0 p-0">
+                @if(lang==='en'){
                 <img src="https://r2media.horizondm.com/wysiwyg/Themes/Theme-2-2024/1149x680_mobile.jpg" alt=""
                     class="img-fluid">
+                }@else{
+                <img src="../../../../../assets/item3/1149x680_mobile_ar.png" alt="" class="img-fluid">
+                }
             </a>
         </div>
 
@@ -12,33 +16,55 @@
 
             <div class="row m-0 p-0">
                 <a href="#" class="col m-0 p-0 mx-1">
+                    @if(lang==='en'){
                     <img src="https://r2media.horizondm.com/wysiwyg/Themes/Theme-2-2024/680x256-smart-watch.jpg" alt=""
                         class="img-fluid">
+                    }@else{
+                    <img src="../../../../../assets/item3/680x256-smart-watch_ar.png" alt="" class="img-fluid">
+                    }
                 </a>
 
                 <a href="#" class="col m-0 p-0 mx-1">
+                    @if(lang==='en'){
                     <img src="https://r2media.horizondm.com/wysiwyg/Themes/Theme-2-2024/680x256-airpods.jpg" alt=""
                         class="img-fluid">
+                    }@else{
+                    <img src="https://r2media.horizondm.com/wysiwyg/Themes/Theme-2-2024/680x256-airpods-arabic.jpg"
+                        alt="" class="img-fluid">
+                    }
                 </a>
             </div>
 
             <div class="row m-2 p-0 ms-1 me-1">
                 <a href="#" class="m-0 p-0">
-                    <img src="https://r2media.horizondm.com/wysiwyg/Themes/Theme-2-2024/1243x235-english.jpg" alt=""
-                        class="img-fluid">
+                    @if(lang==='en'){
+                    <img src="https://r2media.horizondm.com/wysiwyg/Themes/Theme-2-2024/1243x235-english.jpg" alt="" class="img-fluid">
+                    }@else{
+                    <img src="../../../../../assets/item3/1243x235-english_ar.png" alt="" class="img-fluid w-100">
+                    }
                 </a>
             </div>
 
             <div class="row m-0 p-0 mb-1">
 
                 <a href="#" class="col m-0 p-0 mx-1">
+                    @if(lang==='en'){
                     <img src="https://r2media.horizondm.com/wysiwyg/Themes/Theme-2-2024/680x256-speaker-en.jpg" alt=""
                         class="img-fluid">
+                    }@else{
+                    <img src="https://r2media.horizondm.com/wysiwyg/Themes/Theme-2-2024/680x256-speaker-arabic.jpg"
+                        alt="" class="img-fluid">
+                    }
                 </a>
 
                 <a href="#" class="col m-0 p-0 mx-1">
+                    @if(lang==='en'){
                     <img src="https://r2media.horizondm.com/wysiwyg/Themes/Theme-2-2024/680x256_powerbank.jpg" alt=""
                         class="img-fluid">
+                    }@else{
+                    <img src="../../../../../assets/item3/680x256_powerbank_ar.png" alt=""
+                        class="img-fluid">
+                    }
                 </a>
 
             </div>

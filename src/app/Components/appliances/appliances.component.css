@@ -4,5 +4,28 @@
     border: none;
     min-width: 21vw;
     min-height: 21vw;
-    margin:0 auto;
+    margin: 0 auto;
+}
+
+.middleware {
+    display: flex;
+    flex-direction: row;
+}
+
+.middleware:before,
+.middleware:after {
+    content: "";
+    flex: 1 1;
+    border-bottom: 1px solid;
+    margin: auto;
+}
+
+.middleware:before {
+    max-width: 25%;
+    margin-right: 50px
+}
+
+.middleware:after {
+    max-width: 25%;
+    margin-left: 50px
 }
