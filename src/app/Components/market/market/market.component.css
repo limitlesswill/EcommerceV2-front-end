@@ -39,7 +39,7 @@
 .item {
   width: 117px;
   height: 127px;;
-  animation: animate 10s alternate linear infinite;
+  animation: animate 6s alternate linear infinite;
 }
 
 .item img {
@@ -55,7 +55,7 @@
 
 @keyframes animate {
   0% {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(-50vw, 0, 0);
   }
 
   100% {

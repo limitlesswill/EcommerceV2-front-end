@@ -10,10 +10,18 @@
     height: 100%;
 }
 
+/* trying to fix flickering*/
 .carousel-inner {
     height: 100%;
 }
+.carousel{
+    height:100%;
+}
+.carousel-item{
+    height:100%;
+}
 
+/* flickering because of stretching active images*/
 .active {
     height: 100%;
 }
