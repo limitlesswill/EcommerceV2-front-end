@@ -35,7 +35,7 @@ import { MainCategoryComponent } from './Category/Componenets/MainComponentForCA
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'userInterfaceV2';
+  title = 'Dream Project';
   private roles: string[] = [];
   isLoggedIn = false;
   showAdminBoard = false;
